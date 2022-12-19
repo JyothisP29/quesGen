@@ -36,7 +36,7 @@ class HomeController extends ControllerMVC {
   }
 
 
-  QuestionPaper quesPaper =QuestionPaper(0,"",0);
+  QuestionPaper quesPaper =QuestionPaper(0,"","",0,[],0);
 
 
 
@@ -64,10 +64,10 @@ class HomeController extends ControllerMVC {
 
   void getQuestionPaperList() {
 
-      questionPaperList.add(QuestionPaper(1, "", 0));
-      questionPaperList.add(QuestionPaper(2, "BCA103 Mathematics-| 2019", 1));
-      questionPaperList.add(QuestionPaper(3, "BCA103 Mahematics-| 2019", 1));
-      questionPaperList.add(QuestionPaper(4, "BCA103 Mahematics-| 2019", 1));
+      questionPaperList.add(QuestionPaper(1,"","",0,[],0));
+      questionPaperList.add(QuestionPaper(2,"","",11,[],1));
+      questionPaperList.add(QuestionPaper(3,"","",1,[],1));
+      questionPaperList.add(QuestionPaper(4,"","",1,[],1));
 
   }
 

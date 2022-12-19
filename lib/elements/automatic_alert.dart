@@ -358,7 +358,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     controller: myControllerEasy1,
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.easy1 = int.tryParse(e);
+                                        // _con.quesPaper.sections = int.tryParse(e);
                                       });
                                     },
 
@@ -419,8 +419,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     controller: myControllerMedium1,
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.medium2 =
-                                            int.tryParse(e);
+                                        // _con.quesPaper.medium2 =
+                                        //     int.tryParse(e);
                                       });
                                     },
                                     inputFormatters: [
@@ -480,7 +480,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     controller: myControllerHard1,
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.hard1 = int.tryParse(e);
+                                        // _con.quesPaper.hard1 = int.tryParse(e);
                                       });
                                     },
                                     inputFormatters: [
@@ -557,8 +557,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   child: TextField(
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.attend1 =
-                                            int.tryParse(e);
+                                        // _con.quesPaper.attend1 =
+                                        //     int.tryParse(e);
                                       });
                                     },
                                     controller: myControllerAttend1,
@@ -616,7 +616,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 child: TextField(
                                   onChanged: (e) {
                                     setState(() {
-                                      _con.quesPaper.mpq1 = int.tryParse(e);
+                                      // _con.quesPaper.mpq1 = int.tryParse(e);
                                     });
                                   },
                                   controller: myControllerMPQ1,
@@ -767,8 +767,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   child: TextField(
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.medium2 =
-                                            int.tryParse(e);
+                                        // _con.quesPaper.medium2 =
+                                        //     int.tryParse(e);
                                       });
                                     },
                                     controller: myControllerMedium2,
@@ -829,7 +829,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     controller: myControllerHard2,
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.hard3 = int.tryParse(e);
+                                        // _con.quesPaper.hard3 = int.tryParse(e);
                                       });
                                     },
                                     inputFormatters: [
@@ -907,8 +907,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     controller: myControllerAttend2,
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.attend2 =
-                                            int.tryParse(e);
+                                        // _con.quesPaper.attend2 =
+                                        //     int.tryParse(e);
                                       });
                                     },
                                     inputFormatters: [
@@ -965,7 +965,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   controller: myControllerMPQ2,
                                   onChanged: (e) {
                                     setState(() {
-                                      _con.quesPaper.hard2 = int.tryParse(e);
+                                      // _con.quesPaper.hard2 = int.tryParse(e);
                                     });
                                   },
                                   inputFormatters: [
@@ -1065,7 +1065,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     controller: myControllerEasy3,
                                     onChanged: (String e) {
                                       setState(() {
-                                        _con.quesPaper.easy3 = int.tryParse(e);
+                                        // _con.quesPaper.easy3 = int.tryParse(e);
                                       });
                                     },
                                     inputFormatters: [
@@ -1124,8 +1124,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   child: TextField(
                                     onChanged: (String e) {
                                       setState(() {
-                                        _con.quesPaper.medium3 =
-                                            int.tryParse(e);
+                                        // _con.quesPaper.medium3 =
+                                        //     int.tryParse(e);
                                       });
                                     },
                                     controller: myControllerMedium3,
@@ -1185,7 +1185,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   child: TextField(
                                     onChanged: (String e) {
                                       setState(() {
-                                        _con.quesPaper.hard3 = int.tryParse(e);
+                                        // _con.quesPaper.hard3 = int.tryParse(e);
                                       });
                                     },
                                     controller: myControllerHard3,
@@ -1264,8 +1264,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     controller: myControllerAttend3,
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.attend3 =
-                                            int.tryParse(e);
+                                        // _con.quesPaper.attend3 =
+                                        //     int.tryParse(e);
                                       });
                                     },
                                     inputFormatters: [
@@ -1322,7 +1322,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   controller: myControllerMPQ3,
                                   onChanged: (e) {
                                     setState(() {
-                                      _con.quesPaper.mpq3 = int.tryParse(e);
+                                      // _con.quesPaper.mpq3 = int.tryParse(e);
                                     });
                                   },
                                   inputFormatters: [
@@ -1824,17 +1824,18 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 //     ? int.tryParse(myController.text)
                                 //     : null;
                                 Navigator.pop(context, true);
-
+                                _con.quesPaper.sections=generateQuestions();
                                 Navigator.pushNamed(
+
                                     context, "/generatedQuestion",
                                     arguments: RouteArgument(
-                                        param: generateQuestions(),
+                                        // param: generateQuestions(),
 
                                         control: _con,
-                                        mpq:
-                                            int.tryParse(myControllerMPQ1.text),
-                                        attend: int.tryParse(
-                                            myControllerAttend1.text)
+                                        // mpq:
+                                        //     int.tryParse(myControllerMPQ1.text),
+                                        // attend: int.tryParse(
+                                        //     myControllerAttend1.text)
                                     ));
 
                                 // showDialog(
