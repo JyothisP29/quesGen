@@ -10,8 +10,10 @@ import 'manual_alert.dart';
 
 class SemesterDetailsAlert extends StatefulWidget {
   final HomeController controller;
+
   const SemesterDetailsAlert({
-    Key? key, required this.controller,
+    Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -20,16 +22,13 @@ class SemesterDetailsAlert extends StatefulWidget {
 
 class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
   late HomeController _con;
+
   @override
   void initState() {
     // _con.getModuleList();
-_con=widget.controller;
+    _con = widget.controller;
     super.initState();
   }
-
-
-
-
 
   //bool addsub = false;
   String? Semester;
@@ -668,7 +667,9 @@ _con=widget.controller;
                                 Navigator.pop(context, true);
                                 showDialog(
                                     context: context,
-                                    builder: (ctx) =>  ExamNameAlert(controller: _con,));
+                                    builder: (ctx) => ExamNameAlert(
+                                          controller: _con,
+                                        ));
                               },
                               child: Container(
                                 width: 110,
@@ -692,7 +693,9 @@ _con=widget.controller;
                                     Navigator.pop(context, true);
                                     showDialog(
                                         context: context,
-                                        builder: (ctx) =>  ManualAlert(controller: _con,));
+                                        builder: (ctx) => ManualAlert(
+                                              controller: _con,
+                                            ));
                                   },
                                   child: Container(
                                     width: 150,
@@ -717,8 +720,9 @@ _con=widget.controller;
                                     Navigator.pop(context, true);
                                     showDialog(
                                         context: context,
-                                        builder: (ctx) =>
-                                             AutomaticAlert(controller: _con,));
+                                        builder: (ctx) => AutomaticAlert(
+                                              controller: _con,
+                                            ));
                                   },
                                   child: Container(
                                     width: 150,

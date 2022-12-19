@@ -34,9 +34,9 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
       _con.questionList.addAll(widget.routeArgument!.param);
     }
     log(widget.routeArgument?.other?.toString() ?? "NULLLL");
-    count = widget.routeArgument?.other;
-    attend = widget.routeArgument?.attend;
-    mpq = widget.routeArgument?.mpq;
+    // count = widget.routeArgument?.other;
+    // attend = widget.routeArgument?.attend;
+    // mpq = widget.routeArgument?.mpq;
 
     _con.getModuleList();
     _con.getQuestionsList();

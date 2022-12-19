@@ -41,7 +41,7 @@ class HomeController extends ControllerMVC {
 
 
   void getCourseList() {
-    setState(() {
+
       // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
       //     const Color(0xffB9FBC7), Colors.green));
       // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
@@ -59,20 +59,20 @@ class HomeController extends ControllerMVC {
           const Color(0xffFBB9B9), Colors.redAccent));
       courseList.add(Course(4, "B.Sc. PHYSICS", "Kochin University",
           const Color(0xffE8C54A), Colors.orange));
-    });
+
   }
 
   void getQuestionPaperList() {
-    setState(() {
+
       questionPaperList.add(QuestionPaper(1, "", 0));
       questionPaperList.add(QuestionPaper(2, "BCA103 Mathematics-| 2019", 1));
       questionPaperList.add(QuestionPaper(3, "BCA103 Mahematics-| 2019", 1));
       questionPaperList.add(QuestionPaper(4, "BCA103 Mahematics-| 2019", 1));
-    });
+
   }
 
   void getModuleList() {
-    setState(() {
+
       moduleList.add(Modules(1, 'Module 01', allQuestionList));
       moduleList.add(Modules(2, 'Module 02', allQuestionList));
       moduleList.add(Modules(3, 'Module 03', allQuestionList));
@@ -80,11 +80,11 @@ class HomeController extends ControllerMVC {
       moduleList.add(Modules(5, 'Module 05', allQuestionList));
       moduleList.add(Modules(6, 'Module 06', allQuestionList));
       moduleList.add(Modules(7, 'Module 07', allQuestionList));
-    });
+
   }
 
   void getQuestionsList() {
-    setState(() {
+
       allQuestionList.add(Question(1, "question1", Constants.easyQuestions,
           false, Constants.oneWord, Constants.easyColor));
       allQuestionList.add(Question(2, "question2", Constants.mediumQuestion,
@@ -251,6 +251,6 @@ class HomeController extends ControllerMVC {
           Constants.mediumColor));
       allQuestionList.add(Question(60, "question12 61", Constants.hardQuestions,
           false, Constants.essayAnswer, Constants.hardColor));
-    });
+
   }
 }
