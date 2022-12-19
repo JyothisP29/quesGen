@@ -1829,7 +1829,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     context, "/generatedQuestion",
                                     arguments: RouteArgument(
                                         param: generateQuestions(),
-                                        other: sectionsCount(),
+
                                         control: _con,
                                         mpq:
                                             int.tryParse(myControllerMPQ1.text),
@@ -1874,42 +1874,148 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 List<QuestionGenerationModel>generateQuestions(){
     List<QuestionGenerationModel> generatedList=<QuestionGenerationModel>[];
     if (total1() != 0) {
+      int oneWordEasy =
+            myControllerEasy1.text.isEmpty ? 0 : int.parse(myControllerEasy1.text);
+        int oneWordMedium = myControllerMedium1.text.isEmpty
+            ? 0
+            : int.parse(myControllerMedium1.text);
+        int oneWordHard =
+            myControllerHard1.text.isEmpty ? 0 : int.parse(myControllerHard1.text);
+        List<Question> questionListOneWord = [];
+        questionListOneWord.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.easyQuestions &&
+                element.questionType == Constants.oneWord)
+            .take(oneWordEasy)
+            .toList());
+        questionListOneWord.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.mediumQuestion &&
+                element.questionType == Constants.oneWord)
+            .take(oneWordMedium)
+            .toList());
+        questionListOneWord.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.hardQuestions &&
+                element.questionType == Constants.oneWord)
+            .take(oneWordHard)
+            .toList());
       QuestionGenerationModel quesOneWordAnswer = QuestionGenerationModel(
           name: 'One Word Questions',
           easy: int.parse(myControllerEasy1.text),
           medium: int.parse(myControllerMedium1.text),
           hard: int.parse(myControllerHard1.text),
           total: int.parse(myControllerTotal1.text),
-          questions: []);
-
+          questions: questionListOneWord);
+      generatedList.add(quesOneWordAnswer);
     }
     if (total2() != 0) {
+        int shortEasy =
+            myControllerEasy2.text.isEmpty ? 0 : int.parse(myControllerEasy2.text);
+        int shortMedium = myControllerMedium2.text.isEmpty
+            ? 0
+            : int.parse(myControllerMedium2.text);
+        int shortHard =
+            myControllerHard2.text.isEmpty ? 0 : int.parse(myControllerHard2.text);
+        List<Question> questionListShort = [];
+        questionListShort.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.easyQuestions &&
+                element.questionType == Constants.shortAnswer)
+            .take(shortEasy)
+            .toList());
+        questionListShort.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.mediumQuestion &&
+                element.questionType == Constants.shortAnswer)
+            .take(shortMedium)
+            .toList());
+        questionListShort.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.hardQuestions &&
+                element.questionType == Constants.shortAnswer)
+            .take(shortHard)
+            .toList());
       QuestionGenerationModel quesShortAnswer = QuestionGenerationModel(
           name: 'Short Answer Questions',
           easy: int.parse(myControllerEasy2.text),
           medium: int.parse(myControllerMedium2.text),
           hard: int.parse(myControllerHard2.text),
           total: int.parse(myControllerTotal2.text),
-          questions: []);
-
+          questions: questionListShort);
+        generatedList.add(quesShortAnswer);
     }
     if (total3() != 0) {
+        int longAnswerEasy =
+            myControllerEasy3.text.isEmpty ? 0 : int.parse(myControllerEasy3.text);
+        int longAnswerMedium = myControllerMedium3.text.isEmpty
+            ? 0
+            : int.parse(myControllerMedium3.text);
+        int longAnswerHard =
+            myControllerHard3.text.isEmpty ? 0 : int.parse(myControllerHard3.text);
+        List<Question> questionListLongAnswer = [];
+        questionListLongAnswer.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.easyQuestions &&
+                element.questionType == Constants.longAnswer)
+            .take(longAnswerEasy)
+            .toList());
+        questionListLongAnswer.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.mediumQuestion &&
+                element.questionType == Constants.longAnswer)
+            .take(longAnswerMedium)
+            .toList());
+        questionListLongAnswer.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.hardQuestions &&
+                element.questionType == Constants.longAnswer)
+            .take(longAnswerHard)
+            .toList());
       QuestionGenerationModel quesLongAnswer = QuestionGenerationModel(
           name: 'Long Answer Questions',
           easy: int.parse(myControllerEasy3.text),
           medium: int.parse(myControllerMedium3.text),
           hard: int.parse(myControllerHard3.text),
           total: int.parse(myControllerTotal3.text),
-          questions: []);
+          questions: questionListLongAnswer);
+        generatedList.add(quesLongAnswer);
     }
     if (total4() != 0) {
+        int essayAnswerEasy =
+            myControllerEasy4.text.isEmpty ? 0 : int.parse(myControllerEasy4.text);
+        int essayAnswerMedium = myControllerMedium4.text.isEmpty
+            ? 0
+            : int.parse(myControllerMedium4.text);
+        int essayAnswerHard =
+            myControllerHard4.text.isEmpty ? 0 : int.parse(myControllerHard4.text);
+        List<Question> questionListEssayAnswer = [];
+        questionListEssayAnswer.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.easyQuestions &&
+                element.questionType == Constants.essayAnswer)
+            .take(essayAnswerEasy)
+            .toList());
+        questionListEssayAnswer.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.mediumQuestion &&
+                element.questionType == Constants.essayAnswer)
+            .take(essayAnswerMedium)
+            .toList());
+        questionListEssayAnswer.addAll(_con.allQuestionList
+            .where((element) =>
+                element.diffLevel == Constants.hardQuestions &&
+                element.questionType == Constants.essayAnswer)
+            .take(essayAnswerHard)
+            .toList());
       QuestionGenerationModel quesEssayAnswer = QuestionGenerationModel(
           name: 'Essay Questions',
           easy: int.parse(myControllerEasy4.text),
           medium: int.parse(myControllerMedium4.text),
           hard: int.parse(myControllerHard4.text),
           total: int.parse(myControllerTotal4.text),
-          questions: []);
+          questions: questionListEssayAnswer);
+        generatedList.add(quesEssayAnswer);
     }
     return generatedList;
 }
@@ -2174,11 +2280,7 @@ List<QuestionGenerationModel>generateQuestions(){
     return mps4;
   }
 
-// List sectionList=[];
-  int sectionsCount() {
 
-    return count;
-  }
 
   num Totalfun() {
     setState(() {
