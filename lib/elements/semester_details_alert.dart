@@ -1,9 +1,6 @@
-import 'package:enumresponsive/model/course.dart';
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../controller/home_controller.dart';
-import '../ui/views/manual.dart';
 import 'automatic_alert.dart';
 import 'exam_name_alert.dart';
 import 'manual_alert.dart';
@@ -31,13 +28,13 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
   }
 
   //bool addsub = false;
-  String? Semester;
+  String? semester;
 
   var semesters = [
     'semester 01',
     'semester 02',
   ];
-  String? Subject;
+  String? subject;
 
   var subjects = [
     'subjects 01',
@@ -199,7 +196,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                         TextStyle(color: Colors.grey.shade500),
                                   ),
                                   // Initial Value
-                                  value: Semester,
+                                  value: semester,
 
                                   // Down Arrow Icon
                                   icon: Container(
@@ -232,7 +229,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                   // change button value to selected value
                                   onChanged: (String? newValue) {
                                     setState(() {
-                                      Semester = newValue!;
+                                      semester = newValue!;
+                                      _con.quesPaper.semester=newValue;
                                     });
                                   },
                                   isExpanded: true,
@@ -288,7 +286,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                         TextStyle(color: Colors.grey.shade500),
                                   ),
                                   // Initial Value
-                                  value: Subject,
+                                  value: subject,
 
                                   // Down Arrow Icon
                                   icon: Container(
@@ -321,7 +319,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                   // change button value to selected value
                                   onChanged: (String? newValue) {
                                     setState(() {
-                                      Subject = newValue!;
+                                      subject = newValue!;
+                                      _con.quesPaper.subject=newValue;
                                     });
                                   },
                                   isExpanded: true,

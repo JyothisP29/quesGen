@@ -1,4 +1,5 @@
 import 'package:enumresponsive/ui/base_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
@@ -6,7 +7,6 @@ import '../../controller/home_controller.dart';
 import '../../elements/create_course_alert.dart';
 import '../../elements/exam_name_alert.dart';
 import '../../elements/hover_widget.dart';
-import '../../model/modules.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -35,7 +35,9 @@ class _HomeViewState extends StateMVC<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    print(_con.courseList.length);
+    if (kDebugMode) {
+      print(_con.courseList.length);
+    }
     Size size = MediaQuery.of(context).size;
     return BaseWidget(builder: (context, sizingInformation) {
       return Scaffold(
@@ -230,11 +232,11 @@ class _HomeViewState extends StateMVC<HomeView> {
                                       return InkWell(
                                         onTap: () {
                                           showDialog(
-
-
                                               context: context,
-                                              builder: (ctx) =>
-                                                   CreateCourse(controller: _con,)).then((value) =>setState((){}));
+                                              builder: (ctx) => CreateCourse(
+                                                    controller: _con,
+                                                  )).then(
+                                              (value) => setState(() {}));
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -246,7 +248,7 @@ class _HomeViewState extends StateMVC<HomeView> {
                                           ),
                                           height: size.height * 0.14,
                                           width: size.width * 0.127,
-                                          child: const  Icon(
+                                          child: const Icon(
                                             Icons.add,
                                             size: 65,
                                             color: Colors.black,
@@ -410,8 +412,9 @@ class _HomeViewState extends StateMVC<HomeView> {
                                               0
                                           ? showDialog(
                                               context: context,
-                                              builder: (ctx) =>
-                                                   ExamNameAlert(controller: _con,))
+                                              builder: (ctx) => ExamNameAlert(
+                                                    controller: _con,
+                                                  ))
                                           : Container();
                                     },
                                     child: Column(
@@ -573,8 +576,7 @@ class _HomeViewState extends StateMVC<HomeView> {
                                             Text(
                                               _con.questionPaperList
                                                       .elementAt(index)
-                                                      .questionPaperName ??
-                                                  "",
+                                                      .questionPaperName,
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 18),

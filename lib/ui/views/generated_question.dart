@@ -1,17 +1,15 @@
 import 'dart:developer';
 
 import 'package:enumresponsive/model/modules.dart';
-import 'package:enumresponsive/model/question_paper.dart';
 import 'package:enumresponsive/model/routeargument.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../../controller/home_controller.dart';
 import '../../model/generated_question_model.dart';
 import '../../model/questions.dart';
 
 class GeneratedQuestions extends StatefulWidget {
-
   final RouteArgument? routeArgument;
 
   //final List<QuestionGenerationModel> questionList;
@@ -29,13 +27,17 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
 
   @override
   void initState() {
-    _con=widget.routeArgument?.control;
+    _con = widget.routeArgument?.control;
     if (widget.routeArgument?.param != null) {
       _con.questionList.addAll(widget.routeArgument!.param);
     }
     // log(widget.routeArgument?.other?.toString() ?? "NULLLL");
     log(_con.quesPaper.sections.length.toString());
-    _con.quesPaper.sections.forEach((element)=> print(element.easy));
+    for (var element in _con.quesPaper.sections) {
+      if (kDebugMode) {
+        print(element.easy);
+      }
+    }
     // count = widget.routeArgument?.other;
     // attend = widget.routeArgument?.attend;
     // mpq = widget.routeArgument?.mpq;
@@ -59,8 +61,6 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
 
   // int currentModule = -1;
   late HomeController _con;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -186,19 +186,30 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                               ],
                             ),
                           ),
-                           Text(
-                           _con.quesPaper.questionPaperName,
-                            style: TextStyle(
+                          Text(
+                            _con.quesPaper.questionPaperName,
+                            style: const TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * .015,
                           ),
-                          const Text(
-                            "V th Semester BCA. Degree(Internal)",
-                            style: TextStyle(
-                              fontSize: 22,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                               Text(
+                                _con.quesPaper.semester??"",
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                              ),
+                              const Text(
+                                " th Semester BCA. Degree(Internal)",
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                              ),
+                            ],
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * .015,
@@ -210,18 +221,39 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Expanded(
-                                    child: Text("Time: 2 Hours",
-                                        style: TextStyle(
-                                          fontSize: 22,
-                                        ))),
-                                const Expanded(
-                                    child: Center(
-                                        child: Text(
-                                            "1A11BCA: INFORMATICS FOR COMPUTER",
+                                 Expanded(
+                                    child: Row(
+                                      children: [
+                                        const Text("Time: ",
                                             style: TextStyle(
                                               fontSize: 22,
-                                            )))),
+                                            )),
+                                        Text(_con.quesPaper.timeDuration.toString(),
+                                            style: const TextStyle(
+                                              fontSize: 22,
+                                            )),
+                                        Text(  _con.quesPaper.hourOrMinute??"",
+                                            style: const TextStyle(
+                                              fontSize: 22,
+                                            )),
+                                      ],
+                                    )),
+                                 Expanded(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                           _con.quesPaper.questionCode??"",
+                                            style: TextStyle(
+                                              fontSize: 22,
+                                            )),
+                                        Text(
+                                             _con.quesPaper.subject??"",
+                                            style: TextStyle(
+                                              fontSize: 22,
+                                            )),
+                                      ],
+                                    )),
                                 Expanded(
                                     child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
@@ -449,7 +481,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: question
-                                                                  ?.diffColor,
+                                                                  .diffColor,
                                                               borderRadius: const BorderRadius
                                                                       .only(
                                                                   topLeft: Radius
@@ -465,10 +497,10 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                                       .center,
                                                               children: [
                                                                 Padding(
-                                                                  padding:  EdgeInsets
+                                                                  padding:
+                                                                      const EdgeInsets
                                                                           .only(
-                                                                      top:
-                                                                          20.0),
+                                                                              top: 20.0),
                                                                   child: Text(
                                                                     question
                                                                         .qusId
@@ -494,8 +526,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                                     bottom: 20,
                                                                     left: 20),
                                                             child: Text(
-                                                              question?.question ??
-                                                                  "",
+                                                              question.question,
                                                               style: const TextStyle(
                                                                   color: Colors
                                                                       .black,
@@ -596,34 +627,34 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                   right: 30,
                                                 ),
                                                 child: Row(
-                                                  children: [
+                                                  children:  [
                                                     Text(
-                                                      "attend",
-                                                      style: const TextStyle(
+                                                     _con.quesPaper.sections.elementAt(index).attend.toString(),
+                                                      style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
-                                                    const Text(
+                                                    Text(
                                                       "*",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
                                                     Text(
-                                                      "mpq",
-                                                      style: const TextStyle(
+                                                          _con.quesPaper.sections.elementAt(index).mpq.toString(),
+                                                      style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
-                                                    const Text(
+                                                    Text(
                                                       "=",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
                                                     Text(
-                                               "       totalMark().toString(),",
-                                                      style: const TextStyle(
+                                                             totalMark(index).toString(),
+                                                      style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
@@ -651,11 +682,11 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
         ));
   }
 
-  // int totalMark() {
-  //   int tot = 0;
-  //   tot = (attend! * mpq!)!;
-  //   return tot;
-  // }
+int totalMark(index) {
+  int tot = 0;
+  tot = (_con.quesPaper.sections.elementAt(index).attend! *  _con.quesPaper.sections.elementAt(index).mpq!);
+  return tot;
+}
 // questionSelect(index) {
 //   if (_con.allQuestionList.elementAt(index).isChecked == true) {
 //     setState(() {

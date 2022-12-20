@@ -6,6 +6,9 @@ class QuestionGenerationModel {
   final int? medium;
   final int? hard;
   final int? total;
+  final int? attend;
+  final int? mpq;
+
   final List<Question> questions;
 
   QuestionGenerationModel(
@@ -14,5 +17,6 @@ class QuestionGenerationModel {
          this.medium,
          this.hard,
          this.total,
-          required this.questions});
+        this.attend, this.mpq,
+        required this.questions});
 }

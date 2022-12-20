@@ -1,6 +1,5 @@
 import 'package:enumresponsive/elements/semester_details_alert.dart';
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../controller/home_controller.dart';
 
@@ -357,6 +356,7 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                     padding: const EdgeInsets.only(
                                         left: 15.0, right: 15),
                                     child: DropdownButton(
+
                                       hint: Text(
                                         "Hours",
                                         style: TextStyle(
@@ -400,8 +400,10 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                       onChanged: (String? newValue) {
                                         setState(() {
                                           durationtime = newValue!;
+                                          _con.quesPaper.hourOrMinute=newValue;
                                         });
                                       },
+
                                       isExpanded: true,
                                       underline: Container(),
                                       //empty line

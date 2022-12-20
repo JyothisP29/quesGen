@@ -35,7 +35,7 @@ class HomeController extends ControllerMVC {
     return courseCount;
   }
 
-  QuestionPaper quesPaper = QuestionPaper(0, "", "", 0, [], 0);
+  QuestionPaper quesPaper = QuestionPaper(0, "", "", 0,"" ,[], 0);
 
   void getCourseList() {
     // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
@@ -58,10 +58,10 @@ class HomeController extends ControllerMVC {
   }
 
   void getQuestionPaperList() {
-    questionPaperList.add(QuestionPaper(1, "", "", 0, [], 0));
-    questionPaperList.add(QuestionPaper(2, "", "", 11, [], 1));
-    questionPaperList.add(QuestionPaper(3, "", "", 1, [], 1));
-    questionPaperList.add(QuestionPaper(4, "", "", 1, [], 1));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],0));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],1));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],1));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],1));
   }
 
   void getModuleList() {
