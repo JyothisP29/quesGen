@@ -356,11 +356,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                   child: TextField(
                                     controller: myControllerEasy1,
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.sections = int.tryParse(e);
-                                      });
-                                    },
+
 
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -417,12 +413,12 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                   child: TextField(
                                     controller: myControllerMedium1,
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.medium2 =
-                                        //     int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.medium2 =
+                                    //     //     int.tryParse(e);
+                                    //   });
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -478,11 +474,11 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                   child: TextField(
                                     controller: myControllerHard1,
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.hard1 = int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.hard1 = int.tryParse(e);
+                                    //   });
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -555,12 +551,12 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         color: const Color(0xffC9C9C9))),
                                 child: Center(
                                   child: TextField(
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.attend1 =
-                                        //     int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.attend1 =
+                                    //     //     int.tryParse(e);
+                                    //   });
+                                    // },
                                     controller: myControllerAttend1,
 
                                     inputFormatters: [
@@ -614,11 +610,11 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                     border: Border.all(
                                         color: const Color(0xffAEAEAE))),
                                 child: TextField(
-                                  onChanged: (e) {
-                                    setState(() {
-                                      // _con.quesPaper.mpq1 = int.tryParse(e);
-                                    });
-                                  },
+                                  // onChanged: (e) {
+                                  //   setState(() {
+                                  //     // _con.quesPaper.mpq1 = int.tryParse(e);
+                                  //   });
+                                  // },
                                   controller: myControllerMPQ1,
                                   inputFormatters: [
                                     LengthLimitingTextInputFormatter(2),
@@ -708,9 +704,9 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                   child: TextField(
                                     controller: myControllerEasy2,
-                                    onChanged: (e) {
-                                      setState(() {});
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {});
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -765,12 +761,12 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.medium2 =
-                                        //     int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.medium2 =
+                                    //     //     int.tryParse(e);
+                                    //   });
+                                    // },
                                     controller: myControllerMedium2,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -827,11 +823,11 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                   child: TextField(
                                     controller: myControllerHard2,
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.hard3 = int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.hard3 = int.tryParse(e);
+                                    //   });
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -905,12 +901,12 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 child: Center(
                                   child: TextField(
                                     controller: myControllerAttend2,
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.attend2 =
-                                        //     int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.attend2 =
+                                    //     //     int.tryParse(e);
+                                    //   });
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -963,11 +959,11 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         color: const Color(0xffAEAEAE))),
                                 child: TextField(
                                   controller: myControllerMPQ2,
-                                  onChanged: (e) {
-                                    setState(() {
-                                      // _con.quesPaper.hard2 = int.tryParse(e);
-                                    });
-                                  },
+                                  // onChanged: (e) {
+                                  //   setState(() {
+                                  //     // _con.quesPaper.hard2 = int.tryParse(e);
+                                  //   });
+                                  // },
                                   inputFormatters: [
                                     LengthLimitingTextInputFormatter(2),
                                   ],
@@ -1063,11 +1059,11 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                   child: TextField(
                                     controller: myControllerEasy3,
-                                    onChanged: (String e) {
-                                      setState(() {
-                                        // _con.quesPaper.easy3 = int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (String e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.easy3 = int.tryParse(e);
+                                    //   });
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -1122,12 +1118,12 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
-                                    onChanged: (String e) {
-                                      setState(() {
-                                        // _con.quesPaper.medium3 =
-                                        //     int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (String e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.medium3 =
+                                    //     //     int.tryParse(e);
+                                    //   });
+                                    // },
                                     controller: myControllerMedium3,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -1183,11 +1179,11 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
-                                    onChanged: (String e) {
-                                      setState(() {
-                                        // _con.quesPaper.hard3 = int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (String e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.hard3 = int.tryParse(e);
+                                    //   });
+                                    // },
                                     controller: myControllerHard3,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -1262,12 +1258,12 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 child: Center(
                                   child: TextField(
                                     controller: myControllerAttend3,
-                                    onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.attend3 =
-                                        //     int.tryParse(e);
-                                      });
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {
+                                    //     // _con.quesPaper.attend3 =
+                                    //     //     int.tryParse(e);
+                                    //   });
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -1320,11 +1316,11 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         color: const Color(0xffAEAEAE))),
                                 child: TextField(
                                   controller: myControllerMPQ3,
-                                  onChanged: (e) {
-                                    setState(() {
-                                      // _con.quesPaper.mpq3 = int.tryParse(e);
-                                    });
-                                  },
+                                  // onChanged: (e) {
+                                  //   setState(() {
+                                  //     // _con.quesPaper.mpq3 = int.tryParse(e);
+                                  //   });
+                                  // },
                                   inputFormatters: [
                                     LengthLimitingTextInputFormatter(2),
                                   ],
@@ -1412,9 +1408,9 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
-                                    onChanged: (String e) {
-                                      setState(() {});
-                                    },
+                                    // onChanged: (String e) {
+                                    //   setState(() {});
+                                    // },
                                     controller: myControllerEasy4,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -1470,9 +1466,9 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
-                                    onChanged: (String e) {
-                                      setState(() {});
-                                    },
+                                    // onChanged: (String e) {
+                                    //   setState(() {});
+                                    // },
                                     controller: myControllerMedium4,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -1528,9 +1524,9 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
-                                    onChanged: (String e) {
-                                      setState(() {});
-                                    },
+                                    // onChanged: (String e) {
+                                    //   setState(() {});
+                                    // },
                                     controller: myControllerHard4,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -1605,9 +1601,9 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 child: Center(
                                   child: TextField(
                                     controller: myControllerAttend4,
-                                    onChanged: (e) {
-                                      setState(() {});
-                                    },
+                                    // onChanged: (e) {
+                                    //   setState(() {});
+                                    // },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -1660,9 +1656,9 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         color: const Color(0xffAEAEAE))),
                                 child: TextField(
                                   controller: myControllerMPQ4,
-                                  onChanged: (e) {
-                                    setState(() {});
-                                  },
+                                  // onChanged: (e) {
+                                  //   setState(() {});
+                                  // },
                                   inputFormatters: [
                                     LengthLimitingTextInputFormatter(2),
                                   ],
@@ -1793,12 +1789,14 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Navigator.pop(context, true);
-                                showDialog(
-                                    context: context,
-                                    builder: (ctx) => SemesterDetailsAlert(
-                                          controller: _con,
-                                        ));
+                              //  Navigator.pop(context, true);
+                                print(_con.quesPaper.sections.length);
+                             _con.quesPaper.sections.forEach((element)=> print(element.easy));
+                                // showDialog(
+                                //     context: context,
+                                //     builder: (ctx) => SemesterDetailsAlert(
+                                //           controller: _con,
+                                //         ));
                               },
                               child: Container(
                                 width: 110,
