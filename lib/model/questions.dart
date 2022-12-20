@@ -3,7 +3,7 @@ import 'package:flutter/src/material/colors.dart';
 
 class Question {
   final int? qusId;
-  final String? question;
+  final String question;
   int? diffLevel;
   bool isChecked;
   int? questionType;

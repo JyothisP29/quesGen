@@ -23,9 +23,9 @@ class GeneratedQuestions extends StatefulWidget {
 }
 
 class _GeneratedQuestions extends State<GeneratedQuestions> {
-  int count = 0;
-  int? attend;
-  int? mpq;
+  // int count = 0;
+  // int? attend;
+  // int? mpq;
 
   @override
   void initState() {
@@ -33,8 +33,9 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
     if (widget.routeArgument?.param != null) {
       _con.questionList.addAll(widget.routeArgument!.param);
     }
-    log(widget.routeArgument?.other?.toString() ?? "NULLLL");
+    // log(widget.routeArgument?.other?.toString() ?? "NULLLL");
     log(_con.quesPaper.sections.length.toString());
+    _con.quesPaper.sections.forEach((element)=> print(element.easy));
     // count = widget.routeArgument?.other;
     // attend = widget.routeArgument?.attend;
     // mpq = widget.routeArgument?.mpq;
@@ -240,7 +241,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                     ),
                     ListView.builder(
                         shrinkWrap: true,
-                        itemCount: count,
+                        itemCount: _con.quesPaper.sections.length,
                         itemBuilder: (context, index) {
                           QuestionGenerationModel ques =
                               _con.questionList.elementAt(index);
@@ -448,7 +449,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: question
-                                                                  .diffColor,
+                                                                  ?.diffColor,
                                                               borderRadius: const BorderRadius
                                                                       .only(
                                                                   topLeft: Radius
@@ -464,7 +465,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                                       .center,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsets
+                                                                  padding:  EdgeInsets
                                                                           .only(
                                                                       top:
                                                                           20.0),
@@ -493,7 +494,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                                     bottom: 20,
                                                                     left: 20),
                                                             child: Text(
-                                                              question.question ??
+                                                              question?.question ??
                                                                   "",
                                                               style: const TextStyle(
                                                                   color: Colors
@@ -597,7 +598,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                 child: Row(
                                                   children: [
                                                     Text(
-                                                      attend.toString(),
+                                                      "attend",
                                                       style: const TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
@@ -609,7 +610,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                           fontSize: 22),
                                                     ),
                                                     Text(
-                                                      mpq.toString(),
+                                                      "mpq",
                                                       style: const TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
@@ -621,7 +622,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                           fontSize: 22),
                                                     ),
                                                     Text(
-                                                      totalMark().toString(),
+                                               "       totalMark().toString(),",
                                                       style: const TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
@@ -650,11 +651,11 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
         ));
   }
 
-  int totalMark() {
-    int tot = 0;
-    tot = (attend! * mpq!)!;
-    return tot;
-  }
+  // int totalMark() {
+  //   int tot = 0;
+  //   tot = (attend! * mpq!)!;
+  //   return tot;
+  // }
 // questionSelect(index) {
 //   if (_con.allQuestionList.elementAt(index).isChecked == true) {
 //     setState(() {
