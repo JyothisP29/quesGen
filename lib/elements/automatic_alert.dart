@@ -1824,11 +1824,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 //     ? int.tryParse(myController.text)
                                 //     : null;
                                 Navigator.pop(context, true);
-                                for (var element in _con.quesPaper.sections) {
-                                  if (kDebugMode) {
-                                    print(element.easy);
-                                  }
-                                }
+
+
                                 _con.quesPaper.sections = generateQuestions();
                                 Navigator.pushNamed(
                                     context, "/generatedQuestion",

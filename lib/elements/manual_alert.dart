@@ -5,15 +5,21 @@ import 'package:enumresponsive/ui/views/manual.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../Helpers/constants.dart';
 import '../controller/home_controller.dart';
+import '../model/generated_question_model.dart';
+import '../model/questions.dart';
 import '../model/routeargument.dart';
 import '../ui/views/generated_question.dart';
+import 'manual_question_generation_model.dart';
 
 class ManualAlert extends StatefulWidget {
   final HomeController controller;
- // final RouteArgument? routeArgument;
+
+  // final RouteArgument? routeArgument;
   const ManualAlert({
-    Key? key, required this.controller,
+    Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -22,7 +28,6 @@ class ManualAlert extends StatefulWidget {
 
 class _ManualAlert extends State<ManualAlert> {
   late HomeController _con;
-
 
   bool addsub = false;
   String? Semester;
@@ -47,18 +52,26 @@ class _ManualAlert extends State<ManualAlert> {
   late TextEditingController section1Controller,
       section2Controller,
       section3Controller,
-      section4Controller;
+      section4Controller,
+      mpq1ManualController,
+      manualAttend1Controller,
+      mpq2ManualController,
+      manualAttend2Controller,
+      mpq3ManualController,
+      manualAttend3Controller,;
 
   @override
   void initState() {
     super.initState();
     // log(widget.routeArgument?.other?.toString()??"NULLLL");
 // count1=widget.routeArgument?.other;
-    _con=widget.controller;
+    _con = widget.controller;
     section1Controller = TextEditingController();
     section2Controller = TextEditingController();
     section3Controller = TextEditingController();
     section4Controller = TextEditingController();
+    mpq1ManualController = TextEditingController();
+    manualAttend1Controller = TextEditingController();
   }
 
   @override
@@ -68,6 +81,8 @@ class _ManualAlert extends State<ManualAlert> {
     section2Controller.dispose();
     section3Controller.dispose();
     section4Controller.dispose();
+    mpq1ManualController.dispose();
+    manualAttend1Controller.dispose();
 
     super.dispose();
   }
@@ -199,7 +214,6 @@ class _ManualAlert extends State<ManualAlert> {
                               child: Text(
                                 "One word & Objective",
                                 style: TextStyle(
-
                                   fontSize: 18,
                                 ),
                               )),
@@ -273,6 +287,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: mpq1ManualController,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -327,6 +342,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: manualAttend1Controller,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -503,6 +519,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: mpq2ManualController,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -557,6 +574,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: manualAttend2Controller,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -733,6 +751,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: mpq3ManualController,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -787,6 +806,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: manualAttend2Controller,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -963,6 +983,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: mpq4ManualController,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -1017,6 +1038,7 @@ class _ManualAlert extends State<ManualAlert> {
                                   // margin: const EdgeInsets.only(right: 30, left: 0),
 
                                   child: TextField(
+                                    controller: manualAttend4Controller,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
@@ -1182,8 +1204,9 @@ class _ManualAlert extends State<ManualAlert> {
                                 Navigator.pop(context, true);
                                 showDialog(
                                     context: context,
-                                    builder: (ctx) =>
-                                         SemesterDetailsAlert(controller: _con,));
+                                    builder: (ctx) => SemesterDetailsAlert(
+                                          controller: _con,
+                                        ));
                               },
                               child: Container(
                                 width: 110,
@@ -1203,12 +1226,8 @@ class _ManualAlert extends State<ManualAlert> {
                             InkWell(
                               onTap: () {
                                 Navigator.pop(context, true);
-                                Navigator.pushNamed(
-                                    context, "/manual",
-                                    arguments: RouteArgument(
-
-                                        other: Count1()));
-
+                                Navigator.pushNamed(context, "/manual",
+                                    arguments: RouteArgument(other: Count1()));
                               },
                               child: Container(
                                 width: 150,
@@ -1237,15 +1256,129 @@ class _ManualAlert extends State<ManualAlert> {
       ),
     );
   }
-  int  Count1(){
+
+  List<ManualQuestionGenerationModel> generateQuestions() {
+    List<ManualQuestionGenerationModel> generatedList =
+        <ManualQuestionGenerationModel>[];
+    if (int.tryParse(section1Controller.text) != 0) {
+      List<Question> questionListOneWord = [];
+      questionListOneWord.addAll(_con.allQuestionList
+          .where((element) => element.questionType == Constants.oneWord)
+          .toList());
+
+      ManualQuestionGenerationModel quesOneWordAnswer =
+          ManualQuestionGenerationModel(
+              name: 'One Word Questions',
+              questionsCount: int.tryParse(section1Controller.text),
+              mpqManual: int.tryParse(mpq1ManualController.text),
+              attendManual: int.tryParse(manualAttend1Controller.text),
+              questions: questionListOneWord);
+
+      generatedList.add(quesOneWordAnswer);
+    }
+    if (int.tryParse(section2Controller.text) != 0) {
+      List<Question> questionListShortAnswer = [];
+      questionListShortAnswer.addAll(_con.allQuestionList
+          .where((element) => element.questionType == Constants.shortAnswer)
+          .toList());
+
+      ManualQuestionGenerationModel quesShortAnswer =
+          ManualQuestionGenerationModel(
+              name: 'Short Answer Questions',
+              questionsCount: int.tryParse(section2Controller.text),
+              mpqManual: int.tryParse(mpq2ManualController.text),
+              attendManual: int.tryParse(manualAttend2Controller.text),
+              questions: questionListShortAnswer);
+
+      generatedList.add(quesShortAnswer);
+    }
+    if (total3() != 0) {
+      int longAnswerEasy = myControllerEasy3.text.isEmpty
+          ? 0
+          : int.parse(myControllerEasy3.text);
+      int longAnswerMedium = myControllerMedium3.text.isEmpty
+          ? 0
+          : int.parse(myControllerMedium3.text);
+      int longAnswerHard = myControllerHard3.text.isEmpty
+          ? 0
+          : int.parse(myControllerHard3.text);
+      List<Question> questionListLongAnswer = [];
+      questionListLongAnswer.addAll(_con.allQuestionList
+          .where((element) =>
+              element.diffLevel == Constants.easyQuestions &&
+              element.questionType == Constants.longAnswer)
+          .take(longAnswerEasy)
+          .toList());
+      questionListLongAnswer.addAll(_con.allQuestionList
+          .where((element) =>
+              element.diffLevel == Constants.mediumQuestion &&
+              element.questionType == Constants.longAnswer)
+          .take(longAnswerMedium)
+          .toList());
+      questionListLongAnswer.addAll(_con.allQuestionList
+          .where((element) =>
+              element.diffLevel == Constants.hardQuestions &&
+              element.questionType == Constants.longAnswer)
+          .take(longAnswerHard)
+          .toList());
+      QuestionGenerationModel quesLongAnswer = QuestionGenerationModel(
+          name: 'Long Answer Questions',
+          easy: int.tryParse(myControllerEasy3.text),
+          medium: int.tryParse(myControllerMedium3.text),
+          hard: int.tryParse(myControllerHard3.text),
+          total: int.tryParse(myControllerTotal3.text),
+          attend: int.tryParse(myControllerAttend3.text),
+          mpq: int.tryParse(myControllerMPQ3.text),
+          questions: questionListLongAnswer);
+      generatedList.add(quesLongAnswer);
+    }
+    if (total4() != 0) {
+      int essayAnswerEasy = myControllerEasy4.text.isEmpty
+          ? 0
+          : int.parse(myControllerEasy4.text);
+      int essayAnswerMedium = myControllerMedium4.text.isEmpty
+          ? 0
+          : int.parse(myControllerMedium4.text);
+      int essayAnswerHard = myControllerHard4.text.isEmpty
+          ? 0
+          : int.parse(myControllerHard4.text);
+      List<Question> questionListEssayAnswer = [];
+      questionListEssayAnswer.addAll(_con.allQuestionList
+          .where((element) =>
+              element.diffLevel == Constants.easyQuestions &&
+              element.questionType == Constants.essayAnswer)
+          .take(essayAnswerEasy)
+          .toList());
+      questionListEssayAnswer.addAll(_con.allQuestionList
+          .where((element) =>
+              element.diffLevel == Constants.mediumQuestion &&
+              element.questionType == Constants.essayAnswer)
+          .take(essayAnswerMedium)
+          .toList());
+      questionListEssayAnswer.addAll(_con.allQuestionList
+          .where((element) =>
+              element.diffLevel == Constants.hardQuestions &&
+              element.questionType == Constants.essayAnswer)
+          .take(essayAnswerHard)
+          .toList());
+      QuestionGenerationModel quesEssayAnswer = QuestionGenerationModel(
+          name: 'Essay Questions',
+          easy: int.tryParse(myControllerEasy4.text),
+          medium: int.tryParse(myControllerMedium4.text),
+          hard: int.tryParse(myControllerHard4.text),
+          total: int.tryParse(myControllerTotal4.text),
+          attend: int.tryParse(myControllerAttend4.text),
+          mpq: int.tryParse(myControllerMPQ4.text),
+          questions: questionListEssayAnswer);
+      generatedList.add(quesEssayAnswer);
+    }
+    return generatedList;
+  }
+
+  int Count1() {
     setState(() {
-
-
-        count1 = count1 + int.parse(section1Controller.text);
-
-
+      count1 = count1 + int.parse(section1Controller.text);
     });
     return count1;
   }
-
 }

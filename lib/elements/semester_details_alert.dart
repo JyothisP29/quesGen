@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../controller/home_controller.dart';
+import '../model/modules.dart';
 import 'automatic_alert.dart';
 import 'exam_name_alert.dart';
 import 'manual_alert.dart';
@@ -22,8 +23,9 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
 
   @override
   void initState() {
-    // _con.getModuleList();
+
     _con = widget.controller;
+    _con.getModuleList();
     super.initState();
   }
 
@@ -585,63 +587,66 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                       //   ],
                       // ),
                       SizedBox(
+
                         height: 45,
                         child: ListView.builder(
                             primary: false,
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
-                            // itemCount: _con.moduleList.length,
+                             itemCount: _con.moduleList.length,
                             itemBuilder: (context, index) {
-                              // Modules modules =
-                              //     _con.moduleList.elementAt(index);
-                              // bool isSelected =
-                              //     _con.selectedList.contains(modules);
+                              Modules modules =
+                                  _con.moduleList.elementAt(index);
+                              bool isSelected =
+                                  _con.selectedList.contains(modules);
                               return Row(
-                                children: const [
-                                  // InkWell(
-                                  //   onTap: () {
-                                  //     setState(() {
-                                  //       if(
-                                  //       _con.selectedList.contains(modules)
-                                  //
-                                  //       )
-                                  //       {
-                                  //         _con.selectedList.remove(modules);
-                                  //       }
-                                  //      else{
-                                  //        _con.selectedList.add(modules);
-                                  //       }
-                                  //     });
-                                  //   },
-                                  //   child: Container(
-                                  //     decoration: BoxDecoration(
-                                  //
-                                  //         //background color of dropdown button
-                                  //         border: Border.all(
-                                  //             color: Colors.grey.shade500,
-                                  //             width: 1),
-                                  //         //border of dropdown button
-                                  //         borderRadius:
-                                  //             BorderRadius.circular(10),
-                                  //         //border radius of dropdown button
-                                  //
-                                  //         color: isSelected
-                                  //             ? Colors.black
-                                  //             : Colors.white),
-                                  //     width: 110,
-                                  //     height: 45,
-                                  //     child: Center(
-                                  //       child: Text(
-                                  //         "_con.moduleListelementAt(index)modName",
-                                  //         style: TextStyle(
-                                  //             fontSize: 14,
-                                  //             color: isSelected
-                                  //                 ? Colors.white
-                                  //                 : Colors.black),
-                                  //       ),
-                                  //     ),
-                                  //   ),
-                                  // ),
+                                children:  [
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        if(
+                                        _con.selectedList.contains(modules)
+
+                                        )
+                                        {
+                                          _con.selectedList.remove(modules);
+
+                                        }
+                                       else{
+                                         _con.selectedList.add(modules);
+                                        }
+                                       print(_con.selectedList.length);
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+
+                                          //background color of dropdown button
+                                          border: Border.all(
+                                              color: Colors.grey.shade500,
+                                              width: 1),
+                                          //border of dropdown button
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          //border radius of dropdown button
+
+                                          color: isSelected
+                                              ? Colors.black
+                                              : Colors.white),
+                                      width: 110,
+                                      height: 45,
+                                      child: Center(
+                                        child: Text(
+                                          _con.moduleList.elementAt(index).modName??"",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: isSelected
+                                                  ? Colors.white
+                                                  : Colors.black),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   )

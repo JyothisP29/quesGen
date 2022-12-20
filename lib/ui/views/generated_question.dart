@@ -199,7 +199,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                             children: [
                                Text(
                                 _con.quesPaper.semester??"",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 22,
                                 ),
                               ),
@@ -244,12 +244,12 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                       children: [
                                         Text(
                                            _con.quesPaper.questionCode??"",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 22,
                                             )),
                                         Text(
                                              _con.quesPaper.subject??"",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 22,
                                             )),
                                       ],
@@ -630,11 +630,11 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                   children:  [
                                                     Text(
                                                      _con.quesPaper.sections.elementAt(index).attend.toString(),
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
-                                                    Text(
+                                                    const Text(
                                                       "*",
                                                       style: TextStyle(
                                                           color: Colors.black,
@@ -642,11 +642,11 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                     ),
                                                     Text(
                                                           _con.quesPaper.sections.elementAt(index).mpq.toString(),
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
-                                                    Text(
+                                                    const Text(
                                                       "=",
                                                       style: TextStyle(
                                                           color: Colors.black,
@@ -654,7 +654,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                     ),
                                                     Text(
                                                              totalMark(index).toString(),
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 22),
                                                     ),
