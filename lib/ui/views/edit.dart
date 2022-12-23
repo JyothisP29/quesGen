@@ -1,33 +1,51 @@
-import 'package:enumresponsive/elements/hover_widget.dart';
+import 'dart:developer';
+
 import 'package:enumresponsive/model/modules.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:progress_stepper/progress_stepper.dart';
 
 import '../../controller/home_controller.dart';
-import '../../model/questions.dart';
+import '../../model/options_model.dart';
+import '../../model/routeargument.dart';
 
 class Edit extends StatefulWidget {
-  const Edit({Key? key}) : super(key: key);
+  final RouteArgument? routeArgument;
+
+  const Edit({Key? key, this.routeArgument}) : super(key: key);
 
   @override
   _Manual createState() => _Manual();
 }
 
-class _Manual extends StateMVC<Edit> {
+class _Manual extends State<Edit> {
+  int count = 0;
+  String? answer;
   PageController pageController = PageController();
   final List<String> _editList = ["Objective", "True/False", "Others"];
   int selectedstatus = 0;
+  late TextEditingController optionController;
 
   @override
   void initState() {
+    log(widget.routeArgument?.control?.toString() ?? "NULLLL");
+    _con = widget.routeArgument?.control;
+    optionController = TextEditingController();
     _con.getModuleList();
     _con.getQuestionsList();
     _con.getCourseList();
     _con.getQuestionPaperList();
     selectedModule = _con.moduleList.first;
     super.initState();
+  }
+
+  late HomeController _con;
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    optionController.dispose();
+
+    super.dispose();
   }
 
   late Modules selectedModule;
@@ -40,16 +58,10 @@ class _Manual extends StateMVC<Edit> {
   bool visible = false;
 
   // int currentModule = -1;
-  late HomeController _con;
-
-  _Manual() : super(HomeController()) {
-    _con = controller as HomeController;
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _con.scaffoldKey,
         backgroundColor: Colors.black,
         body: Column(
           children: [
@@ -146,7 +158,7 @@ class _Manual extends StateMVC<Edit> {
                                         decoration: BoxDecoration(
                                             color: selectedstatus == index
                                                 ? Colors.black
-                                                : Color(0xffD9D9D9),
+                                                : const Color(0xffD9D9D9),
                                             borderRadius:
                                                 BorderRadius.circular(6)),
                                         child: Center(
@@ -320,7 +332,7 @@ class _Manual extends StateMVC<Edit> {
                                                       color: Color(0xffB1BBC6),
                                                     ),
                                                     // fillColor:  Colors.white,
-                                                    filled: true,
+                                                    filled: false,
                                                   ),
                                                 ),
                                               ),
@@ -408,36 +420,35 @@ class _Manual extends StateMVC<Edit> {
                                           height: 30,
                                         ),
                                         Row(
-
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.only(
                                                 left: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                    .03 ,
+                                                        .size
+                                                        .width *
+                                                    .03,
                                               ),
                                               child: Container(
                                                 height: 35,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
-                                                  BorderRadius.circular(7),
+                                                      BorderRadius.circular(7),
                                                   color: Colors.white,
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
+                                                  padding:
+                                                      const EdgeInsets.only(
                                                     left: 30.0,
                                                     right: 30,
                                                   ),
                                                   child: Row(
-                                                    children: [
+                                                    children: const [
                                                       Text(
                                                         "Options",
-                                                        style: const TextStyle(
+                                                        style: TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 22),
                                                       ),
-
                                                     ],
                                                   ),
                                                 ),
@@ -458,138 +469,371 @@ class _Manual extends StateMVC<Edit> {
                                                       .size
                                                       .width *
                                                   0.03),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(10)),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.2),
-                                                    blurRadius: 5,
-                                                    offset: const Offset(0, 1)),
-                                              ],
-                                            ),
-                                            child: IntrinsicHeight(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        width: 60,
+                                          child: Column(
+                                            children: [
+                                              ListView.builder(
+                                                  shrinkWrap: true,
+                                                  itemCount: _con
+                                                      .optionObjectiveList
+                                                      .length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    Options options = _con
+                                                        .optionObjectiveList
+                                                        .elementAt(index);
+                                                    return Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              bottom: 10.0),
+                                                      child: Container(
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
                                                         decoration:
                                                             BoxDecoration(
-                                                          color: Color(0xff1C274C),
+                                                          color: Colors.white,
                                                           borderRadius:
                                                               const BorderRadius
-                                                                      .only(
+                                                                      .all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          10)),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withOpacity(
+                                                                        0.2),
+                                                                blurRadius: 5,
+                                                                offset:
+                                                                    const Offset(
+                                                                        0, 1)),
+                                                          ],
+                                                        ),
+                                                        child: IntrinsicHeight(
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Row(
+                                                                children: [
+                                                                  Container(
+                                                                    width: 60,
+                                                                    decoration:
+                                                                        const BoxDecoration(
+                                                                      color: Color(
+                                                                          0xff1C274C),
+                                                                      borderRadius: BorderRadius.only(
+                                                                          topLeft: Radius.circular(
+                                                                              10),
+                                                                          bottomLeft:
+                                                                              Radius.circular(10)),
+                                                                    ),
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding:
+                                                                              EdgeInsets.only(top: 20.0),
+                                                                          child:
+                                                                              Text(
+                                                                            index.toString(),
+                                                                            style: TextStyle(
+                                                                                fontSize: 22,
+                                                                                fontWeight: FontWeight.bold,
+                                                                                color: Colors.white),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
+                                                                        top:
+                                                                            20.0,
+                                                                        bottom:
+                                                                            20,
+                                                                        left:
+                                                                            20),
+                                                                    child: Text(
+                                                                      _con.optionObjectiveList
+                                                                          .elementAt(
+                                                                              index)
+                                                                          .optionName,
+                                                                      style: const TextStyle(
+                                                                          color: Colors
+                                                                              .black,
+                                                                          fontSize:
+                                                                              22),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .only(
+                                                                  top: 5.0,
+                                                                  right: 20,
+                                                                ),
+                                                                child: Row(
+                                                                  children: [
+
+                                                                    const SizedBox(
+                                                                      width: 10,
+                                                                    ),
+                                                                    InkWell(
+                                                                      onTap:
+                                                                          () {
+                                                                        setState(
+                                                                            () {
+                                                                          _con.optionObjectiveList
+                                                                              .removeAt(index);
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          Container(
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                const Color(0xff000000),
+                                                                            borderRadius: BorderRadius.circular(8)),
+                                                                        width:
+                                                                            55,
+                                                                        height:
+                                                                            55,
+                                                                        child: const Center(
+                                                                            child:
+                                                                                Icon(Icons.remove_circle_outline_outlined, color: Colors.white)),
+                                                                      ),
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.black
+                                                            .withOpacity(0.2),
+                                                        blurRadius: 5,
+                                                        offset:
+                                                            const Offset(0, 1)),
+                                                  ],
+                                                ),
+                                                child: IntrinsicHeight(
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Container(
+                                                            width: 60,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              color: Color(
+                                                                  0xff1C274C),
+                                                              borderRadius: BorderRadius.only(
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10),
                                                                   bottomLeft: Radius
                                                                       .circular(
                                                                           10)),
-                                                        ),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
+                                                            ),
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .center,
+                                                              children: const [
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsets
                                                                           .only(
-                                                                      top:
-                                                                          20.0),
-                                                              child: Text(
-                                                                "1",
-                                                                style: const TextStyle(
+                                                                              top: 20.0),
+                                                                  child: Text(
+                                                                    "Ans",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            22,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        color: Colors
+                                                                            .white),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    top: 10.0,
+                                                                    bottom: 10,
+                                                                    left: 20),
+                                                            child: SizedBox(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  .8,
+                                                              child: TextField(
+                                                                style: TextStyle(fontSize: 22),
+                                                                controller:
+                                                                    optionController,
+                                                                // inputFormatters: [
+                                                                //   LengthLimitingTextInputFormatter(2),
+                                                                // ],
+
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                //  maxLength: 2,
+                                                                decoration:
+                                                                    InputDecoration(
+                                                                  contentPadding:
+                                                                      const EdgeInsets
+                                                                          .all(0),
+                                                                  hintText:
+                                                                      "Write your option...",
+
+                                                                  //   counter: Text(""),
+                                                                  focusedBorder: OutlineInputBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              0.0),
+                                                                      borderSide: const BorderSide(
+                                                                          color: Colors
+                                                                              .white,
+                                                                          width:
+                                                                              0)),
+                                                                  disabledBorder: OutlineInputBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              0.0),
+                                                                      borderSide: const BorderSide(
+                                                                          color: Colors
+                                                                              .white,
+                                                                          width:
+                                                                              0)),
+                                                                  enabledBorder: OutlineInputBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              0.0),
+                                                                      borderSide: const BorderSide(
+                                                                          color: Colors
+                                                                              .white,
+                                                                          width:
+                                                                              0)),
+                                                                  hintStyle:
+                                                                      const TextStyle(
                                                                     fontSize:
-                                                                        22,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
+                                                                        24,
                                                                     color: Colors
-                                                                        .white),
+                                                                        .grey,
+                                                                  ),
+                                                                  // fillColor:  Colors.white,
+                                                                  filled: false,
+                                                                ),
                                                               ),
                                                             ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
                                                       Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                    .only(
-                                                                top: 20.0,
-                                                                bottom: 20,
-                                                                left: 20),
-                                                        child: Text(
-                                                          "question",
-                                                          style:
-                                                              const TextStyle(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize: 22),
+                                                                .only(
+                                                          top: 7.0,
+                                                          right: 20,
                                                         ),
-                                                      ),
+                                                        child: Row(
+                                                          children: [
+                                                            InkWell(
+                                                              child:
+                                                              Container(
+                                                                decoration: BoxDecoration(
+                                                                    color:
+                                                                    const Color(0xff939393),
+                                                                    borderRadius: BorderRadius.circular(8)),
+                                                                width:
+                                                                55,
+                                                                height:
+                                                                55,
+                                                                child: const Center(
+                                                                    child:
+                                                                    Icon(Icons.image, color: Colors.white)),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 10,
+                                                            ),
+                                                            InkWell(
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  _con.optionObjectiveList
+                                                                      .add(
+                                                                          Options(
+                                                                    1,
+                                                                    optionController
+                                                                        .text,
+                                                                  ));
+                                                                  optionController.text="";
+                                                                });
+                                                              },
+                                                              child: Container(
+                                                                decoration: BoxDecoration(
+                                                                    color: const Color(
+                                                                        0xff000000),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8)),
+                                                                width: 55,
+                                                                height: 55,
+                                                                child: const Center(
+                                                                    child: Icon(
+                                                                        Icons
+                                                                            .add,
+                                                                        color: Colors
+                                                                            .white)),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                      top: 5.0,
-                                                      right: 20,
-                                                    ),
-                                                    child: Row(
-                                                    
-                                                      children: [
-                                                        InkWell(
-                                                          child: Container(
-                                                            decoration: BoxDecoration(
-                                                                color: const Color(
-                                                                    0xff939393),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8)),
-                                                            width: 55,
-                                                            height: 55,
-                                                            child: const Center(
-                                                                child: Icon(Icons.image,color:Colors.white)),
-                                                          ),
-                                                        ),
-                                                        const SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Container(
-                                                          decoration: BoxDecoration(
-                                                              color: const Color(
-                                                                  0xff000000),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  8)),
-                                                          width: 55,
-                                                          height: 55,
-                                                          child: const Center(
-                                                              child: Icon(Icons.remove_circle_outline_outlined,color:Colors.white)),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
+                                                ),
+                                              )
+                                            ],
                                           ),
                                         ),
                                         const SizedBox(
@@ -608,7 +852,7 @@ class _Manual extends StateMVC<Edit> {
                                                         .spaceBetween,
                                                 children: [
                                                   const Text(
-                                                    "Add Answer",
+                                                    "Add Explanation",
                                                     style: TextStyle(
                                                         fontSize: 24,
                                                         fontWeight:
@@ -700,7 +944,7 @@ class _Manual extends StateMVC<Edit> {
                                                       color: Color(0xffB1BBC6),
                                                     ),
                                                     // fillColor:  Colors.white,
-                                                    filled: true,
+                                                    filled: false,
                                                   ),
                                                 ),
                                               ),
@@ -876,6 +1120,191 @@ class _Manual extends StateMVC<Edit> {
                                         const SizedBox(
                                           height: 30,
                                         ),
+                                        Row(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .03,
+                                              ),
+                                              child: Container(
+                                                height: 35,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(7),
+                                                  color: Colors.white,
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 30.0,
+                                                    right: 30,
+                                                  ),
+                                                  child: Row(
+                                                    children: const [
+                                                      Text(
+                                                        "Answer",
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 22),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 30,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.03,
+                                              right: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.03),
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(10)),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.2),
+                                                    blurRadius: 5,
+                                                    offset: const Offset(0, 1)),
+                                              ],
+                                            ),
+                                            child: IntrinsicHeight(
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        width: 60,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          color:
+                                                              Color(0xff1C274C),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          10),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10)),
+                                                        ),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: const [
+                                                            Padding(
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      top:
+                                                                          20.0),
+                                                              child: Text(
+                                                                "Ans",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        22,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+
+                                                      Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  top: 10.0,
+                                                                  bottom: 10,
+                                                                  left: 20),
+                                                          child: Row(
+                                                            children:  [
+                                                              Container(
+                                                                width: MediaQuery.of(context).size.width*.1,
+
+                                                                child: RadioListTile(
+                                                                  title: Text("True"),
+                                                                  value: "True",
+                                                                  groupValue: answer,
+                                                                  onChanged: (value){
+                                                                    setState(() {
+                                                                      answer = value.toString();
+                                                                    });
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                width: MediaQuery.of(context).size.width*.2,
+                                                              
+                                                                child: RadioListTile(
+                                                                  title: Text("False"),
+                                                                  value: "False",
+                                                                  groupValue: answer,
+                                                                  onChanged: (value){
+                                                                    setState(() {
+                                                                      answer = value.toString();
+                                                                    });
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              // Icon(Icons.radio),
+                                                              // Text(
+                                                              //   "True",
+                                                              //   style: TextStyle(
+                                                              //       color: Colors
+                                                              //           .black,
+                                                              //       fontSize:
+                                                              //           22),
+                                                              // ),
+                                                              // Icon(Icons.radio),
+                                                              // Text(
+                                                              //   "False",
+                                                              //   style: TextStyle(
+                                                              //       color: Colors
+                                                              //           .black,
+                                                              //       fontSize:
+                                                              //           22),
+                                                              // )
+                                                            ],
+                                                          )),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 30,
+                                        ),
                                         SizedBox(
                                           width: MediaQuery.of(context)
                                                   .size
@@ -889,7 +1318,7 @@ class _Manual extends StateMVC<Edit> {
                                                         .spaceBetween,
                                                 children: [
                                                   const Text(
-                                                    "Add Answer",
+                                                    "Add Explanation",
                                                     style: TextStyle(
                                                         fontSize: 24,
                                                         fontWeight:

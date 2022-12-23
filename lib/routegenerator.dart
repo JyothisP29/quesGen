@@ -16,7 +16,7 @@ class RouteGenerator {
       case '/manual':
         return MaterialPageRoute(builder: (_) =>  Manual(   routeArgument: args as RouteArgument?,));
       case '/Edit':
-        return MaterialPageRoute(builder: (_) => const Edit());
+        return MaterialPageRoute(builder: (_) =>  Edit(   routeArgument: args as RouteArgument?,));
       case '/generatedQuestion':
         return MaterialPageRoute(
             builder: (_) =>  GeneratedQuestions(

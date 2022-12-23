@@ -32,7 +32,8 @@ class _ExamNameAlert extends State<ExamNameAlert> {
     //  count=widget.routeArgument.other;
     _con=widget.controller;
     examNameController = TextEditingController();
-    paperCodeController = TextEditingController();   timeController = TextEditingController();
+    paperCodeController = TextEditingController();
+    timeController = TextEditingController();
 
   }
 
@@ -284,7 +285,7 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                               Padding(
                                   padding: const EdgeInsets.only(left: 5.0),
                                   child: Container(
-                                    width: 75,
+                                    width: 80,
                                     height: 45,
                                     margin: const EdgeInsets.only(
                                         left: 0, right: 0, bottom: 5, top: 5),
@@ -305,12 +306,12 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                       keyboardType: TextInputType.number,
                                       style: const TextStyle(
 
-                                        fontSize: 16,
+                                        fontSize: 20,
                                       ),
                                       decoration: InputDecoration(
                                         hintText: "00:00",
                                         hintStyle: const TextStyle(
-                                            color: Colors.grey, fontSize: 16),
+                                            color: Colors.grey, fontSize: 20),
 
                                         contentPadding:
                                             const EdgeInsets.symmetric(
@@ -360,8 +361,11 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                       hint: Text(
                                         "Hours",
                                         style: TextStyle(
+                                          fontSize: 18,
                                             color: Colors.grey.shade500),
+
                                       ),
+
                                       // Initial Value
                                       value: durationtime,
 
@@ -390,7 +394,7 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                               overflow: TextOverflow.ellipsis,
                                               items,
                                               style:
-                                                  const TextStyle(fontSize: 12),
+                                                  const TextStyle(fontSize: 16),
                                             ),
                                           ),
                                         );

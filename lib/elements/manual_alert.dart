@@ -1,16 +1,12 @@
-import 'dart:developer';
 
 import 'package:enumresponsive/elements/semester_details_alert.dart';
-import 'package:enumresponsive/ui/views/manual.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../Helpers/constants.dart';
 import '../controller/home_controller.dart';
-import '../model/generated_question_model.dart';
 import '../model/questions.dart';
 import '../model/routeargument.dart';
-import '../ui/views/generated_question.dart';
 import 'manual_question_generation_model.dart';
 
 class ManualAlert extends StatefulWidget {
@@ -58,7 +54,8 @@ class _ManualAlert extends State<ManualAlert> {
       mpq2ManualController,
       manualAttend2Controller,
       mpq3ManualController,
-      manualAttend3Controller,;
+      manualAttend3Controller, mpq4ManualController,
+      manualAttend4Controller;
 
   @override
   void initState() {
@@ -72,6 +69,13 @@ class _ManualAlert extends State<ManualAlert> {
     section4Controller = TextEditingController();
     mpq1ManualController = TextEditingController();
     manualAttend1Controller = TextEditingController();
+    manualAttend4Controller = TextEditingController();
+    manualAttend3Controller =TextEditingController();
+    mpq4ManualController = TextEditingController();
+    mpq2ManualController=TextEditingController();
+    manualAttend2Controller=TextEditingController();
+    mpq3ManualController=TextEditingController();
+
   }
 
   @override
@@ -1226,8 +1230,12 @@ class _ManualAlert extends State<ManualAlert> {
                             InkWell(
                               onTap: () {
                                 Navigator.pop(context, true);
+                                _con.quesPaper.manualSections = generateQuestions();
                                 Navigator.pushNamed(context, "/manual",
-                                    arguments: RouteArgument(other: Count1()));
+                                    arguments: RouteArgument(  param: generateQuestions(),
+                                    control: _con,
+                                      other: Count1(),
+                                    ));
                               },
                               child: Container(
                                 width: 150,
@@ -1256,124 +1264,75 @@ class _ManualAlert extends State<ManualAlert> {
       ),
     );
   }
+List<ManualQuestionGenerationModel> generateQuestions() {
+  List<ManualQuestionGenerationModel> generatedList =
+  <ManualQuestionGenerationModel>[];
+  if (int.tryParse(section1Controller.text) != 0) {
+    List<Question> questionListOneWord = [];
+    questionListOneWord.addAll(_con.allQuestionList
+        .where((element) => element.questionType == Constants.oneWord)
+        .toList());
 
-  List<ManualQuestionGenerationModel> generateQuestions() {
-    List<ManualQuestionGenerationModel> generatedList =
-        <ManualQuestionGenerationModel>[];
-    if (int.tryParse(section1Controller.text) != 0) {
-      List<Question> questionListOneWord = [];
-      questionListOneWord.addAll(_con.allQuestionList
-          .where((element) => element.questionType == Constants.oneWord)
-          .toList());
+    ManualQuestionGenerationModel quesOneWordAnswer =
+    ManualQuestionGenerationModel(
+        name: 'One Word Questions',
+        questionsCount: int.tryParse(section1Controller.text),
+        mpqManual: int.tryParse(mpq1ManualController.text),
+        attendManual: int.tryParse(manualAttend1Controller.text),
+        questions: questionListOneWord);
 
-      ManualQuestionGenerationModel quesOneWordAnswer =
-          ManualQuestionGenerationModel(
-              name: 'One Word Questions',
-              questionsCount: int.tryParse(section1Controller.text),
-              mpqManual: int.tryParse(mpq1ManualController.text),
-              attendManual: int.tryParse(manualAttend1Controller.text),
-              questions: questionListOneWord);
-
-      generatedList.add(quesOneWordAnswer);
-    }
-    if (int.tryParse(section2Controller.text) != 0) {
-      List<Question> questionListShortAnswer = [];
-      questionListShortAnswer.addAll(_con.allQuestionList
-          .where((element) => element.questionType == Constants.shortAnswer)
-          .toList());
-
-      ManualQuestionGenerationModel quesShortAnswer =
-          ManualQuestionGenerationModel(
-              name: 'Short Answer Questions',
-              questionsCount: int.tryParse(section2Controller.text),
-              mpqManual: int.tryParse(mpq2ManualController.text),
-              attendManual: int.tryParse(manualAttend2Controller.text),
-              questions: questionListShortAnswer);
-
-      generatedList.add(quesShortAnswer);
-    }
-    if (total3() != 0) {
-      int longAnswerEasy = myControllerEasy3.text.isEmpty
-          ? 0
-          : int.parse(myControllerEasy3.text);
-      int longAnswerMedium = myControllerMedium3.text.isEmpty
-          ? 0
-          : int.parse(myControllerMedium3.text);
-      int longAnswerHard = myControllerHard3.text.isEmpty
-          ? 0
-          : int.parse(myControllerHard3.text);
-      List<Question> questionListLongAnswer = [];
-      questionListLongAnswer.addAll(_con.allQuestionList
-          .where((element) =>
-              element.diffLevel == Constants.easyQuestions &&
-              element.questionType == Constants.longAnswer)
-          .take(longAnswerEasy)
-          .toList());
-      questionListLongAnswer.addAll(_con.allQuestionList
-          .where((element) =>
-              element.diffLevel == Constants.mediumQuestion &&
-              element.questionType == Constants.longAnswer)
-          .take(longAnswerMedium)
-          .toList());
-      questionListLongAnswer.addAll(_con.allQuestionList
-          .where((element) =>
-              element.diffLevel == Constants.hardQuestions &&
-              element.questionType == Constants.longAnswer)
-          .take(longAnswerHard)
-          .toList());
-      QuestionGenerationModel quesLongAnswer = QuestionGenerationModel(
-          name: 'Long Answer Questions',
-          easy: int.tryParse(myControllerEasy3.text),
-          medium: int.tryParse(myControllerMedium3.text),
-          hard: int.tryParse(myControllerHard3.text),
-          total: int.tryParse(myControllerTotal3.text),
-          attend: int.tryParse(myControllerAttend3.text),
-          mpq: int.tryParse(myControllerMPQ3.text),
-          questions: questionListLongAnswer);
-      generatedList.add(quesLongAnswer);
-    }
-    if (total4() != 0) {
-      int essayAnswerEasy = myControllerEasy4.text.isEmpty
-          ? 0
-          : int.parse(myControllerEasy4.text);
-      int essayAnswerMedium = myControllerMedium4.text.isEmpty
-          ? 0
-          : int.parse(myControllerMedium4.text);
-      int essayAnswerHard = myControllerHard4.text.isEmpty
-          ? 0
-          : int.parse(myControllerHard4.text);
-      List<Question> questionListEssayAnswer = [];
-      questionListEssayAnswer.addAll(_con.allQuestionList
-          .where((element) =>
-              element.diffLevel == Constants.easyQuestions &&
-              element.questionType == Constants.essayAnswer)
-          .take(essayAnswerEasy)
-          .toList());
-      questionListEssayAnswer.addAll(_con.allQuestionList
-          .where((element) =>
-              element.diffLevel == Constants.mediumQuestion &&
-              element.questionType == Constants.essayAnswer)
-          .take(essayAnswerMedium)
-          .toList());
-      questionListEssayAnswer.addAll(_con.allQuestionList
-          .where((element) =>
-              element.diffLevel == Constants.hardQuestions &&
-              element.questionType == Constants.essayAnswer)
-          .take(essayAnswerHard)
-          .toList());
-      QuestionGenerationModel quesEssayAnswer = QuestionGenerationModel(
-          name: 'Essay Questions',
-          easy: int.tryParse(myControllerEasy4.text),
-          medium: int.tryParse(myControllerMedium4.text),
-          hard: int.tryParse(myControllerHard4.text),
-          total: int.tryParse(myControllerTotal4.text),
-          attend: int.tryParse(myControllerAttend4.text),
-          mpq: int.tryParse(myControllerMPQ4.text),
-          questions: questionListEssayAnswer);
-      generatedList.add(quesEssayAnswer);
-    }
-    return generatedList;
+    generatedList.add(quesOneWordAnswer);
   }
+  if (int.tryParse(section2Controller.text) != 0) {
+    List<Question> questionListShortAnswer = [];
+    questionListShortAnswer.addAll(_con.allQuestionList
+        .where((element) => element.questionType == Constants.shortAnswer)
+        .toList());
+
+    ManualQuestionGenerationModel quesShortAnswer =
+    ManualQuestionGenerationModel(
+        name: 'Short Answer Questions',
+        questionsCount: int.tryParse(section2Controller.text),
+        mpqManual: int.tryParse(mpq2ManualController.text),
+        attendManual: int.tryParse(manualAttend2Controller.text),
+        questions: questionListShortAnswer);
+
+    generatedList.add(quesShortAnswer);
+  }
+  if (int.tryParse(section3Controller.text) != 0) {
+    List<Question> questionListLongAnswer = [];
+    questionListLongAnswer.addAll(_con.allQuestionList
+        .where((element) => element.questionType == Constants.longAnswer)
+        .toList());
+
+    ManualQuestionGenerationModel quesLongAnswer =
+    ManualQuestionGenerationModel(
+        name: 'Long Answer Questions',
+        questionsCount: int.tryParse(section3Controller.text),
+        mpqManual: int.tryParse(mpq3ManualController.text),
+        attendManual: int.tryParse(manualAttend3Controller.text),
+        questions: questionListLongAnswer);
+
+    generatedList.add(quesLongAnswer);
+  }
+  if (int.tryParse(section4Controller.text) != 0) {
+    List<Question> questionListEssayAnswer = [];
+    questionListEssayAnswer.addAll(_con.allQuestionList
+        .where((element) => element.questionType == Constants.essayAnswer)
+        .toList());
+
+    ManualQuestionGenerationModel quesEssayAnswer =
+    ManualQuestionGenerationModel(
+        name: 'Essay Answer Questions',
+        questionsCount: int.tryParse(section4Controller.text),
+        mpqManual: int.tryParse(mpq4ManualController.text),
+        attendManual: int.tryParse(manualAttend4Controller.text),
+        questions: questionListEssayAnswer);
+
+    generatedList.add(quesEssayAnswer);
+  }
+  return generatedList;
+}
 
   int Count1() {
     setState(() {

@@ -5,13 +5,16 @@ import '../Helpers/constants.dart';
 import '../model/course.dart';
 import '../model/generated_question_model.dart';
 import '../model/modules.dart';
+import '../model/options_model.dart';
 import '../model/question_paper.dart';
 import '../model/questions.dart';
 
 class HomeController extends ControllerMVC {
   List<Course> courseList = <Course>[];
+  List<Options> optionObjectiveList = <Options>[];
+
   List<QuestionPaper> questionPaperList = <QuestionPaper>[];
-  List<QuestionGenerationModel> questionList = <QuestionGenerationModel>[];
+  List questionList = [];
 
   // List<Question> questionList = <Question>[];
   List<Question> questionListManual = <Question>[];
@@ -19,6 +22,7 @@ class HomeController extends ControllerMVC {
   List<Question> allQuestionList = [];
 
   List selectedList = [];
+  List selectedQuestionList=[];
 
   GlobalKey<ScaffoldState>? scaffoldKey;
 

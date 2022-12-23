@@ -7,6 +7,7 @@ import '../../controller/home_controller.dart';
 import '../../elements/create_course_alert.dart';
 import '../../elements/exam_name_alert.dart';
 import '../../elements/hover_widget.dart';
+import '../../model/course.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -20,12 +21,13 @@ class _HomeViewState extends StateMVC<HomeView> {
   void initState() {
     _con.getCourseList();
     _con.getQuestionPaperList();
-    // selectedModule = _con.moduleList.first;
+     selectedCourse = _con.courseList.first;
     super.initState();
   }
 
   // late Modules selectedModule;
   late HomeController _con;
+  late Course selectedCourse;
 
   _HomeViewState() : super(HomeController()) {
     _con = controller as HomeController;
@@ -275,82 +277,94 @@ class _HomeViewState extends StateMVC<HomeView> {
                                               controller: scr,
                                               itemCount: _con.courseList.length,
                                               scrollDirection: Axis.horizontal,
+
                                               separatorBuilder: (c, index) =>
                                                   const SizedBox(
                                                 width: 25,
                                               ),
                                               itemBuilder: (c, index) {
+                                                Course course = _con.courseList
+                                                    .elementAt(index);
+                                                bool isSelectedCourse =
+                                                    selectedCourse == course;
                                                 return HoverWidget(
                                                     builder: (isHovering) {
-                                                  return Container(
-                                                    decoration: BoxDecoration(
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                          color: isHovering
-                                                              ? Colors.grey
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        selectedCourse =course;
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color: isHovering
+                                                                ? Colors.grey
+                                                                : Colors
+                                                                    .transparent,
+                                                            spreadRadius: 3,
+                                                            blurRadius: 7,
+                                                            offset: const Offset(
+                                                                0,
+                                                                1), // changes position of shadow
+                                                          ),
+                                                        ],
+                                                        border: Border.all(
+                                                          width:
+                                                          isSelectedCourse ? 5 : 0,
+                                                          color: isSelectedCourse
+                                                              ? _con.courseList
+                                                                  .elementAt(
+                                                                      index)
+                                                                  .borderColor
                                                               : Colors
                                                                   .transparent,
-                                                          spreadRadius: 3,
-                                                          blurRadius: 7,
-                                                          offset: const Offset(
-                                                              0,
-                                                              1), // changes position of shadow
                                                         ),
-                                                      ],
-                                                      border: Border.all(
-                                                        width:
-                                                            isHovering ? 2 : 0,
-                                                        color: isHovering
-                                                            ? _con.courseList
-                                                                .elementAt(
-                                                                    index)
-                                                                .borderColor
-                                                            : Colors
-                                                                .transparent,
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                10),
+                                                        color: _con.courseList
+                                                            .elementAt(index)
+                                                            .color,
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: _con.courseList
-                                                          .elementAt(index)
-                                                          .color,
+                                                      height: size.height * 0.35,
+                                                      width: size.width * 0.127,
+                                                      child: Center(
+                                                          child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            _con.courseList
+                                                                    .elementAt(
+                                                                        index)
+                                                                    .name ??
+                                                                "",
+                                                            style: const TextStyle(
+                                                                fontSize: 24,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 5,
+                                                          ),
+                                                          Text(
+                                                            _con.courseList
+                                                                    .elementAt(
+                                                                        index)
+                                                                    .university ??
+                                                                "",
+                                                            style: const TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          )
+                                                        ],
+                                                      )),
                                                     ),
-                                                    height: size.height * 0.35,
-                                                    width: size.width * 0.127,
-                                                    child: Center(
-                                                        child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          _con.courseList
-                                                                  .elementAt(
-                                                                      index)
-                                                                  .name ??
-                                                              "",
-                                                          style: const TextStyle(
-                                                              fontSize: 24,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Text(
-                                                          _con.courseList
-                                                                  .elementAt(
-                                                                      index)
-                                                                  .university ??
-                                                              "",
-                                                          style: const TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        )
-                                                      ],
-                                                    )),
                                                   );
                                                 });
                                               },

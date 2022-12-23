@@ -12,8 +12,8 @@ class QuestionPaper {
   String? semester;
   String? subject;
 
-  List<QuestionGenerationModel> sections;
- // List<ManualQuestionGenerationModel>? manualSections;
+  List<QuestionGenerationModel>? sections;
+  List<ManualQuestionGenerationModel>? manualSections;
 
   int? qsPaperstatus;
 

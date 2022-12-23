@@ -1,9 +1,7 @@
-import 'dart:math';
 
 import 'package:enumresponsive/elements/hover_widget.dart';
 import 'package:enumresponsive/model/modules.dart';
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:progress_stepper/progress_stepper.dart';
 
 import '../../controller/home_controller.dart';
@@ -12,17 +10,25 @@ import '../../model/routeargument.dart';
 
 class Manual extends StatefulWidget {
   final RouteArgument? routeArgument;
+
   const Manual({Key? key, this.routeArgument}) : super(key: key);
 
   @override
   _Manual createState() => _Manual();
 }
 
-class _Manual extends StateMVC<Manual> {
-int count1=0;
+class _Manual extends State<Manual> {
+  int count1 = 0;
+
   @override
   void initState() {
- count1=widget.routeArgument?.other;
+    _con = widget.routeArgument?.control;
+    count1 = widget.routeArgument?.other;
+    if (widget.routeArgument?.param != null) {
+      _con.questionList.addAll(widget.routeArgument!.param);
+    }
+    // log(widget.routeArgument?.other?.toString() ?? "NULLLL");
+    // log(_con.quesPaper.sections?.length.toString()??"");
 
     _con.getModuleList();
     _con.getQuestionsList();
@@ -31,25 +37,23 @@ int count1=0;
     selectedModule = _con.moduleList.first;
     super.initState();
   }
+
   late Modules selectedModule;
+
   //PageController pageController = PageController();
-  bool easySelected = false;
-  bool mediumSelected = false;
-  bool hardSelected = false;
+  bool easySelected = true;
+  bool mediumSelected = true;
+  bool hardSelected = true;
   bool isChecked = false;
   bool visible = false;
 
   // int currentModule = -1;
   late HomeController _con;
 
-  _Manual() : super(HomeController()) {
-    _con = controller as HomeController;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _con.scaffoldKey,
+        // key: _con.scaffoldKey,
         backgroundColor: Colors.black,
         body: Column(
           children: [
@@ -136,7 +140,6 @@ int count1=0;
                                     style: TextStyle(color: Colors.grey),
                                   )),
                                 );
-
                               },
                             ),
                             InkWell(
@@ -147,21 +150,29 @@ int count1=0;
                               },
                               child: Row(
                                 children: [
-                                  Text( _con.selectedList.length.toString()  ,style: const TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                            ),),
-
-                                  Text(" Questions of " ,style: const TextStyle(
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold,
-                                  ),),
-                                  Text(  count1.toString(),style: const TextStyle(
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold,
-                                  ),),
-                                   Text(
-                                   " Selected",
+                                  Text(
+                                    _con.selectedQuestionList.length.toString(),
+                                    style: const TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const Text(
+                                    " Questions of ",
+                                    style: TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    count1.toString(),
+                                    style: const TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const Text(
+                                    " Selected",
                                     style: TextStyle(
                                       fontSize: 28,
                                       fontWeight: FontWeight.bold,
@@ -610,7 +621,7 @@ int count1=0;
                                           scrollDirection: Axis.horizontal,
                                           shrinkWrap: true,
                                           primary: false,
-                                          itemCount: _con.moduleList.length,
+                                          itemCount: _con.selectedList.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             Modules module = _con.moduleList
@@ -624,8 +635,7 @@ int count1=0;
                                                   return InkWell(
                                                     onTap: () {
                                                       setState(() {
-                                                        selectedModule =
-                                                            module;
+                                                        selectedModule = module;
                                                       });
                                                     },
                                                     child: Container(
@@ -711,11 +721,12 @@ int count1=0;
                                     height: MediaQuery.of(context).size.height *
                                         .75,
                                     child: ListView.builder(
-                                      itemCount: _con.allQuestionList.length,
+                                      itemCount: selectedModule.allQuestionList.length,
                                       shrinkWrap: true,
                                       primary: false,
                                       itemBuilder: (context, index) {
-                                        Question ques = selectedModule.allQuestionList
+                                        Question ques = selectedModule
+                                            .allQuestionList
                                             .elementAt(index);
                                         //   _con.questionList.elementAt(index);
                                         return Container(
@@ -800,7 +811,7 @@ int count1=0;
                                                               bottom: 20,
                                                               left: 20),
                                                       child: Text(
-                                                        ques.question ?? "",
+                                                        ques.question,
                                                         style: const TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 22),
@@ -826,26 +837,28 @@ int count1=0;
                                                           Radius.circular(3.0),
                                                         ),
                                                       ),
-                                                      value: _con.selectedList
+                                                      value: _con.selectedQuestionList
                                                           .contains(ques.qusId),
                                                       onChanged: (val) {
                                                         setState(() {
                                                           if (val!) {
-                                                            _con.selectedList
+                                                            _con.selectedQuestionList
                                                                 .add(
                                                                     ques.qusId);
                                                           } else if (!val) {
-                                                            _con.selectedList
+                                                            _con.selectedQuestionList
                                                                 .remove(
                                                                     ques.qusId);
                                                           }
-                                                          if (_con.selectedList
+                                                          if (_con.selectedQuestionList
                                                                   .length ==
                                                               5) {}
                                                           print(_con
-                                                              .selectedList
+                                                              .selectedQuestionList
                                                               .length);
-                                                          print(widget.routeArgument?.other);
+                                                          print(widget
+                                                              .routeArgument
+                                                              ?.other);
                                                         });
                                                       },
                                                     ),
@@ -901,8 +914,8 @@ int count1=0;
                                   ),
                                 ),
                                 Visibility(
-                                  visible: _con.selectedList.length ==
-                                      count1? true
+                                  visible: _con.selectedQuestionList.length == count1
+                                      ? true
                                       : false,
                                   child: Positioned(
                                       bottom: 0,
@@ -929,7 +942,7 @@ int count1=0;
                                               InkWell(
                                                 onTap: () {
                                                   setState(() {
-                                                    _con.selectedList.clear();
+                                                    _con.selectedQuestionList.clear();
                                                   });
                                                 },
                                                 child: AnimatedContainer(
@@ -1220,21 +1233,21 @@ int count1=0;
             //         )
             //       ],
             //     ),
-                             //   ),
+            //   ),
             // )
           ],
         ));
   }
 
-  // questionSelect(index) {
-  //   if (_con.allQuestionList.elementAt(index).isChecked == true) {
-  //     setState(() {
-  //       _con.allQuestionList.elementAt(index).isChecked == false;
-  //     });
-  //   } else {
-  //     setState(() {
-  //       _con.allQuestionList.elementAt(index).isChecked == true;
-  //     });
-  //   }
-  // }
+// questionSelect(index) {
+//   if (_con.allQuestionList.elementAt(index).isChecked == true) {
+//     setState(() {
+//       _con.allQuestionList.elementAt(index).isChecked == false;
+//     });
+//   } else {
+//     setState(() {
+//       _con.allQuestionList.elementAt(index).isChecked == true;
+//     });
+//   }
+// }
 }
