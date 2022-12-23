@@ -85,7 +85,7 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Icon(Icons.close))
+                          child: const Icon(Icons.close,size: 35,))
                     ],
                   ),
                 ),
@@ -424,7 +424,7 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * .038,
+                        height: MediaQuery.of(context).size.height * .029,
                       ),
                       Container(
                         decoration: BoxDecoration(

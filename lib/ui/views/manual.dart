@@ -1,6 +1,7 @@
 
 import 'package:enumresponsive/elements/hover_widget.dart';
 import 'package:enumresponsive/model/modules.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_stepper/progress_stepper.dart';
 
@@ -853,12 +854,16 @@ class _Manual extends State<Manual> {
                                                           if (_con.selectedQuestionList
                                                                   .length ==
                                                               5) {}
-                                                          print(_con
+                                                          if (kDebugMode) {
+                                                            print(_con
                                                               .selectedQuestionList
                                                               .length);
-                                                          print(widget
+                                                          }
+                                                          if (kDebugMode) {
+                                                            print(widget
                                                               .routeArgument
                                                               ?.other);
+                                                          }
                                                         });
                                                       },
                                                     ),

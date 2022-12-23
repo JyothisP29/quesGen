@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:enumresponsive/model/modules.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../controller/home_controller.dart';
 import '../../model/options_model.dart';
@@ -478,9 +477,6 @@ class _Manual extends State<Edit> {
                                                       .length,
                                                   itemBuilder:
                                                       (context, index) {
-                                                    Options options = _con
-                                                        .optionObjectiveList
-                                                        .elementAt(index);
                                                     return Padding(
                                                       padding:
                                                           const EdgeInsets.only(
@@ -542,11 +538,11 @@ class _Manual extends State<Edit> {
                                                                       children: [
                                                                         Padding(
                                                                           padding:
-                                                                              EdgeInsets.only(top: 20.0),
+                                                                              const EdgeInsets.only(top: 20.0),
                                                                           child:
                                                                               Text(
                                                                             index.toString(),
-                                                                            style: TextStyle(
+                                                                            style: const TextStyle(
                                                                                 fontSize: 22,
                                                                                 fontWeight: FontWeight.bold,
                                                                                 color: Colors.white),
@@ -587,7 +583,6 @@ class _Manual extends State<Edit> {
                                                                 ),
                                                                 child: Row(
                                                                   children: [
-
                                                                     const SizedBox(
                                                                       width: 10,
                                                                     ),
@@ -706,7 +701,10 @@ class _Manual extends State<Edit> {
                                                                       .width *
                                                                   .8,
                                                               child: TextField(
-                                                                style: TextStyle(fontSize: 22),
+                                                                style:
+                                                                    const TextStyle(
+                                                                        fontSize:
+                                                                            22),
                                                                 controller:
                                                                     optionController,
                                                                 // inputFormatters: [
@@ -778,19 +776,21 @@ class _Manual extends State<Edit> {
                                                         child: Row(
                                                           children: [
                                                             InkWell(
-                                                              child:
-                                                              Container(
+                                                              child: Container(
                                                                 decoration: BoxDecoration(
-                                                                    color:
-                                                                    const Color(0xff939393),
-                                                                    borderRadius: BorderRadius.circular(8)),
-                                                                width:
-                                                                55,
-                                                                height:
-                                                                55,
+                                                                    color: const Color(
+                                                                        0xff939393),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8)),
+                                                                width: 55,
+                                                                height: 55,
                                                                 child: const Center(
-                                                                    child:
-                                                                    Icon(Icons.image, color: Colors.white)),
+                                                                    child: Icon(
+                                                                        Icons
+                                                                            .image,
+                                                                        color: Colors
+                                                                            .white)),
                                                               ),
                                                             ),
                                                             const SizedBox(
@@ -806,7 +806,8 @@ class _Manual extends State<Edit> {
                                                                     optionController
                                                                         .text,
                                                                   ));
-                                                                  optionController.text="";
+                                                                  optionController
+                                                                      .text = "";
                                                                 });
                                                               },
                                                               child: Container(
@@ -1237,7 +1238,6 @@ class _Manual extends State<Edit> {
                                                           ],
                                                         ),
                                                       ),
-
                                                       Padding(
                                                           padding:
                                                               const EdgeInsets
@@ -1246,31 +1246,51 @@ class _Manual extends State<Edit> {
                                                                   bottom: 10,
                                                                   left: 20),
                                                           child: Row(
-                                                            children:  [
-                                                              Container(
-                                                                width: MediaQuery.of(context).size.width*.1,
-
-                                                                child: RadioListTile(
-                                                                  title: Text("True"),
+                                                            children: [
+                                                              SizedBox(
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width *
+                                                                    .1,
+                                                                child:
+                                                                    RadioListTile(
+                                                                  title:
+                                                                      const Text(
+                                                                          "True"),
                                                                   value: "True",
-                                                                  groupValue: answer,
-                                                                  onChanged: (value){
-                                                                    setState(() {
-                                                                      answer = value.toString();
+                                                                  groupValue:
+                                                                      answer,
+                                                                  onChanged:
+                                                                      (value) {
+                                                                    setState(
+                                                                        () {
+                                                                      answer = value
+                                                                          .toString();
                                                                     });
                                                                   },
                                                                 ),
                                                               ),
-                                                              Container(
-                                                                width: MediaQuery.of(context).size.width*.2,
-                                                              
-                                                                child: RadioListTile(
-                                                                  title: Text("False"),
-                                                                  value: "False",
-                                                                  groupValue: answer,
-                                                                  onChanged: (value){
-                                                                    setState(() {
-                                                                      answer = value.toString();
+                                                              SizedBox(
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width *
+                                                                    .2,
+                                                                child:
+                                                                    RadioListTile(
+                                                                  title: const Text(
+                                                                      "False"),
+                                                                  value:
+                                                                      "False",
+                                                                  groupValue:
+                                                                      answer,
+                                                                  onChanged:
+                                                                      (value) {
+                                                                    setState(
+                                                                        () {
+                                                                      answer = value
+                                                                          .toString();
                                                                     });
                                                                   },
                                                                 ),

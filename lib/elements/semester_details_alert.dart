@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../controller/home_controller.dart';
@@ -81,7 +82,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Icon(Icons.close))
+                          child: const Icon(Icons.close,size: 35,))
                     ],
                   ),
                 ),
@@ -615,7 +616,9 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                        else{
                                          _con.selectedList.add(modules);
                                         }
-                                       print(_con.selectedList.length);
+                                       if (kDebugMode) {
+                                         print(_con.selectedList.length);
+                                       }
                                       });
                                     },
                                     child: Container(
@@ -647,7 +650,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20,
                                   )
                                 ],
@@ -655,7 +658,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                             }),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * .058,
+                        height: MediaQuery.of(context).size.height * .049,
                       ),
                       Container(
                         decoration: BoxDecoration(

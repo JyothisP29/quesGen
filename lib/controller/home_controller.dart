@@ -3,7 +3,6 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../Helpers/constants.dart';
 import '../model/course.dart';
-import '../model/generated_question_model.dart';
 import '../model/modules.dart';
 import '../model/options_model.dart';
 import '../model/question_paper.dart';
@@ -64,8 +63,8 @@ class HomeController extends ControllerMVC {
   void getQuestionPaperList() {
     questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],0));
     questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],1));
-    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],1));
-    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],1));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],2));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],3));
   }
 
   void getModuleList() {

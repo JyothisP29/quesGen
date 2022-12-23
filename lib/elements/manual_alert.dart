@@ -26,13 +26,13 @@ class _ManualAlert extends State<ManualAlert> {
   late HomeController _con;
 
   bool addsub = false;
-  String? Semester;
+  String? semester;
   int count1 = 0;
   var semesters = [
     'semester 01',
     'semester 02',
   ];
-  String? Subject;
+  String? subject;
 
   var subjects = [
     'subjects 01',
@@ -128,7 +128,7 @@ class _ManualAlert extends State<ManualAlert> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Icon(Icons.close))
+                          child: const Icon(Icons.close,size: 35,))
                     ],
                   ),
                 ),
@@ -1192,7 +1192,7 @@ class _ManualAlert extends State<ManualAlert> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.width * .029,
+                        height: MediaQuery.of(context).size.width * .02,
                       ),
                       Container(
                         decoration: BoxDecoration(

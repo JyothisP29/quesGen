@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../controller/home_controller.dart';
 import '../model/course.dart';
@@ -82,7 +81,7 @@ class _CreateCourse extends State<CreateCourse> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Icon(Icons.close))
+                          child: const Icon(Icons.close,size: 35,))
                     ],
                   ),
                 ),
@@ -383,7 +382,7 @@ class _CreateCourse extends State<CreateCourse> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * .059,
+                        height: MediaQuery.of(context).size.height * .045,
                       ),
                       Container(
                         decoration: BoxDecoration(

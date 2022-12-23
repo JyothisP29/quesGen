@@ -1,6 +1,4 @@
 import 'package:enumresponsive/routegenerator.dart';
-import 'package:enumresponsive/ui/views/home_view.dart';
-import 'package:enumresponsive/ui/views/manual.dart';
 import 'package:flutter/material.dart';
 
 import 'elements/custom_scroll.dart';

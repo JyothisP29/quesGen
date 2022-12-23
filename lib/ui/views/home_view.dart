@@ -21,9 +21,12 @@ class _HomeViewState extends StateMVC<HomeView> {
   void initState() {
     _con.getCourseList();
     _con.getQuestionPaperList();
-     selectedCourse = _con.courseList.first;
+    selectedCourse = _con.courseList.first;
     super.initState();
   }
+
+  PageController pageController = PageController();
+  int selectedCoursePage = 0;
 
   // late Modules selectedModule;
   late HomeController _con;
@@ -40,7 +43,9 @@ class _HomeViewState extends StateMVC<HomeView> {
     if (kDebugMode) {
       print(_con.courseList.length);
     }
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery
+        .of(context)
+        .size;
     return BaseWidget(builder: (context, sizingInformation) {
       return Scaffold(
           key: _con.scaffoldKey,
@@ -48,8 +53,14 @@ class _HomeViewState extends StateMVC<HomeView> {
           body: Column(
             children: [
               Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * .07,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * .07,
                 color: Colors.black,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,7 +76,10 @@ class _HomeViewState extends StateMVC<HomeView> {
                         padding: const EdgeInsets.only(left: 5.0),
                         child: Container(
                           height: 50,
-                          width: MediaQuery.of(context).size.width * .55,
+                          width: MediaQuery
+                              .of(context)
+                              .size
+                              .width * .55,
                           margin: const EdgeInsets.only(
                               left: 0, right: 0, bottom: 10, top: 10),
                           decoration: const BoxDecoration(
@@ -129,13 +143,22 @@ class _HomeViewState extends StateMVC<HomeView> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    right: MediaQuery.of(context).size.width * .01),
+                    right: MediaQuery
+                        .of(context)
+                        .size
+                        .width * .01),
                 color: Colors.white,
                 child: Column(
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * .31,
-                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * .31,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
                       color: const Color(0XFFD9D9D9),
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.center,
@@ -206,8 +229,8 @@ class _HomeViewState extends StateMVC<HomeView> {
                           // ),
                           Container(
                             decoration: const BoxDecoration(
-                                // color: Colors.yellow.withOpacity(0.34),
-                                ),
+                              // color: Colors.yellow.withOpacity(0.34),
+                            ),
                             width: size.width * 0.7,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 15),
@@ -216,7 +239,10 @@ class _HomeViewState extends StateMVC<HomeView> {
                               children: [
                                 SizedBox(
                                   height:
-                                      MediaQuery.of(context).size.height * .02,
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height * .02,
                                 ),
                                 const Text(
                                   "Your Courses",
@@ -235,15 +261,16 @@ class _HomeViewState extends StateMVC<HomeView> {
                                         onTap: () {
                                           showDialog(
                                               context: context,
-                                              builder: (ctx) => CreateCourse(
+                                              builder: (ctx) =>
+                                                  CreateCourse(
                                                     controller: _con,
                                                   )).then(
-                                              (value) => setState(() {}));
+                                                  (value) => setState(() {}));
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                             color: isHovering
                                                 ? Colors.grey
                                                 : Colors.white,
@@ -264,7 +291,7 @@ class _HomeViewState extends StateMVC<HomeView> {
                                     Expanded(
                                       child: Padding(
                                         padding:
-                                            const EdgeInsets.only(left: 15.0),
+                                        const EdgeInsets.only(left: 15.0),
                                         child: Scrollbar(
                                           controller: scr,
                                           thumbVisibility: false,
@@ -279,7 +306,7 @@ class _HomeViewState extends StateMVC<HomeView> {
                                               scrollDirection: Axis.horizontal,
 
                                               separatorBuilder: (c, index) =>
-                                                  const SizedBox(
+                                              const SizedBox(
                                                 width: 25,
                                               ),
                                               itemBuilder: (c, index) {
@@ -289,84 +316,105 @@ class _HomeViewState extends StateMVC<HomeView> {
                                                     selectedCourse == course;
                                                 return HoverWidget(
                                                     builder: (isHovering) {
-                                                  return InkWell(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        selectedCourse =course;
-                                                      });
-                                                    },
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: isHovering
-                                                                ? Colors.grey
-                                                                : Colors
+                                                      return InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            selectedCourse =
+                                                                course;
+                                                            selectedCoursePage =
+                                                                index;
+                                                            pageController
+                                                                .animateToPage(
+                                                                selectedCoursePage,
+                                                                duration: const Duration(
+                                                                    microseconds: 200),
+                                                                curve: Curves
+                                                                    .bounceInOut);
+                                                          });
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                color: isHovering
+                                                                    ? Colors
+                                                                    .grey
+                                                                    : Colors
                                                                     .transparent,
-                                                            spreadRadius: 3,
-                                                            blurRadius: 7,
-                                                            offset: const Offset(
-                                                                0,
-                                                                1), // changes position of shadow
-                                                          ),
-                                                        ],
-                                                        border: Border.all(
-                                                          width:
-                                                          isSelectedCourse ? 5 : 0,
-                                                          color: isSelectedCourse
-                                                              ? _con.courseList
+                                                                spreadRadius: 3,
+                                                                blurRadius: 7,
+                                                                offset: const Offset(
+                                                                    0,
+                                                                    1), // changes position of shadow
+                                                              ),
+                                                            ],
+                                                            border: Border.all(
+                                                              width:
+                                                              isSelectedCourse
+                                                                  ? 5
+                                                                  : 0,
+                                                              color: isSelectedCourse
+                                                                  ? _con
+                                                                  .courseList
                                                                   .elementAt(
-                                                                      index)
+                                                                  index)
                                                                   .borderColor
-                                                              : Colors
+                                                                  : Colors
                                                                   .transparent,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius.circular(
+                                                            ),
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
                                                                 10),
-                                                        color: _con.courseList
-                                                            .elementAt(index)
-                                                            .color,
-                                                      ),
-                                                      height: size.height * 0.35,
-                                                      width: size.width * 0.127,
-                                                      child: Center(
-                                                          child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            _con.courseList
-                                                                    .elementAt(
-                                                                        index)
-                                                                    .name ??
-                                                                "",
-                                                            style: const TextStyle(
-                                                                fontSize: 24,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
+                                                            color: _con
+                                                                .courseList
+                                                                .elementAt(
+                                                                index)
+                                                                .color,
                                                           ),
-                                                          const SizedBox(
-                                                            height: 5,
-                                                          ),
-                                                          Text(
-                                                            _con.courseList
-                                                                    .elementAt(
+                                                          height: size.height *
+                                                              0.35,
+                                                          width: size.width *
+                                                              0.127,
+                                                          child: Center(
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                                children: [
+                                                                  Text(
+                                                                    _con
+                                                                        .courseList
+                                                                        .elementAt(
                                                                         index)
-                                                                    .university ??
-                                                                "",
-                                                            style: const TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          )
-                                                        ],
-                                                      )),
-                                                    ),
-                                                  );
-                                                });
+                                                                        .name ??
+                                                                        "",
+                                                                    style: const TextStyle(
+                                                                        fontSize: 24,
+                                                                        fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 5,
+                                                                  ),
+                                                                  Text(
+                                                                    _con
+                                                                        .courseList
+                                                                        .elementAt(
+                                                                        index)
+                                                                        .university ??
+                                                                        "",
+                                                                    style: const TextStyle(
+                                                                        fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                                  )
+                                                                ],
+                                                              )),
+                                                        ),
+                                                      );
+                                                    });
                                               },
                                             ),
                                           ),
@@ -379,19 +427,31 @@ class _HomeViewState extends StateMVC<HomeView> {
                             ),
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * .06,
+                            height: MediaQuery
+                                .of(context)
+                                .size
+                                .height * .06,
                           )
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * .62,
-                      width: MediaQuery.of(context).size.width * .7,
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * .62,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * .7,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * .07,
+                            height: MediaQuery
+                                .of(context)
+                                .size
+                                .height * .07,
                           ),
                           Row(
                             children: const [
@@ -408,199 +468,879 @@ class _HomeViewState extends StateMVC<HomeView> {
                             height: 20,
                           ),
                           Expanded(
-                            child: GridView.builder(
-                                gridDelegate:
+                            child: PageView(
+                              onPageChanged: (index) {
+                                setState(() {
+                                  selectedCoursePage = index;
+                                });
+                              },
+                              pageSnapping: true,
+                              controller: pageController,
+                              children: [
+                                GridView.builder(
+                                    gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         mainAxisExtent: 339,
                                         childAspectRatio: 1 / 2,
                                         crossAxisSpacing: 15,
                                         mainAxisSpacing: 15,
                                         crossAxisCount: 4),
-                                itemCount: _con.questionPaperList.length,
-                                itemBuilder: (context, index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      _con.questionPaperList
-                                                  .elementAt(index)
-                                                  .qsPaperstatus ==
+                                    itemCount: _con.questionPaperList.length,
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          _con.questionPaperList
+                                              .elementAt(index)
+                                              .qsPaperstatus ==
                                               0
-                                          ? showDialog(
+                                              ? showDialog(
                                               context: context,
-                                              builder: (ctx) => ExamNameAlert(
+                                              builder: (ctx) =>
+                                                  ExamNameAlert(
                                                     controller: _con,
                                                   ))
-                                          : Container();
-                                    },
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          height: 300,
-                                          decoration: BoxDecoration(
-                                              border: _con.questionPaperList
-                                                          .elementAt(index)
-                                                          .qsPaperstatus ==
+                                              :Container();
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Container(
+
+                                              height: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .height * .3,
+                                              decoration: BoxDecoration(
+
+                                                  border: _con
+                                                      .questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
                                                       0
-                                                  ? null
-                                                  : Border.all(
-                                                      color: Colors.black),
-                                              color: _con.questionPaperList
-                                                          .elementAt(index)
-                                                          .qsPaperstatus ==
+                                                      ? null
+                                                      : Border.all(
+                                                      color: Colors
+                                                          .black),
+                                                  color: _con
+                                                      .questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
                                                       0
-                                                  ? const Color(0xffF4F5F9)
-                                                  : Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          child: HoverWidget(
-                                              builder: (isHovering) {
-                                            return Stack(
-                                              children: [
-                                                isHovering
-                                                    ? Visibility(
-                                                        visible: true,
-                                                        child: _con.questionPaperList
-                                                                    .elementAt(
-                                                                        index)
-                                                                    .qsPaperstatus ==
-                                                                0
-                                                            ? Container()
-                                                            : Positioned(
-                                                                bottom: 0,
+                                                      ? const Color(
+                                                      0xffF4F5F9)
+                                                      :Colors.orange,
+                                                  borderRadius:
+                                                  BorderRadius.circular(
+                                                      10)),
+                                              child: HoverWidget(
+                                                  builder: (isHovering) {
+                                                    return Stack(
+                                                      children: [
+                                                        isHovering
+                                                            ? Visibility(
+                                                          visible: true,
+                                                          child: _con
+                                                              .questionPaperList
+                                                              .elementAt(
+                                                              index)
+                                                              .qsPaperstatus ==
+                                                              0
+                                                              ? Container()
+                                                              : Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft: Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve: Curves
+                                                                    .linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width: MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
                                                                 child:
-                                                                    AnimatedContainer(
-                                                                  decoration: const BoxDecoration(
-                                                                      color: Colors
-                                                                          .grey,
-                                                                      borderRadius: BorderRadius.only(
-                                                                          bottomLeft: Radius.circular(
-                                                                              10),
-                                                                          bottomRight:
-                                                                              Radius.circular(10))),
-                                                                  curve: Curves
-                                                                      .linear,
-                                                                  duration:
-                                                                      const Duration(
-                                                                          seconds:
-                                                                              1),
-                                                                  width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                                  height: 50,
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            10.0),
-                                                                    child: Row(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .start,
-                                                                      children: const [
-                                                                        Icon(
+                                                                Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .only(
+                                                                      left:
+                                                                      10.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                    children: [
+                                                                      const Icon(
+                                                                        Icons
+                                                                            .edit,
+                                                                        color:
+                                                                        Colors
+                                                                            .white,
+                                                                      ),
+                                                                      const SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      const Icon(
                                                                           Icons
-                                                                              .edit,
+                                                                              .copy,
                                                                           color:
-                                                                              Colors.white,
-                                                                        ),
-                                                                        SizedBox(
-                                                                          width:
-                                                                              10,
-                                                                        ),
-                                                                        Icon(
-                                                                            Icons
-                                                                                .copy,
-                                                                            color:
-                                                                                Colors.white),
-                                                                        SizedBox(
-                                                                          width:
-                                                                              10,
-                                                                        ),
-                                                                        Icon(
+                                                                          Colors
+                                                                              .white),
+                                                                      const SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      InkWell(
+                                                                        onTap: () {
+                                                                          setState(() {
+                                                                            _con
+                                                                                .questionPaperList
+                                                                                .removeAt(
+                                                                                index);
+                                                                          });
+                                                                        },
+                                                                        child: const Icon(
                                                                             Icons
                                                                                 .delete,
                                                                             color:
-                                                                                Colors.white)
-                                                                      ],
-                                                                    ),
+                                                                            Colors
+                                                                                .white),
+                                                                      )
+                                                                    ],
                                                                   ),
-                                                                )),
-                                                      )
-                                                    : Visibility(
-                                                        visible: false,
-                                                        child: Positioned(
-                                                            bottom: 0,
-                                                            child:
-                                                                AnimatedContainer(
-                                                              decoration: const BoxDecoration(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  borderRadius: BorderRadius.only(
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              10),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              10))),
-                                                              curve:
-                                                                  Curves.linear,
-                                                              duration:
-                                                                  const Duration(
-                                                                      seconds:
-                                                                          1),
-                                                              width:
-                                                                  MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                              height: 50,
-                                                            )),
-                                                      ),
-                                                Center(
-                                                    child: _con.questionPaperList
+                                                                ),
+                                                              )),
+                                                        )
+                                                            : Visibility(
+                                                          visible: false,
+                                                          child: Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve:
+                                                                Curves
+                                                                    .linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width:
+                                                                MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
+                                                              )),
+                                                        ),
+                                                        Center(
+                                                            child: _con
+                                                                .questionPaperList
                                                                 .elementAt(
-                                                                    index)
+                                                                index)
                                                                 .qsPaperstatus ==
-                                                            0
-                                                        ? const Icon(
-                                                            Icons.add,
-                                                            size: 125,
-                                                          )
-                                                        : const Text("")),
-                                              ],
-                                            );
-                                          }),
-                                        ),
-                                        const SizedBox(
-                                          height: 15,
-                                        ),
-                                        Row(
-                                          children: [
-                                            _con.questionPaperList
-                                                        .elementAt(index)
-                                                        .qsPaperstatus ==
-                                                    0
-                                                ? const Text("")
-                                                : const Icon(Icons
-                                                    .drive_file_rename_outline),
-                                            const SizedBox(
-                                              width: 5,
+                                                                0
+                                                                ? const Icon(
+                                                              Icons.add,
+                                                              size: 125,
+                                                            )    : const Text(
+                                                                "")),
+                                                      ],
+                                                    );
+                                                  }),
                                             ),
-                                            Text(
-                                              _con.questionPaperList
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+
+                                            Row(
+                                              children: [
+                                                _con.questionPaperList
+                                                    .elementAt(index)
+                                                    .qsPaperstatus ==
+                                                    0
+                                                   ?const Text("")
+                                                    : const Icon(Icons
+                                                    .drive_file_rename_outline),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+
+                                                Text(
+                                                  _con.questionPaperList
                                                       .elementAt(index)
                                                       .questionPaperName,
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18),
+                                                  style: const TextStyle(
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                      fontSize: 18),
+                                                )
+                                              ],
                                             )
                                           ],
-                                        )
-                                      ],
-                                    ),
-                                  );
-                                }),
+                                        ),
+                                      );
+                                    }),
+                                GridView.builder(
+                                    gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        mainAxisExtent: 339,
+                                        childAspectRatio: 1 / 2,
+                                        crossAxisSpacing: 15,
+                                        mainAxisSpacing: 15,
+                                        crossAxisCount: 4),
+                                    itemCount: _con.questionPaperList.length,
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          _con.questionPaperList
+                                              .elementAt(index)
+                                              .qsPaperstatus ==
+                                              0
+                                              ? showDialog(
+                                              context: context,
+                                              builder: (ctx) =>
+                                                  ExamNameAlert(
+                                                    controller: _con,
+                                                  ))
+                                              : Container();
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: 300,
+                                              decoration: BoxDecoration(
+                                                  border: _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
+                                                      0
+                                                      ? null
+                                                      : Border.all(
+                                                      color: Colors.black),
+                                                  color: _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
+                                                      0
+                                                      ? const Color(0xffF4F5F9)
+                                                      : Colors.green,
+                                                  borderRadius:
+                                                  BorderRadius.circular(10)),
+                                              child: HoverWidget(
+                                                  builder: (isHovering) {
+                                                    return Stack(
+                                                      children: [
+                                                        isHovering
+                                                            ? Visibility(
+                                                          visible: true,
+                                                          child: _con
+                                                              .questionPaperList
+                                                              .elementAt(
+                                                              index)
+                                                              .qsPaperstatus ==
+                                                              0
+                                                              ? Container()
+                                                              : Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft: Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve: Curves
+                                                                    .linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width: MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
+                                                                child:
+                                                                Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .only(
+                                                                      left:
+                                                                      10.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                    children: const [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .edit,
+                                                                        color:
+                                                                        Colors
+                                                                            .white,
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      Icon(
+                                                                          Icons
+                                                                              .copy,
+                                                                          color:
+                                                                          Colors
+                                                                              .white),
+                                                                      SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      Icon(
+                                                                          Icons
+                                                                              .delete,
+                                                                          color:
+                                                                          Colors
+                                                                              .white)
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              )),
+                                                        )
+                                                            : Visibility(
+                                                          visible: false,
+                                                          child: Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve:
+                                                                Curves.linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width:
+                                                                MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
+                                                              )),
+                                                        ),
+                                                        Center(
+                                                            child: _con
+                                                                .questionPaperList
+                                                                .elementAt(
+                                                                index)
+                                                                .qsPaperstatus ==
+                                                                0
+                                                                ? const Icon(
+                                                              Icons.add,
+                                                              size: 125,
+                                                            )
+                                                                : const Text(
+                                                                "")),
+                                                      ],
+                                                    );
+                                                  }),
+                                            ),
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+                                            Row(
+                                              children: [
+                                                _con.questionPaperList
+                                                    .elementAt(index)
+                                                    .qsPaperstatus ==
+                                                    0
+                                                    ? const Text("")
+                                                    : const Icon(Icons
+                                                    .drive_file_rename_outline),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .questionPaperName,
+                                                  style: const TextStyle(
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                      fontSize: 18),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                GridView.builder(
+                                    gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        mainAxisExtent: 339,
+                                        childAspectRatio: 1 / 2,
+                                        crossAxisSpacing: 15,
+                                        mainAxisSpacing: 15,
+                                        crossAxisCount: 4),
+                                    itemCount: _con.questionPaperList.length,
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          _con.questionPaperList
+                                              .elementAt(index)
+                                              .qsPaperstatus ==
+                                              0
+                                              ? showDialog(
+                                              context: context,
+                                              builder: (ctx) =>
+                                                  ExamNameAlert(
+                                                    controller: _con,
+                                                  ))
+                                              : Container();
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: 300,
+                                              decoration: BoxDecoration(
+                                                  border: _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
+                                                      0
+                                                      ? null
+                                                      : Border.all(
+                                                      color: Colors.black),
+                                                  color: _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
+                                                      0
+                                                      ? const Color(0xffF4F5F9)
+                                                      : Colors.white,
+                                                  borderRadius:
+                                                  BorderRadius.circular(10)),
+                                              child: HoverWidget(
+                                                  builder: (isHovering) {
+                                                    return Stack(
+                                                      children: [
+                                                        isHovering
+                                                            ? Visibility(
+                                                          visible: true,
+                                                          child: _con
+                                                              .questionPaperList
+                                                              .elementAt(
+                                                              index)
+                                                              .qsPaperstatus ==
+                                                              0
+                                                              ? Container()
+                                                              : Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft: Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve: Curves
+                                                                    .linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width: MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
+                                                                child:
+                                                                Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .only(
+                                                                      left:
+                                                                      10.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                    children: const [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .edit,
+                                                                        color:
+                                                                        Colors
+                                                                            .white,
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      Icon(
+                                                                          Icons
+                                                                              .copy,
+                                                                          color:
+                                                                          Colors
+                                                                              .white),
+                                                                      SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      Icon(
+                                                                          Icons
+                                                                              .delete,
+                                                                          color:
+                                                                          Colors
+                                                                              .white)
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              )),
+                                                        )
+                                                            : Visibility(
+                                                          visible: false,
+                                                          child: Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve:
+                                                                Curves.linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width:
+                                                                MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
+                                                              )),
+                                                        ),
+                                                        Center(
+                                                            child: _con
+                                                                .questionPaperList
+                                                                .elementAt(
+                                                                index)
+                                                                .qsPaperstatus ==
+                                                                0
+                                                                ? const Icon(
+                                                              Icons.add,
+                                                              size: 125,
+                                                            )
+                                                                : const Text(
+                                                                "")),
+                                                      ],
+                                                    );
+                                                  }),
+                                            ),
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+                                            Row(
+                                              children: [
+                                                _con.questionPaperList
+                                                    .elementAt(index)
+                                                    .qsPaperstatus ==
+                                                    0
+                                                    ? const Text("")
+                                                    : const Icon(Icons
+                                                    .drive_file_rename_outline),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .questionPaperName,
+                                                  style: const TextStyle(
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                      fontSize: 18),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                GridView.builder(
+                                    gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        mainAxisExtent: 339,
+                                        childAspectRatio: 1 / 2,
+                                        crossAxisSpacing: 15,
+                                        mainAxisSpacing: 15,
+                                        crossAxisCount: 4),
+                                    itemCount: _con.questionPaperList.length,
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          _con.questionPaperList
+                                              .elementAt(index)
+                                              .qsPaperstatus ==
+                                              0
+                                              ? showDialog(
+                                              context: context,
+                                              builder: (ctx) =>
+                                                  ExamNameAlert(
+                                                    controller: _con,
+                                                  ))
+                                              : Container();
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: 300,
+                                              decoration: BoxDecoration(
+                                                  border: _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
+                                                      0
+                                                      ? null
+                                                      : Border.all(
+                                                      color: Colors.black),
+                                                  color: _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .qsPaperstatus ==
+                                                      0
+                                                      ? const Color(0xffF4F5F9)
+                                                      : Colors.white,
+                                                  borderRadius:
+                                                  BorderRadius.circular(10)),
+                                              child: HoverWidget(
+                                                  builder: (isHovering) {
+                                                    return Stack(
+                                                      children: [
+                                                        isHovering
+                                                            ? Visibility(
+                                                          visible: true,
+                                                          child: _con
+                                                              .questionPaperList
+                                                              .elementAt(
+                                                              index)
+                                                              .qsPaperstatus ==
+                                                              0
+                                                              ? Container()
+                                                              : Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft: Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve: Curves
+                                                                    .linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width: MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
+                                                                child:
+                                                                Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .only(
+                                                                      left:
+                                                                      10.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                    children: const [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .edit,
+                                                                        color:
+                                                                        Colors
+                                                                            .white,
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      Icon(
+                                                                          Icons
+                                                                              .copy,
+                                                                          color:
+                                                                          Colors
+                                                                              .white),
+                                                                      SizedBox(
+                                                                        width:
+                                                                        10,
+                                                                      ),
+                                                                      Icon(
+                                                                          Icons
+                                                                              .delete,
+                                                                          color:
+                                                                          Colors
+                                                                              .white)
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              )),
+                                                        )
+                                                            : Visibility(
+                                                          visible: false,
+                                                          child: Positioned(
+                                                              bottom: 0,
+                                                              child:
+                                                              AnimatedContainer(
+                                                                decoration: const BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    borderRadius: BorderRadius
+                                                                        .only(
+                                                                        bottomLeft:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10),
+                                                                        bottomRight:
+                                                                        Radius
+                                                                            .circular(
+                                                                            10))),
+                                                                curve:
+                                                                Curves.linear,
+                                                                duration:
+                                                                const Duration(
+                                                                    seconds:
+                                                                    1),
+                                                                width:
+                                                                MediaQuery
+                                                                    .of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: 50,
+                                                              )),
+                                                        ),
+                                                        Center(
+                                                            child: _con
+                                                                .questionPaperList
+                                                                .elementAt(
+                                                                index)
+                                                                .qsPaperstatus ==
+                                                                0
+                                                                ? const Icon(
+                                                              Icons.add,
+                                                              size: 125,
+                                                            )
+                                                                : const Text(
+                                                                "")),
+                                                      ],
+                                                    );
+                                                  }),
+                                            ),
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+                                            Row(
+                                              children: [
+                                                _con.questionPaperList
+                                                    .elementAt(index)
+                                                    .qsPaperstatus ==
+                                                    0
+                                                    ? const Text("")
+                                                    : const Icon(Icons
+                                                    .drive_file_rename_outline),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  _con.questionPaperList
+                                                      .elementAt(index)
+                                                      .questionPaperName,
+                                                  style: const TextStyle(
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                      fontSize: 18),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                              ],
+                            ),
                           ),
                         ],
                       ),

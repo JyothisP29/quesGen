@@ -2,7 +2,6 @@ import 'package:enumresponsive/Helpers/constants.dart';
 import 'package:enumresponsive/elements/semester_details_alert.dart';
 import 'package:enumresponsive/model/questions.dart';
 import 'package:enumresponsive/model/routeargument.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -219,7 +218,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Icon(Icons.close))
+                          child: const Icon(Icons.close,size: 35,))
                     ],
                   ),
                 ),
@@ -1778,7 +1777,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.width * .015,
+                        height: MediaQuery.of(context).size.width * .01,
                       ),
                       Container(
                         decoration: BoxDecoration(
