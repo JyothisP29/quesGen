@@ -19,19 +19,16 @@ class SemesterDetailsAlert extends StatefulWidget {
   _SemesterDetailsAlert createState() => _SemesterDetailsAlert();
 }
 
-
-class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
+class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
   late HomeController _con;
 
   @override
   void initState() {
-
     _con = widget.controller;
     _con.getModuleList();
     super.initState();
   }
 
-  //bool addsub = false;
   String? semester;
 
   var semesters = [
@@ -56,10 +53,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
-            // padding: EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .57,
             height: MediaQuery.of(context).size.height * .7,
-            //  height:  MediaQuery.of(context).size.height*.6,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -84,7 +79,10 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: const Icon(Icons.close,size: 35,))
+                            child: const Icon(
+                              Icons.close,
+                              size: 35,
+                            ))
                       ],
                     ),
                   ),
@@ -97,7 +95,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        const Text(
                           "Select semester, subject & modules for your question paper",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 30),
@@ -105,13 +103,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .01,
                         ),
-                        Text(
-                          "Select the modules and subject here and you can even let Clezz to generate questions automatically by selecting",
-                          style: TextStyle(fontSize: 22, color: Colors.grey),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+
                         RichText(
                           // Controls visual overflow
                           overflow: TextOverflow.clip,
@@ -119,7 +111,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                           // Controls how the text should be aligned horizontally
 
                           // Control the text direction
-                          textDirection: TextDirection.rtl,
+                          textDirection: TextDirection.ltr,
 
                           // Whether the text should break at soft line breaks
                           softWrap: true,
@@ -129,10 +121,14 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                           // The number of font pixels for each logical pixel
                           textScaleFactor: 1,
                           text: const TextSpan(
-
                             children: <TextSpan>[
+
                               TextSpan(
-                                  text: ' Automatic ',
+                                  text: 'Select the modules and subject here and you can even let Clezz to generate questions automatically by selecting',
+                                  style: TextStyle(
+                                      fontSize: 22, color: Colors.grey)),
+                              TextSpan(
+                                    text: ' Automatic ',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 22,
@@ -180,8 +176,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                   child: DropdownButton(
                                     hint: Text(
                                       "Select Semester",
-                                      style:
-                                          TextStyle(color: Colors.grey.shade500),
+                                      style: TextStyle(
+                                          color: Colors.grey.shade500),
                                     ),
                                     // Initial Value
                                     value: semester,
@@ -190,7 +186,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                     icon: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.black,
-                                          borderRadius: BorderRadius.circular(5)),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                       child: const Icon(
                                         Icons.keyboard_arrow_down,
                                         color: Colors.white,
@@ -203,12 +200,14 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                       return DropdownMenuItem(
                                         value: items,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(left: 5),
+                                          padding:
+                                              const EdgeInsets.only(left: 5),
                                           child: Text(
                                             maxLines: 4,
                                             overflow: TextOverflow.ellipsis,
                                             items,
-                                            style: const TextStyle(fontSize: 12),
+                                            style:
+                                                const TextStyle(fontSize: 12),
                                           ),
                                         ),
                                       );
@@ -218,7 +217,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         semester = newValue!;
-                                        _con.quesPaper.semester=newValue;
+                                        _con.quesPaper.semester = newValue;
                                       });
                                     },
                                     isExpanded: true,
@@ -270,8 +269,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                   child: DropdownButton(
                                     hint: Text(
                                       "Select Subject",
-                                      style:
-                                          TextStyle(color: Colors.grey.shade500),
+                                      style: TextStyle(
+                                          color: Colors.grey.shade500),
                                     ),
                                     // Initial Value
                                     value: subject,
@@ -280,7 +279,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                     icon: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.black,
-                                          borderRadius: BorderRadius.circular(5)),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                       child: const Icon(
                                         Icons.keyboard_arrow_down,
                                         color: Colors.white,
@@ -293,12 +293,14 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                       return DropdownMenuItem(
                                         value: items,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(left: 5),
+                                          padding:
+                                              const EdgeInsets.only(left: 5),
                                           child: Text(
                                             maxLines: 4,
                                             overflow: TextOverflow.ellipsis,
                                             items,
-                                            style: const TextStyle(fontSize: 12),
+                                            style:
+                                                const TextStyle(fontSize: 12),
                                           ),
                                         ),
                                       );
@@ -308,7 +310,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         subject = newValue!;
-                                        _con.quesPaper.subject=newValue;
+                                        _con.quesPaper.subject = newValue;
                                       });
                                     },
                                     isExpanded: true,
@@ -327,283 +329,32 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .058,
                         ),
-                        // Column(
-                        //   children: [
-                        //     Padding(
-                        //       padding:
-                        //           const EdgeInsets.only(left: 15.0, bottom: 5),
-                        //       child: Row(
-                        //         children: const [
-                        //           Text(
-                        //             "Modules*",
-                        //             style: TextStyle(
-                        //                 color: Colors.black, fontSize: 18),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       height: MediaQuery.of(context).size.height * .01,
-                        //     ),
-                        //     Row(
-                        //       children: [
-                        //         InkWell(
-                        //             onTap: weekSelect1,
-                        //             child: Container(
-                        //               decoration: BoxDecoration(
-                        //
-                        //                   //background color of dropdown button
-                        //                   border: Border.all(
-                        //                       color: Colors.grey.shade500,
-                        //                       width: 1),
-                        //                   //border of dropdown button
-                        //                   borderRadius: BorderRadius.circular(10),
-                        //                   //border raiuds of dropdown button
-                        //
-                        //                   color: select1 == false
-                        //                       ? Colors.white
-                        //                       : Colors.black),
-                        //               width: 110,
-                        //               height: 45,
-                        //               child: Center(
-                        //                 child: Text(
-                        //                   "Module 01",
-                        //                   style: TextStyle(
-                        //                       fontSize: 14,
-                        //                       color: select1 == true
-                        //                           ? Colors.white
-                        //                           : Colors.black),
-                        //                 ),
-                        //               ),
-                        //             )),
-                        //         const SizedBox(
-                        //           width: 20,
-                        //         ),
-                        //         InkWell(
-                        //             onTap: weekSelect2,
-                        //             child: Container(
-                        //               decoration: BoxDecoration(
-                        //
-                        //                   //background color of dropdown button
-                        //                   border: Border.all(
-                        //                       color: Colors.grey.shade500,
-                        //                       width: 1),
-                        //                   //border of dropdown button
-                        //                   borderRadius: BorderRadius.circular(10),
-                        //                   //border raiuds of dropdown button
-                        //
-                        //                   color: select2 == false
-                        //                       ? Colors.white
-                        //                       : Colors.black),
-                        //               width: 110,
-                        //               height: 45,
-                        //               child: Center(
-                        //                 child: Text(
-                        //                   "Module 02",
-                        //                   style: TextStyle(
-                        //                       fontSize: 14,
-                        //                       color: select2 == true
-                        //                           ? Colors.white
-                        //                           : Colors.black),
-                        //                 ),
-                        //               ),
-                        //             )),
-                        //         const SizedBox(
-                        //           width: 20,
-                        //         ),
-                        //         InkWell(
-                        //             onTap: weekSelect3,
-                        //             child: Container(
-                        //               decoration: BoxDecoration(
-                        //
-                        //                   //background color of dropdown button
-                        //                   border: Border.all(
-                        //                       color: Colors.grey.shade500,
-                        //                       width: 1),
-                        //                   //border of dropdown button
-                        //                   borderRadius: BorderRadius.circular(10),
-                        //                   //border raiuds of dropdown button
-                        //
-                        //                   color: select3 == false
-                        //                       ? Colors.white
-                        //                       : Colors.black),
-                        //               width: 110,
-                        //               height: 45,
-                        //               child: Center(
-                        //                 child: Text(
-                        //                   "Module 03",
-                        //                   style: TextStyle(
-                        //                       fontSize: 14,
-                        //                       color: select3 == true
-                        //                           ? Colors.white
-                        //                           : Colors.black),
-                        //                 ),
-                        //               ),
-                        //             )),
-                        //         const SizedBox(
-                        //           width: 20,
-                        //         ),
-                        //         InkWell(
-                        //             onTap: weekSelect4,
-                        //             child: Container(
-                        //               decoration: BoxDecoration(
-                        //
-                        //                   //background color of dropdown button
-                        //                   border: Border.all(
-                        //                       color: Colors.grey.shade500,
-                        //                       width: 1),
-                        //                   //border of dropdown button
-                        //                   borderRadius: BorderRadius.circular(10),
-                        //                   //border raiuds of dropdown button
-                        //
-                        //                   color: select4 == false
-                        //                       ? Colors.white
-                        //                       : Colors.black),
-                        //               width: 110,
-                        //               height: 45,
-                        //               child: Center(
-                        //                 child: Text(
-                        //                   "Module 04",
-                        //                   style: TextStyle(
-                        //                       fontSize: 14,
-                        //                       color: select4 == true
-                        //                           ? Colors.white
-                        //                           : Colors.black),
-                        //                 ),
-                        //               ),
-                        //             )),
-                        //         const SizedBox(
-                        //           width: 20,
-                        //         ),
-                        //         InkWell(
-                        //             onTap: weekSelect5,
-                        //             child: Container(
-                        //               decoration: BoxDecoration(
-                        //
-                        //                   //background color of dropdown button
-                        //                   border: Border.all(
-                        //                       color: Colors.grey.shade500,
-                        //                       width: 1),
-                        //                   //border of dropdown button
-                        //                   borderRadius: BorderRadius.circular(10),
-                        //                   //border raiuds of dropdown button
-                        //
-                        //                   color: select5 == false
-                        //                       ? Colors.white
-                        //                       : Colors.black),
-                        //               width: 110,
-                        //               height: 45,
-                        //               child: Center(
-                        //                 child: Text(
-                        //                   "Module 05",
-                        //                   style: TextStyle(
-                        //                       fontSize: 14,
-                        //                       color: select5 == true
-                        //                           ? Colors.white
-                        //                           : Colors.black),
-                        //                 ),
-                        //               ),
-                        //             )),
-                        //         const SizedBox(
-                        //           width: 20,
-                        //         ),
-                        //         InkWell(
-                        //             onTap: weekSelect6,
-                        //             child: Container(
-                        //               decoration: BoxDecoration(
-                        //
-                        //                   //background color of dropdown button
-                        //                   border: Border.all(
-                        //                       color: Colors.grey.shade500,
-                        //                       width: 1),
-                        //                   //border of dropdown button
-                        //                   borderRadius: BorderRadius.circular(10),
-                        //                   //border raiuds of dropdown button
-                        //
-                        //                   color: select6 == false
-                        //                       ? Colors.white
-                        //                       : Colors.black),
-                        //               width: 110,
-                        //               height: 45,
-                        //               child: Center(
-                        //                 child: Text(
-                        //                   "Module 06",
-                        //                   style: TextStyle(
-                        //                       fontSize: 14,
-                        //                       color: select6 == true
-                        //                           ? Colors.white
-                        //                           : Colors.black),
-                        //                 ),
-                        //               ),
-                        //             )),
-                        //         const SizedBox(
-                        //           width: 20,
-                        //         ),
-                        //         InkWell(
-                        //             onTap: weekSelect7,
-                        //             child: Container(
-                        //               decoration: BoxDecoration(
-                        //
-                        //                   //background color of dropdown button
-                        //                   border: Border.all(
-                        //                       color: Colors.grey.shade500,
-                        //                       width: 1),
-                        //                   //border of dropdown button
-                        //                   borderRadius: BorderRadius.circular(10),
-                        //                   //border raiuds of dropdown button
-                        //
-                        //                   color: select7 == false
-                        //                       ? Colors.white
-                        //                       : Colors.black),
-                        //               width: 100,
-                        //               height: 45,
-                        //               child: Center(
-                        //                 child: Text(
-                        //                   "Module 07",
-                        //                   style: TextStyle(
-                        //                       fontSize: 14,
-                        //                       color: select7 == true
-                        //                           ? Colors.white
-                        //                           : Colors.black),
-                        //                 ),
-                        //               ),
-                        //             )),
-                        //       ],
-                        //     ),
-                        //   ],
-                        // ),
                         SizedBox(
-
                           height: 45,
                           child: ListView.builder(
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
-                               itemCount: _con.moduleList.length,
+                              itemCount: _con.moduleList.length,
                               itemBuilder: (context, index) {
                                 Modules modules =
                                     _con.moduleList.elementAt(index);
                                 bool isSelected =
                                     _con.selectedList.contains(modules);
                                 return Row(
-                                  children:  [
+                                  children: [
                                     InkWell(
                                       onTap: () {
                                         setState(() {
-                                          if(
-                                          _con.selectedList.contains(modules)
-
-                                          )
-                                          {
+                                          if (_con.selectedList
+                                              .contains(modules)) {
                                             _con.selectedList.remove(modules);
-
+                                          } else {
+                                            _con.selectedList.add(modules);
                                           }
-                                         else{
-                                           _con.selectedList.add(modules);
+                                          if (kDebugMode) {
+                                            print(_con.selectedList.length);
                                           }
-                                         if (kDebugMode) {
-                                           print(_con.selectedList.length);
-                                         }
                                         });
                                       },
                                       child: Container(
@@ -625,7 +376,10 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                         height: 45,
                                         child: Center(
                                           child: Text(
-                                            _con.moduleList.elementAt(index).modName??"",
+                                            _con.moduleList
+                                                    .elementAt(index)
+                                                    .modName ??
+                                                "",
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 color: isSelected
@@ -643,7 +397,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                               }),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * .049,
+                          height: MediaQuery.of(context).size.height * .055,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -693,7 +447,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                       width: 150,
                                       height: 45,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           color: Colors.grey),
                                       child: const Center(
                                           child: Text(
@@ -704,8 +459,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                     ),
                                   ),
                                   SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * .013,
+                                    width: MediaQuery.of(context).size.width *
+                                        .013,
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -720,7 +475,8 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                                       width: 150,
                                       height: 45,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           color: Colors.black),
                                       child: const Center(
                                           child: Text(

@@ -24,26 +24,8 @@ class ManualAlert extends StatefulWidget {
 class _ManualAlert extends State<ManualAlert> {
   late HomeController _con;
 
-  bool addsub = false;
-  String? semester;
   int count1 = 0;
-  var semesters = [
-    'semester 01',
-    'semester 02',
-  ];
-  String? subject;
 
-  var subjects = [
-    'subjects 01',
-    'subjects 02',
-  ];
-  bool select1 = false;
-  bool select2 = false;
-  bool select3 = false;
-  bool select4 = false;
-  bool select5 = false;
-  bool select6 = false;
-  bool select7 = false;
   late TextEditingController section1Controller,
       section2Controller,
       section3Controller,
@@ -60,8 +42,7 @@ class _ManualAlert extends State<ManualAlert> {
   @override
   void initState() {
     super.initState();
-    // log(widget.routeArgument?.other?.toString()??"NULLLL");
-// count1=widget.routeArgument?.other;
+
     _con = widget.controller;
     section1Controller = TextEditingController();
     section2Controller = TextEditingController();
@@ -101,10 +82,8 @@ class _ManualAlert extends State<ManualAlert> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
-            // padding: EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .57,
             height: MediaQuery.of(context).size.height * .7,
-            //  height:  MediaQuery.of(context).size.height*.6,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -144,7 +123,7 @@ class _ManualAlert extends State<ManualAlert> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        const Text(
                           "Select the question types for your test paper",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 30),
@@ -152,7 +131,7 @@ class _ManualAlert extends State<ManualAlert> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .0135,
                         ),
-                        Text(
+                        const Text(
                           "You can add the questions yourself from the Clezz question library in the next section.",
                           style: TextStyle(fontSize: 22, color: Colors.grey),
                         ),
@@ -169,7 +148,8 @@ class _ManualAlert extends State<ManualAlert> {
                                 child: const Text(
                                   "QUESTIONS",
                                   style: TextStyle(
-                                      fontSize: 10, fontWeight: FontWeight.bold),
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
@@ -290,9 +270,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: mpq1ManualController,
                                       inputFormatters: [
@@ -350,9 +328,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: manualAttend1Controller,
                                       inputFormatters: [
@@ -408,10 +384,11 @@ class _ManualAlert extends State<ManualAlert> {
                                             color: const Color(0xffC9C9C9))),
                                     child: Center(
                                         child: Text(
-                                          mPS1().toString(),
-                                          style: const TextStyle(
-                                              fontSize: 18, color: Color(0xffB1BBC6)),
-                                        ))),
+                                      mPS1().toString(),
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
+                                    ))),
                               ],
                             )),
                           ],
@@ -504,9 +481,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: mpq2ManualController,
                                       inputFormatters: [
@@ -564,9 +539,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: manualAttend2Controller,
                                       inputFormatters: [
@@ -622,10 +595,11 @@ class _ManualAlert extends State<ManualAlert> {
                                             color: const Color(0xffC9C9C9))),
                                     child: Center(
                                         child: Text(
-                                          mPS2().toString(),
-                                          style: const TextStyle(
-                                              fontSize: 18, color: Color(0xffB1BBC6)),
-                                        ))),
+                                      mPS2().toString(),
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
+                                    ))),
                               ],
                             )),
                           ],
@@ -718,9 +692,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: mpq3ManualController,
                                       inputFormatters: [
@@ -778,9 +750,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: manualAttend3Controller,
                                       inputFormatters: [
@@ -836,10 +806,11 @@ class _ManualAlert extends State<ManualAlert> {
                                             color: const Color(0xffC9C9C9))),
                                     child: Center(
                                         child: Text(
-                                          mPS3().toString(),
-                                          style: const TextStyle(
-                                              fontSize: 18, color: Color(0xffB1BBC6)),
-                                        ))),
+                                      mPS3().toString(),
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
+                                    ))),
                               ],
                             )),
                           ],
@@ -932,9 +903,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: mpq4ManualController,
                                       inputFormatters: [
@@ -992,9 +961,7 @@ class _ManualAlert extends State<ManualAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: manualAttend4Controller,
                                       inputFormatters: [
@@ -1050,10 +1017,11 @@ class _ManualAlert extends State<ManualAlert> {
                                             color: const Color(0xffC9C9C9))),
                                     child: Center(
                                         child: Text(
-                                          mPS4().toString(),
-                                          style: const TextStyle(
-                                              fontSize: 18, color: Color(0xffB1BBC6)),
-                                        ))),
+                                      mPS4().toString(),
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
+                                    ))),
                               ],
                             )),
                           ],
@@ -1084,33 +1052,31 @@ class _ManualAlert extends State<ManualAlert> {
 
                                 // The number of font pixels for each logical pixel
                                 textScaleFactor: 1,
-                                text:  TextSpan(
+                                text: TextSpan(
                                   text: "You've selected ",
-                                  style:
-                                      TextStyle(fontSize: 16, color: Colors.grey),
+                                  style: const TextStyle(
+                                      fontSize: 16, color: Colors.grey),
                                   children: <TextSpan>[
                                     TextSpan(
-                                        text:  totalQues().toString(),
-                                        style: TextStyle(
+                                        text: totalQues().toString(),
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16,
                                             color: Colors.black)),
-                                    TextSpan(
+                                    const TextSpan(
                                         text:
                                             ' questions and total marks can be scored as ',
                                         style: TextStyle(
                                             fontSize: 16, color: Colors.grey)),
                                     TextSpan(
                                         text: totalMPS().toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16,
                                             color: Colors.black)),
                                   ],
                                 ),
                               ),
-                              // Text(
-                              //     "You've selected 45 questions and total marks can be scored as 100")
                             )
                           ],
                         ),
@@ -1267,6 +1233,7 @@ class _ManualAlert extends State<ManualAlert> {
     });
     return count1;
   }
+
   int mPS1() {
     int mps1 = 0;
     int trial = 0;
@@ -1278,6 +1245,7 @@ class _ManualAlert extends State<ManualAlert> {
     }
     return mps1;
   }
+
   int mPS2() {
     int mps1 = 0;
     int trial = 0;
@@ -1289,6 +1257,7 @@ class _ManualAlert extends State<ManualAlert> {
     }
     return mps1;
   }
+
   int mPS3() {
     int mps1 = 0;
     int trial = 0;
@@ -1300,6 +1269,7 @@ class _ManualAlert extends State<ManualAlert> {
     }
     return mps1;
   }
+
   int mPS4() {
     int mps1 = 0;
     int trial = 0;
@@ -1311,6 +1281,7 @@ class _ManualAlert extends State<ManualAlert> {
     }
     return mps1;
   }
+
   int totalQues() {
     int a = 0;
     if (section1Controller.text.isNotEmpty) {
@@ -1321,15 +1292,17 @@ class _ManualAlert extends State<ManualAlert> {
     }
     if (section3Controller.text.isNotEmpty) {
       a = a + int.parse(section3Controller.text);
-    }   if (section4Controller.text.isNotEmpty) {
+    }
+    if (section4Controller.text.isNotEmpty) {
       a = a + int.parse(section4Controller.text);
     }
 
     return a;
   }
-  int totalMPS(){
-    int totalmark=0;
-    totalmark=mPS1()+mPS2()+mPS3()+mPS4();
+
+  int totalMPS() {
+    int totalmark = 0;
+    totalmark = mPS1() + mPS2() + mPS3() + mPS4();
     return totalmark;
   }
 }

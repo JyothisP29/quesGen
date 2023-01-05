@@ -5,8 +5,10 @@ import '../model/course.dart';
 
 class CreateCourse extends StatefulWidget {
   final HomeController controller;
+
   const CreateCourse({
-    Key? key, required this.controller,
+    Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -16,15 +18,13 @@ class CreateCourse extends StatefulWidget {
 class _CreateCourse extends State<CreateCourse> {
   late HomeController _con;
 
-@override
+  @override
   void initState() {
-
     // TODO: implement initState
     super.initState();
-    _con=widget.controller;
+    _con = widget.controller;
   }
 
-  bool addsub = false;
   String? dropdownvalue1;
 
   var items = [
@@ -82,7 +82,10 @@ class _CreateCourse extends State<CreateCourse> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: const Icon(Icons.close,size: 35,))
+                            child: const Icon(
+                              Icons.close,
+                              size: 35,
+                            ))
                       ],
                     ),
                   ),
@@ -95,7 +98,7 @@ class _CreateCourse extends State<CreateCourse> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        const Text(
                           "Select a course to create your question paper",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 30),
@@ -107,7 +110,8 @@ class _CreateCourse extends State<CreateCourse> {
                           children: const [
                             Text(
                               "Select a course to continue...",
-                              style: TextStyle(fontSize: 22, color: Colors.grey),
+                              style:
+                                  TextStyle(fontSize: 22, color: Colors.grey),
                             ),
                           ],
                         ),
@@ -147,8 +151,8 @@ class _CreateCourse extends State<CreateCourse> {
                                   child: DropdownButton(
                                     hint: Text(
                                       "Select course type",
-                                      style:
-                                          TextStyle(color: Colors.grey.shade500),
+                                      style: TextStyle(
+                                          color: Colors.grey.shade500),
                                     ),
                                     // Initial Value
                                     value: dropdownvalue1,
@@ -157,7 +161,8 @@ class _CreateCourse extends State<CreateCourse> {
                                     icon: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.black,
-                                          borderRadius: BorderRadius.circular(5)),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                       child: const Icon(
                                         Icons.keyboard_arrow_down,
                                         color: Colors.white,
@@ -170,12 +175,14 @@ class _CreateCourse extends State<CreateCourse> {
                                       return DropdownMenuItem(
                                         value: items,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(left: 5),
+                                          padding:
+                                              const EdgeInsets.only(left: 5),
                                           child: Text(
                                             maxLines: 4,
                                             overflow: TextOverflow.ellipsis,
                                             items,
-                                            style: const TextStyle(fontSize: 12),
+                                            style:
+                                                const TextStyle(fontSize: 12),
                                           ),
                                         ),
                                       );
@@ -236,8 +243,8 @@ class _CreateCourse extends State<CreateCourse> {
                                   child: DropdownButton(
                                     hint: Text(
                                       "Select course type",
-                                      style:
-                                          TextStyle(color: Colors.grey.shade500),
+                                      style: TextStyle(
+                                          color: Colors.grey.shade500),
                                     ),
                                     // Initial Value
                                     value: dropdownvalue2,
@@ -246,7 +253,8 @@ class _CreateCourse extends State<CreateCourse> {
                                     icon: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.black,
-                                          borderRadius: BorderRadius.circular(5)),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                       child: const Icon(
                                         Icons.keyboard_arrow_down,
                                         color: Colors.white,
@@ -259,12 +267,14 @@ class _CreateCourse extends State<CreateCourse> {
                                       return DropdownMenuItem(
                                         value: items,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(left: 5),
+                                          padding:
+                                              const EdgeInsets.only(left: 5),
                                           child: Text(
                                             maxLines: 4,
                                             overflow: TextOverflow.ellipsis,
                                             items,
-                                            style: const TextStyle(fontSize: 12),
+                                            style:
+                                                const TextStyle(fontSize: 12),
                                           ),
                                         ),
                                       );
@@ -325,8 +335,8 @@ class _CreateCourse extends State<CreateCourse> {
                                   child: DropdownButton(
                                     hint: Text(
                                       "Select course type",
-                                      style:
-                                          TextStyle(color: Colors.grey.shade500),
+                                      style: TextStyle(
+                                          color: Colors.grey.shade500),
                                     ),
                                     // Initial Value
                                     value: dropdownvalue3,
@@ -335,7 +345,8 @@ class _CreateCourse extends State<CreateCourse> {
                                     icon: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.black,
-                                          borderRadius: BorderRadius.circular(5)),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                       child: const Icon(
                                         Icons.keyboard_arrow_down,
                                         color: Colors.white,
@@ -348,12 +359,14 @@ class _CreateCourse extends State<CreateCourse> {
                                       return DropdownMenuItem(
                                         value: items,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(left: 5),
+                                          padding:
+                                              const EdgeInsets.only(left: 5),
                                           child: Text(
                                             maxLines: 4,
                                             overflow: TextOverflow.ellipsis,
                                             items,
-                                            style: const TextStyle(fontSize: 12),
+                                            style:
+                                                const TextStyle(fontSize: 12),
                                           ),
                                         ),
                                       );
@@ -393,14 +406,15 @@ class _CreateCourse extends State<CreateCourse> {
                               InkWell(
                                 onTap: () {
                                   setState(() {
-
-                                    _con.courseList.add(Course(1, dropdownvalue1, dropdownvalue2,
-                                        const Color(0xffB9FBC7), Colors.green));
+                                    _con.courseList.add(Course(
+                                        1,
+                                        dropdownvalue1,
+                                        dropdownvalue2,
+                                        const Color(0xffB9FBC7),
+                                        Colors.green));
                                   });
                                   Navigator.pop(context, true);
-
                                 },
-
                                 child: Container(
                                   width: 150,
                                   height: 45,
@@ -428,11 +442,5 @@ class _CreateCourse extends State<CreateCourse> {
         ),
       ),
     );
-  }
-
-  void togaddsub() {
-    setState(() {
-      addsub = !addsub;
-    });
   }
 }

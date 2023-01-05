@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:enumresponsive/model/modules.dart';
 import 'package:enumresponsive/model/routeargument.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +9,6 @@ import '../../model/questions.dart';
 class GeneratedQuestions extends StatefulWidget {
   final RouteArgument? routeArgument;
 
-  //final List<QuestionGenerationModel> questionList;
-
   const GeneratedQuestions({Key? key, this.routeArgument}) : super(key: key);
 
   @override
@@ -20,9 +16,7 @@ class GeneratedQuestions extends StatefulWidget {
 }
 
 class _GeneratedQuestions extends State<GeneratedQuestions> {
-  // int count = 0;
-  // int? attend;
-  // int? mpq;
+  List sectionList = ["Section-A", "Section-B", "Section-C", "Section-D"];
 
   @override
   void initState() {
@@ -30,16 +24,6 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
     if (widget.routeArgument?.param != null) {
       _con.questionList.addAll(widget.routeArgument!.param);
     }
-    // log(widget.routeArgument?.other?.toString() ?? "NULLLL");
-    log(_con.quesPaper.sections?.length.toString() ?? "");
-    // for (var element in _con.quesPaper.sections) {
-    //   if (kDebugMode) {
-    //     print(element.easy);
-    //   }
-    // }
-    // count = widget.routeArgument?.other;
-    // attend = widget.routeArgument?.attend;
-    // mpq = widget.routeArgument?.mpq;
 
     _con.getModuleList();
     _con.getQuestionsList();
@@ -51,14 +35,6 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
 
   late Modules selectedModule;
 
-  //PageController pageController = PageController();
-  bool easySelected = false;
-  bool mediumSelected = false;
-  bool hardSelected = false;
-  bool isChecked = false;
-  bool visible = false;
-
-  // int currentModule = -1;
   late HomeController _con;
 
   @override
@@ -81,51 +57,6 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  // Padding(
-                  //     padding: const EdgeInsets.only(left: 5.0),
-                  //     child: Container(
-                  //       height: 50,
-                  //       width: MediaQuery.of(context).size.width * .5,
-                  //       margin: const EdgeInsets.only(
-                  //           left: 0, right: 0, bottom: 10, top: 10),
-                  //       decoration: const BoxDecoration(
-                  //         color: Color(0XFFD9D9D9),
-                  //         borderRadius: BorderRadius.all(Radius.circular(5)),
-                  //       ),
-                  //       child: TextFormField(
-                  //         textAlign: TextAlign.start,
-                  //         keyboardType: TextInputType.number,
-                  //         style: const TextStyle(
-                  //           color: Color(0xff5668A1),
-                  //           fontSize: 14,
-                  //         ),
-                  //         decoration: InputDecoration(
-                  //           hintText: "Search",
-                  //           hintStyle: const TextStyle(color: Colors.black),
-                  //           prefixIcon: const Icon(
-                  //             Icons.search,
-                  //             color: Colors.black,
-                  //           ),
-                  //           contentPadding: const EdgeInsets.symmetric(
-                  //               vertical: 0.0, horizontal: 10.0),
-                  //
-                  //           //fillColor: Colors.white,
-                  //           focusedBorder: OutlineInputBorder(
-                  //             borderRadius: BorderRadius.circular(5.0),
-                  //             borderSide: const BorderSide(
-                  //               color: Color(0XFFD9D9D9),
-                  //             ),
-                  //           ),
-                  //           enabledBorder: OutlineInputBorder(
-                  //             borderRadius: BorderRadius.circular(5.0),
-                  //             borderSide: const BorderSide(
-                  //               color: Color(0XFFD9D9D9),
-                  //               width: 0.0,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     )),
                   SizedBox(
                     child: Row(
                       children: const [
@@ -217,15 +148,15 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                             padding: EdgeInsets.only(
                                 left: MediaQuery.of(context).size.width * .04,
                                 right: MediaQuery.of(context).size.width * .04,
-                            bottom: MediaQuery.of(context).size.height * .02
-                            ),
+                                bottom:
+                                    MediaQuery.of(context).size.height * .02),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
                                     child: Row(
                                   children: [
-                                    const Text("Time: ",
+                                    const Text("Time : ",
                                         style: TextStyle(
                                           fontSize: 22,
                                         )),
@@ -233,6 +164,9 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                         style: const TextStyle(
                                           fontSize: 22,
                                         )),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                     Text(_con.quesPaper.hourOrMinute ?? "",
                                         style: const TextStyle(
                                           fontSize: 22,
@@ -256,11 +190,17 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                 Expanded(
                                     child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
-                                  children: const [
-                                    Text("Mark:40",
+                                  children: [
+                                    Text("Mark : ",
                                         style: TextStyle(
                                           fontSize: 22,
                                         )),
+                                    Text(
+                                        (widget.routeArgument?.other)
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                        ))
                                     //   Text("widget.toString()??")
                                   ],
                                 ))
@@ -283,8 +223,6 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                   top: 20,
                                 ),
                                 width: MediaQuery.of(context).size.width * .95,
-                                // height:
-                                //     MediaQuery.of(context).size.height * .22,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.white),
@@ -308,9 +246,8 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                           Container(
                                             width: 250,
                                           ),
-                                          // Text(questionList.length.toString()),
-                                          const Text(
-                                            "SECTION - A",
+                                          Text(
+                                            sectionList.elementAt(index),
                                             style: TextStyle(fontSize: 24),
                                           ),
                                           Padding(
@@ -369,55 +306,70 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                       SizedBox(
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                .06,
+                                                .05,
                                       ),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                .4,
-                                        height: 70,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                                color:
-                                                    const Color(0xffAEAEAE))),
-                                        child: Center(
-                                          child: TextFormField(
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                              color: Color(0xff5668A1),
+                                      // Container(
+                                      //   width:
+                                      //       MediaQuery.of(context).size.width *
+                                      //           .4,
+                                      //   height: 70,
+                                      //   decoration: BoxDecoration(
+                                      //       borderRadius:
+                                      //           BorderRadius.circular(10),
+                                      //       border: Border.all(
+                                      //           color:
+                                      //               const Color(0xffAEAEAE))),
+                                      //   child:
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children:  [
+                                          Text(
+                                            "Answer the ",
+                                            style: TextStyle(
                                               fontSize: 22,
                                             ),
-                                            decoration: InputDecoration(
-                                              hintText:
-                                                  "Answer the Four question. Each questions carries 1 mark",
-                                              hintStyle: const TextStyle(
-                                                  color: Colors.black),
-
-                                              // contentPadding: const EdgeInsets.symmetric(
-                                              //     vertical: 0.0, horizontal: 10.0),
-
-                                              //fillColor: Colors.white,
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                                borderSide: const BorderSide(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                                borderSide: const BorderSide(
-                                                  color: Colors.white,
-                                                  width: 0.0,
-                                                ),
-                                              ),
+                                          ),
+                                          Text(
+                                            _con.quesPaper.sections
+                                                ?.elementAt(index)
+                                                .attend
+                                                .toString() ??
+                                                "",
+                                            style: TextStyle(
+                                              fontSize: 22,
                                             ),
                                           ),
-                                        ),
-                                      )
+                                          Text(
+                                            " question. Each carry ",
+                                            style: TextStyle(
+                                              fontSize: 22,
+                                            ),
+                                          ),
+                                          Text(
+                                            _con.quesPaper.sections
+                                                ?.elementAt(index)
+                                                .mpq
+                                                .toString() ??
+                                                "",
+                                            style: TextStyle(
+                                              fontSize: 22,
+                                            ),
+                                          ),
+                                          Text(
+                                            " mark",
+                                            style: TextStyle(
+                                              fontSize: 22,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height:
+                                        MediaQuery.of(context).size.height *
+                                            .02,
+                                      ),
+                                      // )
                                     ],
                                   ),
                                 ),
@@ -437,7 +389,6 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 .95,
-
                                         child: ListView.builder(
                                           shrinkWrap: true,
                                           itemCount: ques.questions.length,
@@ -549,10 +500,9 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                                                 Navigator.pushNamed(
                                                                     context,
                                                                     "/Edit",
-                                                                    arguments:
-                                                                        RouteArgument(
-                                                                          control: _con
-                                                                        ));
+                                                                    arguments: RouteArgument(
+                                                                        control:
+                                                                            _con));
                                                               },
                                                               child: Container(
                                                                 decoration: BoxDecoration(
@@ -699,19 +649,4 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
         (_con.quesPaper.sections?.elementAt(index).mpq)!);
     return tot;
   }
-// questionSelect(index) {
-//   if (_con.allQuestionList.elementAt(index).isChecked == true) {
-//     setState(() {
-//       _con.allQuestionList.elementAt(index).isChecked == false;
-//     });
-//   } else {
-//     setState(() {
-//       _con.allQuestionList.elementAt(index).isChecked == true;
-//     });
-//   }
-// }
-// int TotalQuesNo(){
-//   totalQues=tota
-// }
-
 }

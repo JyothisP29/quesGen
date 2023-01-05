@@ -11,11 +11,9 @@ import '../model/generated_question_model.dart';
 class AutomaticAlert extends StatefulWidget {
   final HomeController controller;
 
-  // final RouteArgument routeArgument;
   const AutomaticAlert({
     Key? key,
     required this.controller,
-    // required this.routeArgument
   }) : super(key: key);
 
   @override
@@ -25,14 +23,6 @@ class AutomaticAlert extends StatefulWidget {
 class _AutomaticAlert extends State<AutomaticAlert> {
   late HomeController _con;
 
-  int count = 0;
-
-  // List<Question> allQuestionList = [];
-  //
-  // int result = 0;
-  // String result2 = "0";
-  // String result3 = "0";
-  // String result4 = "0";
   late TextEditingController myController,
       myControllerEasy1,
       myControllerMedium1,
@@ -63,26 +53,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
       myControllerMPQ4,
       myControllerMPS4;
 
-  // getList() {
-  //   allQuestionList.add(Question(1, "question1", Constants.easyQuestions, false, Constants.oneWord));
-  //   allQuestionList.add(Question(2, "question2", Constants.mediumQuestion, false, Constants.oneWord));
-  //   allQuestionList.add(Question(3, "question3", Constants.hardQuestions, false, Constants.oneWord));
-  //   allQuestionList.add(Question(4, "question4", Constants.easyQuestions, false, Constants.shortAnswer));
-  //   allQuestionList.add(Question(5, "question5", Constants.mediumQuestion, false, Constants.shortAnswer));
-  //   allQuestionList.add(Question(6, "question6", Constants.hardQuestions, false, Constants.shortAnswer));
-  //   allQuestionList.add(Question(7, "question7", Constants.easyQuestions, false, Constants.longAnswer));
-  //   allQuestionList.add(Question(8, "question8", Constants.mediumQuestion, false, Constants.longAnswer));
-  //   allQuestionList.add(Question(9, "question9", Constants.hardQuestions, false, Constants.longAnswer));
-  //   allQuestionList.add(Question(10, "question10", Constants.easyQuestions, false, Constants.essayAnswer));
-  //   allQuestionList.add(Question(11, "question11", Constants.mediumQuestion, false, Constants.essayAnswer));
-  //   allQuestionList.add(Question(12, "question12", Constants.hardQuestions, false, Constants.essayAnswer));
-  //
-  // }
-
   @override
   void initState() {
     super.initState();
-    //  count=widget.routeArgument.other;
+
     _con = widget.controller;
     myController = TextEditingController();
     myControllerEasy1 = TextEditingController();
@@ -158,29 +132,6 @@ class _AutomaticAlert extends State<AutomaticAlert> {
     super.dispose();
   }
 
-  bool addsub = false;
-  String? semester;
-
-  var semesters = [
-    'semester 01',
-    'semester 02',
-  ];
-  String? subject;
-
-  num totalblah = 0;
-
-  var subjects = [
-    'subjects 01',
-    'subjects 02',
-  ];
-  bool select1 = false;
-  bool select2 = false;
-  bool select3 = false;
-  bool select4 = false;
-  bool select5 = false;
-  bool select6 = false;
-  bool select7 = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -219,7 +170,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: const Icon(Icons.close,size: 35,))
+                            child: const Icon(
+                              Icons.close,
+                              size: 35,
+                            ))
                       ],
                     ),
                   ),
@@ -232,7 +186,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        const Text(
                           "Help Clezz to understand the question types for your question paper",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 30),
@@ -240,7 +194,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .0135,
                         ),
-                        Text(
+                        const Text(
                           "You can define question types with complexity, mark and count to attend against each section and Clezz will generate your test paper accordingly.",
                           style: TextStyle(fontSize: 22, color: Colors.grey),
                         ),
@@ -257,7 +211,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 child: const Text(
                                   "EASY",
                                   style: TextStyle(
-                                      fontSize: 10, fontWeight: FontWeight.bold),
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
@@ -336,8 +291,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -396,8 +353,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -457,8 +416,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -517,8 +478,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -528,7 +491,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       total1().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -537,18 +501,18 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
                                           color: const Color(0xffC9C9C9))),
                                   child: Center(
-                                    child:    TextField(
+                                    child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       },
                                       controller: myControllerAttend1,
 
@@ -596,29 +560,26 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
                                           color: const Color(0xffAEAEAE))),
                                   child: TextField(
                                     onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.mpq1 = int.tryParse(e);
-                                      });
+                                      setState(() {});
                                     },
                                     controller: myControllerMPQ1,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
                                     ],
                                     textAlign: TextAlign.center,
-                                    //  maxLength: 2,
                                     decoration: InputDecoration(
                                       contentPadding: const EdgeInsets.all(0),
                                       hintText: "0",
-
-                                      //   counter: Text(""),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(5.0),
@@ -652,8 +613,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -663,7 +626,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       mPS1().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -686,8 +650,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -744,8 +710,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -755,10 +723,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                     child: TextField(
                                       onChanged: (e) {
-                                        setState(() {
-                                          // _con.quesPaper.medium2 =
-                                          //     int.tryParse(e);
-                                        });
+                                        setState(() {});
                                       },
                                       controller: myControllerMedium2,
                                       inputFormatters: [
@@ -805,8 +770,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -865,8 +832,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -876,7 +845,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       total2().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -885,8 +855,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -944,8 +916,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -953,9 +927,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   child: TextField(
                                     controller: myControllerMPQ2,
                                     onChanged: (e) {
-                                      setState(() {
-                                        // _con.quesPaper.hard2 = int.tryParse(e);
-                                      });
+                                      setState(() {});
                                     },
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(2),
@@ -1000,8 +972,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1011,7 +985,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       mPS2().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -1027,9 +1002,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                 flex: 2,
                                 child: InkWell(
                                   onTap: () {
-                                    setState(() {
-                                      // String hard3=myControllerHard3.text.isEmpty?
-                                    });
+                                    setState(() {});
                                   },
                                   child: const Text("Long answer",
                                       style: TextStyle(
@@ -1041,8 +1014,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1101,8 +1076,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1112,10 +1089,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
                                     child: TextField(
                                       onChanged: (String e) {
-                                        setState(() {
-                                          // _con.quesPaper.medium3 =
-                                          //     int.tryParse(e);
-                                        });
+                                        setState(() {});
                                       },
                                       controller: myControllerMedium3,
                                       inputFormatters: [
@@ -1162,8 +1136,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1222,8 +1198,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1233,7 +1211,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       total3().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -1242,8 +1221,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1301,8 +1282,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1357,8 +1340,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1368,7 +1353,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       mPS3().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -1391,8 +1377,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1449,15 +1437,15 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
                                           color: const Color(0xffE5DD92))),
                                   child: SizedBox(
-                                    // margin: const EdgeInsets.only(right: 30, left: 0),
-
                                     child: TextField(
                                       onChanged: (String e) {
                                         setState(() {});
@@ -1507,15 +1495,15 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
                                           color: const Color(0xffE5A3A3))),
                                   child: SizedBox(
-                                    // margin: const EdgeInsets.only(right: 30, left: 0),
-
                                     child: TextField(
                                       onChanged: (String e) {
                                         setState(() {});
@@ -1565,8 +1553,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1576,7 +1566,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       total4().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -1585,8 +1576,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1641,8 +1634,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width*.04,
-                                  height:  MediaQuery.of(context).size.height*.046,
+                                  width:
+                                      MediaQuery.of(context).size.width * .04,
+                                  height:
+                                      MediaQuery.of(context).size.height * .046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1695,8 +1690,10 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: MediaQuery.of(context).size.width*.04,
-                                    height:  MediaQuery.of(context).size.height*.046,
+                                    width:
+                                        MediaQuery.of(context).size.width * .04,
+                                    height: MediaQuery.of(context).size.height *
+                                        .046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1706,7 +1703,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                         child: Text(
                                       mPS4().toString(),
                                       style: const TextStyle(
-                                          fontSize: 18, color: Color(0xffB1BBC6)),
+                                          fontSize: 18,
+                                          color: Color(0xffB1BBC6)),
                                     ))),
                               ],
                             )),
@@ -1754,22 +1752,20 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                             ' questions and total marks can be scored as ',
                                         style: TextStyle(
                                             fontSize: 16, color: Colors.grey)),
-                                     TextSpan(
+                                    TextSpan(
                                         text: mPS().toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16,
                                             color: Colors.black)),
                                   ],
                                 ),
                               ),
-                              // Text(
-                              //     "You've selected 45 questions and total marks can be scored as 100")
                             )
                           ],
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.width * .01,
+                          height: MediaQuery.of(context).size.width * .0125,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -1783,8 +1779,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               InkWell(
                                 onTap: () {
                                   Navigator.pop(context, true);
-                                  //    print(_con.quesPaper.sections.length);
-                                  // _con.quesPaper.sections.forEach((element)=> print(element.easy));
+
                                   showDialog(
                                       context: context,
                                       builder: (ctx) => SemesterDetailsAlert(
@@ -1808,34 +1803,16 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  // String OWQA = total1().toString();
-                                  // int? oneWord = OWQA.isNotEmpty ? int.tryParse(
-                                  //     OWQA) : null;
-                                  // int? textToSend = myController.text.isNotEmpty
-                                  //     ? int.tryParse(myController.text)
-                                  //     : null;
                                   Navigator.pop(context, true);
-
 
                                   _con.quesPaper.sections = generateQuestions();
                                   Navigator.pushNamed(
                                       context, "/generatedQuestion",
                                       arguments: RouteArgument(
                                         param: generateQuestions(),
-
                                         control: _con,
-                                        // mpq:
-                                        //     int.tryParse(myControllerMPQ1.text),
-                                        // attend: int.tryParse(
-                                        //     myControllerAttend1.text)
+                                        other: mPS()
                                       ));
-
-                                  // showDialog(
-                                  //     context: context,
-                                  //     builder: (ctx) =>
-                                  //         GeneratedQuestions(
-                                  //           questionList: generateQuestions(),
-                                  //         ));
                                 },
                                 child: Container(
                                   width: 150,
@@ -2286,34 +2263,12 @@ class _AutomaticAlert extends State<AutomaticAlert> {
     }
     return a;
   }
+
   int mPS() {
     int mps = 0;
-   // int trial = 0;
-    mps=mPS1()+mPS2()+mPS3()+mPS4();
-    // if (myControllerAttend1.text.isNotEmpty) {
-    //   trial = 1 * int.parse(myControllerAttend1.text);
-    // }
-    // if (myControllerMPQ1.text.isNotEmpty) {
-    //   mps = trial * int.parse(myControllerMPQ1.text);
-    // }
-    // if (myControllerAttend2.text.isNotEmpty) {
-    //   trial = 1 * int.parse(myControllerAttend2.text);
-    // }
-    // if (myControllerMPQ2.text.isNotEmpty) {
-    //   mps = trial * int.parse(myControllerMPQ2.text);
-    // }
-    // if (myControllerAttend3.text.isNotEmpty) {
-    //   trial = 1 * int.parse(myControllerAttend3.text);
-    // }
-    // if (myControllerMPQ3.text.isNotEmpty) {
-    //   mps = trial * int.parse(myControllerMPQ3.text);
-    // }
-    // if (myControllerAttend4.text.isNotEmpty) {
-    //   trial = 1 * int.parse(myControllerAttend4.text);
-    // }
-    // if (myControllerMPQ4.text.isNotEmpty) {
-    //   mps = trial * int.parse(myControllerMPQ4.text);
-    // }
+    // int trial = 0;
+    mps = mPS1() + mPS2() + mPS3() + mPS4();
+
     return mps;
   }
 
@@ -2365,10 +2320,4 @@ class _AutomaticAlert extends State<AutomaticAlert> {
     return mps4;
   }
 
-  num totalfun() {
-    setState(() {
-      totalblah = total1() + total2() + total3() + total4();
-    });
-    return 0;
-  }
 }

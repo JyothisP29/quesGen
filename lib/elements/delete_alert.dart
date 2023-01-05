@@ -1,10 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-
-
 class DeleteAlert extends StatefulWidget {
-
   const DeleteAlert({
     Key? key,
   }) : super(key: key);
@@ -14,23 +10,18 @@ class DeleteAlert extends StatefulWidget {
 }
 
 class _DeleteAlert extends State<DeleteAlert> {
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:
-      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Align(
         alignment: const Alignment(0, 0),
         child: Material(
           shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
-            // padding: EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .4,
-            // height: MediaQuery.of(context).size.height * .23,
-            //  height:  MediaQuery.of(context).size.height*.6,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -54,7 +45,10 @@ class _DeleteAlert extends State<DeleteAlert> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: const Icon(Icons.close,size: 35,))
+                          child: const Icon(
+                            Icons.close,
+                            size: 35,
+                          ))
                     ],
                   ),
                 ),
@@ -74,7 +68,6 @@ class _DeleteAlert extends State<DeleteAlert> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * .03,
                       ),
-
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -85,13 +78,6 @@ class _DeleteAlert extends State<DeleteAlert> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             InkWell(
-                              // onTap: () {
-                              //   Navigator.pop(context, true);
-                              //   showDialog(
-                              //       context: context,
-                              //       builder: (ctx) =>
-                              //           SemesterDetailsAlert(controller: _con,));
-                              // },
                               child: Container(
                                 width: 150,
                                 height: 45,
@@ -100,21 +86,16 @@ class _DeleteAlert extends State<DeleteAlert> {
                                     color: Colors.grey),
                                 child: const Center(
                                     child: Text(
-                                      "Yes",
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    )),
+                                  "Yes",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20),
+                                )),
                               ),
                             ),
-                            const SizedBox(width: 30,),
+                            const SizedBox(
+                              width: 30,
+                            ),
                             InkWell(
-                              // onTap: () {
-                              //   Navigator.pop(context, true);
-                              //   showDialog(
-                              //       context: context,
-                              //       builder: (ctx) =>
-                              //           SemesterDetailsAlert(controller: _con,));
-                              // },
                               child: Container(
                                 width: 150,
                                 height: 45,
@@ -123,10 +104,10 @@ class _DeleteAlert extends State<DeleteAlert> {
                                     color: Colors.black),
                                 child: const Center(
                                     child: Text(
-                                      "No",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
+                                  "No",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                )),
                               ),
                             ),
                           ],
@@ -142,6 +123,4 @@ class _DeleteAlert extends State<DeleteAlert> {
       ),
     );
   }
-
-
 }

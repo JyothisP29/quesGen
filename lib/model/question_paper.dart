@@ -25,7 +25,7 @@ class QuestionPaper {
     this.hourOrMinute,
 
     this.sections,
- // this.manualSections,
+
     this.qsPaperstatus,
 
   );

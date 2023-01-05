@@ -5,8 +5,10 @@ import '../controller/home_controller.dart';
 
 class ExamNameAlert extends StatefulWidget {
   final HomeController controller;
+
   const ExamNameAlert({
-    Key? key, required this.controller,
+    Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -14,27 +16,26 @@ class ExamNameAlert extends StatefulWidget {
 }
 
 class _ExamNameAlert extends State<ExamNameAlert> {
-
   late HomeController _con;
 
-  bool addsub = false;
   String? durationtime;
 
   var time1 = [
     'Hours',
     'Minutes',
   ];
-  late TextEditingController examNameController,paperCodeController,timeController;
+  late TextEditingController examNameController,
+      paperCodeController,
+      timeController;
 
   @override
   void initState() {
     super.initState();
-    //  count=widget.routeArgument.other;
-    _con=widget.controller;
+
+    _con = widget.controller;
     examNameController = TextEditingController();
     paperCodeController = TextEditingController();
     timeController = TextEditingController();
-
   }
 
   @override
@@ -58,10 +59,8 @@ class _ExamNameAlert extends State<ExamNameAlert> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
-            // padding: EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .57,
             height: MediaQuery.of(context).size.height * .7,
-            //  height:  MediaQuery.of(context).size.height*.6,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -86,7 +85,10 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: const Icon(Icons.close,size: 35,))
+                            child: const Icon(
+                              Icons.close,
+                              size: 35,
+                            ))
                       ],
                     ),
                   ),
@@ -98,7 +100,7 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Let's begin with entering your question paper details",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 30),
@@ -106,8 +108,9 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .01,
                         ),
-                        Text(
-                          "This data will be shown on your question paper header",textAlign: TextAlign.start,
+                        const Text(
+                          "This data will be shown on your question paper header",
+                          textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 22, color: Colors.grey),
                         ),
                         SizedBox(
@@ -142,15 +145,13 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                     controller: examNameController,
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.questionPaperName=e;
-
+                                        _con.quesPaper.questionPaperName = e;
                                       });
                                     },
                                     cursorColor: Colors.black,
                                     textAlign: TextAlign.start,
                                     keyboardType: TextInputType.number,
                                     style: const TextStyle(
-
                                       fontSize: 20,
                                     ),
                                     decoration: InputDecoration(
@@ -158,19 +159,19 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                           "Enter the name of the examination",
                                       hintStyle: const TextStyle(
                                           color: Colors.grey, fontSize: 20),
-
-                                      contentPadding: const EdgeInsets.symmetric(
-                                          vertical: 0.0, horizontal: 20.0),
-
-                                      //fillColor: Colors.white,
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              vertical: 0.0, horizontal: 20.0),
                                       focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         borderSide: BorderSide(
                                           color: Colors.grey.shade600,
                                         ),
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         borderSide: BorderSide(
                                           color: Colors.grey.shade600,
                                           width: 1.0,
@@ -195,7 +196,6 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                     "Question paper code",
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
-
                                   ),
                                 ],
                               ),
@@ -211,13 +211,10 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                         BorderRadius.all(Radius.circular(10)),
                                   ),
                                   child: TextFormField(
-
                                     controller: paperCodeController,
-
                                     onChanged: (e) {
                                       setState(() {
-                                        _con.quesPaper.questionCode=e;
-
+                                        _con.quesPaper.questionCode = e;
                                       });
                                     },
                                     cursorColor: Colors.black,
@@ -228,24 +225,26 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                       fontSize: 20,
                                     ),
                                     decoration: InputDecoration(
-
                                       hintText:
                                           "Enter question paper code(optional)",
                                       hintStyle: const TextStyle(
                                           color: Colors.grey, fontSize: 20),
 
-                                      contentPadding: const EdgeInsets.symmetric(
-                                          vertical: 0.0, horizontal: 20.0),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              vertical: 0.0, horizontal: 20.0),
 
                                       //fillColor: Colors.white,
                                       focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         borderSide: BorderSide(
                                           color: Colors.grey.shade600,
                                         ),
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         borderSide: BorderSide(
                                           color: Colors.grey.shade600,
                                           width: 1.0,
@@ -284,22 +283,20 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                       margin: const EdgeInsets.only(
                                           left: 0, right: 0, bottom: 5, top: 5),
                                       decoration: const BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(10)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
                                       ),
                                       child: TextFormField(
                                         controller: timeController,
-
                                         onChanged: (e) {
                                           setState(() {
-                                            _con.quesPaper.timeDuration=int.parse(e);
-
+                                            _con.quesPaper.timeDuration =
+                                                int.parse(e);
                                           });
                                         },
                                         textAlign: TextAlign.center,
                                         keyboardType: TextInputType.number,
                                         style: const TextStyle(
-
                                           fontSize: 20,
                                         ),
                                         decoration: InputDecoration(
@@ -342,7 +339,8 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                       color: Colors.white,
                                       //background color of dropdown button
                                       border: Border.all(
-                                          color: Colors.grey.shade600, width: 1),
+                                          color: Colors.grey.shade600,
+                                          width: 1),
                                       //border of dropdown button
                                       borderRadius: BorderRadius.circular(
                                           10), //border raiuds of dropdown button
@@ -351,13 +349,11 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                       padding: const EdgeInsets.only(
                                           left: 15.0, right: 15),
                                       child: DropdownButton(
-
                                         hint: Text(
                                           "Hours",
                                           style: TextStyle(
-                                            fontSize: 18,
+                                              fontSize: 18,
                                               color: Colors.grey.shade500),
-
                                         ),
 
                                         // Initial Value
@@ -381,14 +377,14 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                           return DropdownMenuItem(
                                             value: items,
                                             child: Padding(
-                                              padding:
-                                                  const EdgeInsets.only(left: 5),
+                                              padding: const EdgeInsets.only(
+                                                  left: 5),
                                               child: Text(
                                                 maxLines: 4,
                                                 overflow: TextOverflow.ellipsis,
                                                 items,
-                                                style:
-                                                    const TextStyle(fontSize: 16),
+                                                style: const TextStyle(
+                                                    fontSize: 16),
                                               ),
                                             ),
                                           );
@@ -398,7 +394,8 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                         onChanged: (String? newValue) {
                                           setState(() {
                                             durationtime = newValue!;
-                                            _con.quesPaper.hourOrMinute=newValue;
+                                            _con.quesPaper.hourOrMinute =
+                                                newValue;
                                           });
                                         },
 
@@ -434,8 +431,9 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                   Navigator.pop(context, true);
                                   showDialog(
                                       context: context,
-                                      builder: (ctx) =>
-                                           SemesterDetailsAlert(controller: _con,));
+                                      builder: (ctx) => SemesterDetailsAlert(
+                                            controller: _con,
+                                          ));
                                 },
                                 child: Container(
                                   width: 150,
@@ -464,11 +462,5 @@ class _ExamNameAlert extends State<ExamNameAlert> {
         ),
       ),
     );
-  }
-
-  void togaddsub() {
-    setState(() {
-      addsub = !addsub;
-    });
   }
 }

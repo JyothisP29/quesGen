@@ -6,7 +6,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../../controller/home_controller.dart';
 import '../../elements/create_course_alert.dart';
-import '../../elements/exam_name_alert.dart';
+
 import '../../elements/hover_widget.dart';
 import '../../model/course.dart';
 import '../../elements/questionpapersection.dart';
@@ -20,12 +20,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends StateMVC<HomeView>
     with SingleTickerProviderStateMixin {
-
-
-  // final Widget child;
   @override
   void initState() {
-
     _con.getCourseList();
     _con.getQuestionPaperList();
     selectedCourse = _con.courseList.first;
@@ -35,7 +31,6 @@ class _HomeViewState extends StateMVC<HomeView>
   PageController pageController = PageController();
   int selectedCoursePage = 0;
 
-  // late Modules selectedModule;
   late HomeController _con;
   late Course selectedCourse;
 
@@ -145,76 +140,10 @@ class _HomeViewState extends StateMVC<HomeView>
                   child: Column(
                     children: [
                       Container(
-                        // height: MediaQuery.of(context).size.height * .31,
                         width: MediaQuery.of(context).size.width,
                         color: const Color(0XFFD9D9D9),
                         child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Container(
-                            //   color: Colors.blue,
-                            //   width: MediaQuery.of(context).size.width * .8,
-                            //   child: Column(
-                            //     children: [
-                            //       Row(
-                            //         children: const [Text("Your Courses")],
-                            //       ),
-                            //       SizedBox(
-                            //         width: MediaQuery.of(context).size.width * .8,
-                            //         height: 100,
-                            //         child: Row(
-                            //           mainAxisAlignment: MainAxisAlignment.center,
-                            //           mainAxisSize: MainAxisSize.max,
-                            //           children: [
-                            //             Container(
-                            //               width:
-                            //                   MediaQuery.of(context).size.height *
-                            //                       .02,
-                            //               height:
-                            //                   MediaQuery.of(context).size.width *
-                            //                       .03,
-                            //
-                            //               child: const Center(child: Icon(Icons.add)),
-                            //               decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
-                            //             ),
-                            //             Expanded(
-                            //               child: ListView.builder(
-                            //                   scrollDirection: Axis.horizontal,
-                            //                   itemCount: 5,
-                            //                   itemBuilder: (context, index) {
-                            //                     return Row(
-                            //                       mainAxisSize: MainAxisSize.max,
-                            //                       mainAxisAlignment:
-                            //                           MainAxisAlignment.center,
-                            //                       children: [
-                            //                         Container(
-                            //                           width:
-                            //                               MediaQuery.of(context)
-                            //                                       .size
-                            //                                       .width *
-                            //                                   .02,
-                            //                           height:
-                            //                               MediaQuery.of(context)
-                            //                                       .size
-                            //                                       .height *
-                            //                                   .03,
-                            //                           color: Colors.white,
-                            //                           child: const Center(
-                            //                               child: Text("fcyf")),
-                            //                         ),
-                            //                         const SizedBox(
-                            //                           width: 10,
-                            //                         )
-                            //                       ],
-                            //                     );
-                            //                   }),
-                            //             )
-                            //           ],
-                            //         ),
-                            //       )
-                            //     ],
-                            //   ),
-                            // ),
                             Container(
                               decoration: const BoxDecoration(
                                   // color: Colors.yellow.withOpacity(0.34),
@@ -226,8 +155,8 @@ class _HomeViewState extends StateMVC<HomeView>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height * .02,
+                                    height: MediaQuery.of(context).size.height *
+                                        .02,
                                   ),
                                   const Text(
                                     "Your Courses",
@@ -286,14 +215,17 @@ class _HomeViewState extends StateMVC<HomeView>
                                                 shrinkWrap: true,
                                                 physics: const ScrollPhysics(),
                                                 controller: scr,
-                                                itemCount: _con.courseList.length,
-                                                scrollDirection: Axis.horizontal,
+                                                itemCount:
+                                                    _con.courseList.length,
+                                                scrollDirection:
+                                                    Axis.horizontal,
                                                 separatorBuilder: (c, index) =>
                                                     const SizedBox(
                                                   width: 25,
                                                 ),
                                                 itemBuilder: (c, index) {
-                                                  Course course = _con.courseList
+                                                  Course course = _con
+                                                      .courseList
                                                       .elementAt(index);
                                                   bool isSelectedCourse =
                                                       selectedCourse == course;
@@ -302,7 +234,8 @@ class _HomeViewState extends StateMVC<HomeView>
                                                     return InkWell(
                                                       onTap: () {
                                                         setState(() {
-                                                          selectedCourse = course;
+                                                          selectedCourse =
+                                                              course;
                                                           selectedCoursePage =
                                                               index;
                                                           pageController.animateToPage(
@@ -316,7 +249,8 @@ class _HomeViewState extends StateMVC<HomeView>
                                                         });
                                                       },
                                                       child: Container(
-                                                        decoration: BoxDecoration(
+                                                        decoration:
+                                                            BoxDecoration(
                                                           boxShadow: [
                                                             BoxShadow(
                                                               color: isHovering
@@ -336,7 +270,8 @@ class _HomeViewState extends StateMVC<HomeView>
                                                                     ? 5
                                                                     : 0,
                                                             color: isSelectedCourse
-                                                                ? _con.courseList
+                                                                ? _con
+                                                                    .courseList
                                                                     .elementAt(
                                                                         index)
                                                                     .borderColor
@@ -352,7 +287,8 @@ class _HomeViewState extends StateMVC<HomeView>
                                                         ),
                                                         height:
                                                             size.height * 0.35,
-                                                        width: size.width * 0.127,
+                                                        width:
+                                                            size.width * 0.127,
                                                         child: Center(
                                                             child: Column(
                                                           mainAxisAlignment:
@@ -360,14 +296,15 @@ class _HomeViewState extends StateMVC<HomeView>
                                                                   .center,
                                                           children: [
                                                             Text(
-
                                                               _con.courseList
                                                                       .elementAt(
                                                                           index)
                                                                       .name ??
-                                                                  "",textAlign: TextAlign.center,
+                                                                  "",
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                               style: const TextStyle(
-
                                                                   fontSize: 24,
                                                                   fontWeight:
                                                                       FontWeight
@@ -381,7 +318,10 @@ class _HomeViewState extends StateMVC<HomeView>
                                                                       .elementAt(
                                                                           index)
                                                                       .university ??
-                                                                  "",textAlign: TextAlign.center,
+                                                                  "",
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                               style: const TextStyle(
                                                                   fontWeight:
                                                                       FontWeight
@@ -411,14 +351,14 @@ class _HomeViewState extends StateMVC<HomeView>
                       ),
                       Expanded(
                         child: SizedBox(
-                         // height: MediaQuery.of(context).size.height * .62,
+                          // height: MediaQuery.of(context).size.height * .62,
                           width: MediaQuery.of(context).size.width * .7,
                           child: Column(
-
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: MediaQuery.of(context).size.height * .07,
+                                height:
+                                    MediaQuery.of(context).size.height * .07,
                               ),
                               Row(
                                 children: const [
@@ -435,7 +375,6 @@ class _HomeViewState extends StateMVC<HomeView>
                                 height: 20,
                               ),
                               Expanded(
-
                                 child: PageView(
                                   onPageChanged: (index) {
                                     setState(() {
@@ -445,602 +384,25 @@ class _HomeViewState extends StateMVC<HomeView>
                                   pageSnapping: true,
                                   controller: pageController,
                                   children: [
-                                    GridView.builder(
-                                        gridDelegate:
-                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                                // mainAxisExtent: 339,
-                                                childAspectRatio: 1 / 2,
-                                                crossAxisSpacing: 15,
-                                                mainAxisSpacing: 15,
-                                                crossAxisCount: 4),
-                                        itemCount: _con.questionPaperList.length,
-                                        itemBuilder: (context, index) {
-                                          QuestionPaper paper=  _con.questionPaperList[index];
-                                          return QuestionPaperSection(controller: _con, paper: paper,);
-                                        }),
-                                    // GridView.builder(
-                                    //     gridDelegate:
-                                    //         const SliverGridDelegateWithFixedCrossAxisCount(
-                                    //             mainAxisExtent: 339,
-                                    //             childAspectRatio: 1 / 2,
-                                    //             crossAxisSpacing: 15,
-                                    //             mainAxisSpacing: 15,
-                                    //             crossAxisCount: 4),
-                                    //     itemCount: _con.questionPaperList.length,
-                                    //     itemBuilder: (context, index) {
-                                    //       return InkWell(
-                                    //         onTap: () {
-                                    //           _con.questionPaperList
-                                    //                       .elementAt(index)
-                                    //                       .qsPaperstatus ==
-                                    //                   0
-                                    //               ? showDialog(
-                                    //                   context: context,
-                                    //                   builder: (ctx) =>
-                                    //                       ExamNameAlert(
-                                    //                         controller: _con,
-                                    //                       ))
-                                    //               : Container();
-                                    //         },
-                                    //         child: Column(
-                                    //           children: [
-                                    //             Container(
-                                    //               height: 300,
-                                    //               decoration: BoxDecoration(
-                                    //                   border: _con.questionPaperList
-                                    //                               .elementAt(index)
-                                    //                               .qsPaperstatus ==
-                                    //                           0
-                                    //                       ? null
-                                    //                       : Border.all(
-                                    //                           color: Colors.black),
-                                    //                   color: _con.questionPaperList
-                                    //                               .elementAt(index)
-                                    //                               .qsPaperstatus ==
-                                    //                           0
-                                    //                       ? const Color(0xffF4F5F9)
-                                    //                       : Colors.green,
-                                    //                   borderRadius:
-                                    //                       BorderRadius.circular(
-                                    //                           10)),
-                                    //               child: HoverWidget(builder: (_) {
-                                    //                 // isHovering
-                                    //                 //     ?animatedController.forward():animatedController.reverse();
-                                    //                 return Stack(
-                                    //                   children: [
-                                    //                     Positioned(
-                                    //                       bottom: 0,
-                                    //                       child: AnimatedBuilder(
-                                    //                        animation: animation,
-                                    //                         builder: (c, wi) {
-                                    //                           // print(
-                                    //                           //     animation.value);
-                                    //                           return Container(
-                                    //                             decoration: const BoxDecoration(
-                                    //                                 color:
-                                    //                                     Colors.grey,
-                                    //                                 borderRadius: BorderRadius.only(
-                                    //                                     bottomLeft:
-                                    //                                         Radius.circular(
-                                    //                                             10),
-                                    //                                     bottomRight:
-                                    //                                         Radius.circular(
-                                    //                                             10))),
-                                    //                             width:
-                                    //                                 MediaQuery.of(
-                                    //                                         context)
-                                    //                                     .size
-                                    //                                     .width,
-                                    //                             height:
-                                    //                                 animation.value,
-                                    //                             child: Padding(
-                                    //                               padding:
-                                    //                                   const EdgeInsets
-                                    //                                           .only(
-                                    //                                       left:
-                                    //                                           10.0),
-                                    //                               child: Row(
-                                    //                                 mainAxisAlignment:
-                                    //                                     MainAxisAlignment
-                                    //                                         .start,
-                                    //                                 children: const [
-                                    //                                   Icon(
-                                    //                                     Icons.edit,
-                                    //                                     color: Colors
-                                    //                                         .white,
-                                    //                                   ),
-                                    //                                   SizedBox(
-                                    //                                     width: 10,
-                                    //                                   ),
-                                    //                                   Icon(
-                                    //                                       Icons
-                                    //                                           .copy,
-                                    //                                       color: Colors
-                                    //                                           .white),
-                                    //                                   SizedBox(
-                                    //                                     width: 10,
-                                    //                                   ),
-                                    //                                   Icon(
-                                    //                                       Icons
-                                    //                                           .delete,
-                                    //                                       color: Colors
-                                    //                                           .white)
-                                    //                                 ],
-                                    //                               ),
-                                    //                             ),
-                                    //                           );
-                                    //                         },
-                                    //                       ),
-                                    //                       // AnimatedContainer(
-                                    //                       //   decoration: const BoxDecoration(
-                                    //                       //       color: Colors
-                                    //                       //           .grey,
-                                    //                       //       borderRadius: BorderRadius
-                                    //                       //           .only(
-                                    //                       //           bottomLeft: Radius
-                                    //                       //               .circular(
-                                    //                       //               10),
-                                    //                       //           bottomRight:
-                                    //                       //           Radius
-                                    //                       //               .circular(
-                                    //                       //               10))),
-                                    //                       //   curve: Curves
-                                    //                       //       .linear,
-                                    //                       //   duration:
-                                    //                       //   const Duration(
-                                    //                       //       seconds:
-                                    //                       //       1),
-                                    //                       //   width: MediaQuery
-                                    //                       //       .of(
-                                    //                       //       context)
-                                    //                       //       .size
-                                    //                       //       .width,
-                                    //                       //   height: 50,
-                                    //                       //   child:
-                                    //                       //   Padding(
-                                    //                       //     padding: const EdgeInsets
-                                    //                       //         .only(
-                                    //                       //         left:
-                                    //                       //         10.0),
-                                    //                       //     child: Row(
-                                    //                       //       mainAxisAlignment:
-                                    //                       //       MainAxisAlignment
-                                    //                       //           .start,
-                                    //                       //       children: const [
-                                    //                       //         Icon(
-                                    //                       //           Icons
-                                    //                       //               .edit,
-                                    //                       //           color:
-                                    //                       //           Colors
-                                    //                       //               .white,
-                                    //                       //         ),
-                                    //                       //         SizedBox(
-                                    //                       //           width:
-                                    //                       //           10,
-                                    //                       //         ),
-                                    //                       //         Icon(
-                                    //                       //             Icons
-                                    //                       //                 .copy,
-                                    //                       //             color:
-                                    //                       //             Colors
-                                    //                       //                 .white),
-                                    //                       //         SizedBox(
-                                    //                       //           width:
-                                    //                       //           10,
-                                    //                       //         ),
-                                    //                       //         Icon(
-                                    //                       //             Icons
-                                    //                       //                 .delete,
-                                    //                       //             color:
-                                    //                       //             Colors
-                                    //                       //                 .white)
-                                    //                       //       ],
-                                    //                       //     ),
-                                    //                       //   ),
-                                    //                       // )
-                                    //                     ),
-                                    //                     Center(
-                                    //                         child: _con.questionPaperList
-                                    //                                     .elementAt(
-                                    //                                         index)
-                                    //                                     .qsPaperstatus ==
-                                    //                                 0
-                                    //                             ? const Icon(
-                                    //                                 Icons.add,
-                                    //                                 size: 125,
-                                    //                               )
-                                    //                             : const Text("")),
-                                    //                   ],
-                                    //                 );
-                                    //               }),
-                                    //             ),
-                                    //             const SizedBox(
-                                    //               height: 15,
-                                    //             ),
-                                    //             Row(
-                                    //               children: [
-                                    //                 _con.questionPaperList
-                                    //                             .elementAt(index)
-                                    //                             .qsPaperstatus ==
-                                    //                         0
-                                    //                     ? const Text("")
-                                    //                     : const Icon(Icons
-                                    //                         .drive_file_rename_outline),
-                                    //                 const SizedBox(
-                                    //                   width: 5,
-                                    //                 ),
-                                    //                 Text(
-                                    //                   _con.questionPaperList
-                                    //                       .elementAt(index)
-                                    //                       .questionPaperName,
-                                    //                   style: const TextStyle(
-                                    //                       fontWeight:
-                                    //                           FontWeight.bold,
-                                    //                       fontSize: 18),
-                                    //                 )
-                                    //               ],
-                                    //             )
-                                    //           ],
-                                    //         ),
-                                    //       );
-                                    //     }),
-                                    // GridView.builder(
-                                    //     gridDelegate:
-                                    //         const SliverGridDelegateWithFixedCrossAxisCount(
-                                    //             childAspectRatio: 1 / 4,
-                                    //             crossAxisSpacing: 15,
-                                    //             mainAxisSpacing: 15,
-                                    //             crossAxisCount: 4),
-                                    //     itemCount: _con.questionPaperList.length,
-                                    //     itemBuilder: (context, index) {
-                                    //       return InkWell(
-                                    //         onTap: () {
-                                    //           _con.questionPaperList
-                                    //                       .elementAt(index)
-                                    //                       .qsPaperstatus ==
-                                    //                   0
-                                    //               ? showDialog(
-                                    //                   context: context,
-                                    //                   builder: (ctx) =>
-                                    //                       ExamNameAlert(
-                                    //                         controller: _con,
-                                    //                       ))
-                                    //               : Container();
-                                    //         },
-                                    //         child: Column(
-                                    //           children: [
-                                    //             Container(
-                                    //               height: MediaQuery.of(context).size.height*.1,
-                                    //               decoration: BoxDecoration(
-                                    //                   border: _con.questionPaperList
-                                    //                               .elementAt(index)
-                                    //                               .qsPaperstatus ==
-                                    //                           0
-                                    //                       ? null
-                                    //                       : Border.all(
-                                    //                           color: Colors.black),
-                                    //                   color: _con.questionPaperList
-                                    //                               .elementAt(index)
-                                    //                               .qsPaperstatus ==
-                                    //                           0
-                                    //                       ? const Color(0xffF4F5F9)
-                                    //                       : Colors.white,
-                                    //                   borderRadius:
-                                    //                       BorderRadius.circular(
-                                    //                           10)),
-                                    //               child: HoverWidget(
-                                    //                   builder: (isHovering) {
-                                    //                 return Stack(
-                                    //                   children: [
-                                    //                     isHovering
-                                    //                         ? Visibility(
-                                    //                             visible: true,
-                                    //                             child: _con.questionPaperList
-                                    //                                         .elementAt(
-                                    //                                             index)
-                                    //                                         .qsPaperstatus ==
-                                    //                                     0
-                                    //                                 ? Container()
-                                    //                                 : Positioned(
-                                    //                                     bottom: 0,
-                                    //                                     child:
-                                    //                                         AnimatedContainer(
-                                    //                                       decoration: const BoxDecoration(
-                                    //                                           color: Colors
-                                    //                                               .grey,
-                                    //                                           borderRadius: BorderRadius.only(
-                                    //                                               bottomLeft: Radius.circular(10),
-                                    //                                               bottomRight: Radius.circular(10))),
-                                    //                                       curve: Curves
-                                    //                                           .linear,
-                                    //                                       duration: const Duration(
-                                    //                                           seconds:
-                                    //                                               1),
-                                    //                                       width: MediaQuery.of(
-                                    //                                               context)
-                                    //                                           .size
-                                    //                                           .width,
-                                    //                                       height:
-                                    //                                           50,
-                                    //                                       child:
-                                    //                                           Padding(
-                                    //                                         padding:
-                                    //                                             const EdgeInsets.only(left: 10.0),
-                                    //                                         child:
-                                    //                                             Row(
-                                    //                                           mainAxisAlignment:
-                                    //                                               MainAxisAlignment.start,
-                                    //                                           children: const [
-                                    //                                             Icon(
-                                    //                                               Icons.edit,
-                                    //                                               color: Colors.white,
-                                    //                                             ),
-                                    //                                             SizedBox(
-                                    //                                               width: 10,
-                                    //                                             ),
-                                    //                                             Icon(Icons.copy,
-                                    //                                                 color: Colors.white),
-                                    //                                             SizedBox(
-                                    //                                               width: 10,
-                                    //                                             ),
-                                    //                                             Icon(Icons.delete,
-                                    //                                                 color: Colors.white)
-                                    //                                           ],
-                                    //                                         ),
-                                    //                                       ),
-                                    //                                     )),
-                                    //                           )
-                                    //                         : Visibility(
-                                    //                             visible: false,
-                                    //                             child: Positioned(
-                                    //                                 bottom: 0,
-                                    //                                 child:
-                                    //                                     AnimatedContainer(
-                                    //                                   decoration: const BoxDecoration(
-                                    //                                       color: Colors
-                                    //                                           .grey,
-                                    //                                       borderRadius: BorderRadius.only(
-                                    //                                           bottomLeft: Radius.circular(
-                                    //                                               10),
-                                    //                                           bottomRight:
-                                    //                                               Radius.circular(10))),
-                                    //                                   curve: Curves
-                                    //                                       .linear,
-                                    //                                   duration:
-                                    //                                       const Duration(
-                                    //                                           seconds:
-                                    //                                               1),
-                                    //                                   width: MediaQuery.of(
-                                    //                                           context)
-                                    //                                       .size
-                                    //                                       .width,
-                                    //                                   height: 50,
-                                    //                                 )),
-                                    //                           ),
-                                    //                     Center(
-                                    //                         child: _con.questionPaperList
-                                    //                                     .elementAt(
-                                    //                                         index)
-                                    //                                     .qsPaperstatus ==
-                                    //                                 0
-                                    //                             ? const Icon(
-                                    //                                 Icons.add,
-                                    //                                 size: 125,
-                                    //                               )
-                                    //                             : const Text("")),
-                                    //                   ],
-                                    //                 );
-                                    //               }),
-                                    //             ),
-                                    //             const SizedBox(
-                                    //               height: 15,
-                                    //             ),
-                                    //             Row(
-                                    //               children: [
-                                    //                 _con.questionPaperList
-                                    //                             .elementAt(index)
-                                    //                             .qsPaperstatus ==
-                                    //                         0
-                                    //                     ? const Text("")
-                                    //                     : const Icon(Icons
-                                    //                         .drive_file_rename_outline),
-                                    //                 const SizedBox(
-                                    //                   width: 5,
-                                    //                 ),
-                                    //                 Text(
-                                    //                   _con.questionPaperList
-                                    //                       .elementAt(index)
-                                    //                       .questionPaperName,
-                                    //                   style: const TextStyle(
-                                    //                       fontWeight:
-                                    //                           FontWeight.bold,
-                                    //                       fontSize: 18),
-                                    //                 )
-                                    //               ],
-                                    //             )
-                                    //           ],
-                                    //         ),
-                                    //       );
-                                    //     }),
-                                    // GridView.builder(
-                                    //     gridDelegate:
-                                    //         const SliverGridDelegateWithFixedCrossAxisCount(
-                                    //             mainAxisExtent: 339,
-                                    //             childAspectRatio: 1 / 2,
-                                    //             crossAxisSpacing: 15,
-                                    //             mainAxisSpacing: 15,
-                                    //             crossAxisCount: 4),
-                                    //     itemCount: _con.questionPaperList.length,
-                                    //     itemBuilder: (context, index) {
-                                    //       return InkWell(
-                                    //         onTap: () {
-                                    //           _con.questionPaperList
-                                    //                       .elementAt(index)
-                                    //                       .qsPaperstatus ==
-                                    //                   0
-                                    //               ? showDialog(
-                                    //                   context: context,
-                                    //                   builder: (ctx) =>
-                                    //                       ExamNameAlert(
-                                    //                         controller: _con,
-                                    //                       ))
-                                    //               : Container();
-                                    //         },
-                                    //         child: Column(
-                                    //           children: [
-                                    //             Container(
-                                    //               height: 300,
-                                    //               decoration: BoxDecoration(
-                                    //                   border: _con.questionPaperList
-                                    //                               .elementAt(index)
-                                    //                               .qsPaperstatus ==
-                                    //                           0
-                                    //                       ? null
-                                    //                       : Border.all(
-                                    //                           color: Colors.black),
-                                    //                   color: _con.questionPaperList
-                                    //                               .elementAt(index)
-                                    //                               .qsPaperstatus ==
-                                    //                           0
-                                    //                       ? const Color(0xffF4F5F9)
-                                    //                       : Colors.white,
-                                    //                   borderRadius:
-                                    //                       BorderRadius.circular(
-                                    //                           10)),
-                                    //               child: HoverWidget(
-                                    //                   builder: (isHovering) {
-                                    //                 return Stack(
-                                    //                   children: [
-                                    //                     isHovering
-                                    //                         ? Visibility(
-                                    //                             visible: true,
-                                    //                             child: _con.questionPaperList
-                                    //                                         .elementAt(
-                                    //                                             index)
-                                    //                                         .qsPaperstatus ==
-                                    //                                     0
-                                    //                                 ? Container()
-                                    //                                 : Positioned(
-                                    //                                     bottom: 0,
-                                    //                                     child:
-                                    //                                         AnimatedContainer(
-                                    //                                       decoration: const BoxDecoration(
-                                    //                                           color: Colors
-                                    //                                               .grey,
-                                    //                                           borderRadius: BorderRadius.only(
-                                    //                                               bottomLeft: Radius.circular(10),
-                                    //                                               bottomRight: Radius.circular(10))),
-                                    //                                       curve: Curves
-                                    //                                           .linear,
-                                    //                                       duration: const Duration(
-                                    //                                           seconds:
-                                    //                                               1),
-                                    //                                       width: MediaQuery.of(
-                                    //                                               context)
-                                    //                                           .size
-                                    //                                           .width,
-                                    //                                       height:
-                                    //                                           50,
-                                    //                                       child:
-                                    //                                           Padding(
-                                    //                                         padding:
-                                    //                                             const EdgeInsets.only(left: 10.0),
-                                    //                                         child:
-                                    //                                             Row(
-                                    //                                           mainAxisAlignment:
-                                    //                                               MainAxisAlignment.start,
-                                    //                                           children: const [
-                                    //                                             Icon(
-                                    //                                               Icons.edit,
-                                    //                                               color: Colors.white,
-                                    //                                             ),
-                                    //                                             SizedBox(
-                                    //                                               width: 10,
-                                    //                                             ),
-                                    //                                             Icon(Icons.copy,
-                                    //                                                 color: Colors.white),
-                                    //                                             SizedBox(
-                                    //                                               width: 10,
-                                    //                                             ),
-                                    //                                             Icon(Icons.delete,
-                                    //                                                 color: Colors.white)
-                                    //                                           ],
-                                    //                                         ),
-                                    //                                       ),
-                                    //                                     )),
-                                    //                           )
-                                    //                         : Visibility(
-                                    //                             visible: false,
-                                    //                             child: Positioned(
-                                    //                                 bottom: 0,
-                                    //                                 child:
-                                    //                                     AnimatedContainer(
-                                    //                                   decoration: const BoxDecoration(
-                                    //                                       color: Colors
-                                    //                                           .grey,
-                                    //                                       borderRadius: BorderRadius.only(
-                                    //                                           bottomLeft: Radius.circular(
-                                    //                                               10),
-                                    //                                           bottomRight:
-                                    //                                               Radius.circular(10))),
-                                    //                                   curve: Curves
-                                    //                                       .linear,
-                                    //                                   duration:
-                                    //                                       const Duration(
-                                    //                                           seconds:
-                                    //                                               1),
-                                    //                                   width: MediaQuery.of(
-                                    //                                           context)
-                                    //                                       .size
-                                    //                                       .width,
-                                    //                                   height: 50,
-                                    //                                 )),
-                                    //                           ),
-                                    //                     Center(
-                                    //                         child: _con.questionPaperList
-                                    //                                     .elementAt(
-                                    //                                         index)
-                                    //                                     .qsPaperstatus ==
-                                    //                                 0
-                                    //                             ? const Icon(
-                                    //                                 Icons.add,
-                                    //                                 size: 125,
-                                    //                               )
-                                    //                             : const Text("")),
-                                    //                   ],
-                                    //                 );
-                                    //               }),
-                                    //             ),
-                                    //             const SizedBox(
-                                    //               height: 15,
-                                    //             ),
-                                    //             Row(
-                                    //               children: [
-                                    //                 _con.questionPaperList
-                                    //                             .elementAt(index)
-                                    //                             .qsPaperstatus ==
-                                    //                         0
-                                    //                     ? const Text("")
-                                    //                     : const Icon(Icons
-                                    //                         .drive_file_rename_outline),
-                                    //                 const SizedBox(
-                                    //                   width: 5,
-                                    //                 ),
-                                    //                 Text(
-                                    //                   _con.questionPaperList
-                                    //                       .elementAt(index)
-                                    //                       .questionPaperName,
-                                    //                   style: const TextStyle(
-                                    //                       fontWeight:
-                                    //                           FontWeight.bold,
-                                    //                       fontSize: 18),
-                                    //                 )
-                                    //               ],
-                                    //             )
-                                    //           ],
-                                    //         ),
-                                    //       );
-                                    //     }),
+                              GridView.builder(
+                                      gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                        // mainAxisExtent: 339,
+                                          childAspectRatio: 1 / 2,
+                                          crossAxisSpacing: 15,
+                                          mainAxisSpacing: 15,
+                                          crossAxisCount: 4),
+                                      itemCount:
+                                      _con.questionPaperList.length,
+                                      itemBuilder: (context, index) {
+                                        QuestionPaper paper =
+                                        _con.questionPaperList[index];
+                                        return QuestionPaperSection(
+                                          controller: _con,
+                                          paper: paper,
+                                        );
+                                      }),
+
                                   ],
                                 ),
                               ),

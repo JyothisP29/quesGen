@@ -1,4 +1,3 @@
-
 import 'package:enumresponsive/elements/hover_widget.dart';
 import 'package:enumresponsive/model/modules.dart';
 import 'package:flutter/foundation.dart';
@@ -28,8 +27,6 @@ class _Manual extends State<Manual> {
     if (widget.routeArgument?.param != null) {
       _con.questionList.addAll(widget.routeArgument!.param);
     }
-    // log(widget.routeArgument?.other?.toString() ?? "NULLLL");
-    // log(_con.quesPaper.sections?.length.toString()??"");
 
     _con.getModuleList();
     _con.getQuestionsList();
@@ -48,13 +45,11 @@ class _Manual extends State<Manual> {
   bool isChecked = false;
   bool visible = false;
 
-  // int currentModule = -1;
   late HomeController _con;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // key: _con.scaffoldKey,
         backgroundColor: Colors.black,
         body: Column(
           children: [
@@ -191,23 +186,21 @@ class _Manual extends State<Manual> {
                       Container(
                         color: Colors.black,
                         width: MediaQuery.of(context).size.width * .2,
-                       height: MediaQuery.of(context).size.height * .83,
+                        height: MediaQuery.of(context).size.height * .83,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
                               padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * .03,
-                                  right: MediaQuery.of(context).size.width *
-                                      .01),
+                                  left: MediaQuery.of(context).size.width * .03,
+                                  right:
+                                      MediaQuery.of(context).size.width * .01),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                            .06,
+                                    height: MediaQuery.of(context).size.height *
+                                        .06,
                                   ),
                                   const Text(
                                     "Difficulty Levels",
@@ -217,9 +210,8 @@ class _Manual extends State<Manual> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                            .02,
+                                    height: MediaQuery.of(context).size.height *
+                                        .02,
                                   ),
                                   Row(
                                     children: [
@@ -253,9 +245,8 @@ class _Manual extends State<Manual> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                            .01,
+                                    height: MediaQuery.of(context).size.height *
+                                        .01,
                                   ),
                                   Row(
                                     children: [
@@ -284,15 +275,13 @@ class _Manual extends State<Manual> {
                                       ),
                                       const Text(
                                         "Medium",
-                                        style:
-                                            TextStyle(color: Colors.orange),
+                                        style: TextStyle(color: Colors.orange),
                                       )
                                     ],
                                   ),
                                   SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                            .01,
+                                    height: MediaQuery.of(context).size.height *
+                                        .01,
                                   ),
                                   Row(
                                     children: [
@@ -326,23 +315,20 @@ class _Manual extends State<Manual> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height *
-                                            .02,
+                                    height: MediaQuery.of(context).size.height *
+                                        .02,
                                   ),
                                 ],
                               ),
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .08,
+                              height: MediaQuery.of(context).size.height * .08,
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * .03,
-                                  right: MediaQuery.of(context).size.width *
-                                      .01),
+                                  left: MediaQuery.of(context).size.width * .03,
+                                  right:
+                                      MediaQuery.of(context).size.width * .01),
                               child: const Text(
                                 "Question Types",
                                 style: TextStyle(
@@ -352,22 +338,19 @@ class _Manual extends State<Manual> {
                               ),
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .02,
+                              height: MediaQuery.of(context).size.height * .02,
                             ),
                             const Divider(
                               color: Colors.white,
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * .03,
-                                  right: MediaQuery.of(context).size.width *
-                                      .03),
+                                  left: MediaQuery.of(context).size.width * .03,
+                                  right:
+                                      MediaQuery.of(context).size.width * .03),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -411,22 +394,19 @@ class _Manual extends State<Manual> {
                               ),
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             const Divider(
                               color: Colors.white,
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * .03,
-                                  right: MediaQuery.of(context).size.width *
-                                      .03),
+                                  left: MediaQuery.of(context).size.width * .03,
+                                  right:
+                                      MediaQuery.of(context).size.width * .03),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -470,22 +450,19 @@ class _Manual extends State<Manual> {
                               ),
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             const Divider(
                               color: Colors.white,
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * .03,
-                                  right: MediaQuery.of(context).size.width *
-                                      .03),
+                                  left: MediaQuery.of(context).size.width * .03,
+                                  right:
+                                      MediaQuery.of(context).size.width * .03),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -529,22 +506,19 @@ class _Manual extends State<Manual> {
                               ),
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             const Divider(
                               color: Colors.white,
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * .03,
-                                  right: MediaQuery.of(context).size.width *
-                                      .03),
+                                  left: MediaQuery.of(context).size.width * .03,
+                                  right:
+                                      MediaQuery.of(context).size.width * .03),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -588,8 +562,7 @@ class _Manual extends State<Manual> {
                               ),
                             ),
                             SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * .01,
+                              height: MediaQuery.of(context).size.height * .01,
                             ),
                             const Divider(
                               color: Colors.white,
@@ -641,8 +614,10 @@ class _Manual extends State<Manual> {
                                                       decoration: BoxDecoration(
                                                           color: isSelected
                                                               ? Colors.black
-                                                              : (isHovering?Colors.grey:const Color(
-                                                              0xffD9D9D9)),
+                                                              : (isHovering
+                                                                  ? Colors.grey
+                                                                  : const Color(
+                                                                      0xffD9D9D9)),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(8)),
@@ -720,7 +695,8 @@ class _Manual extends State<Manual> {
                                     height: MediaQuery.of(context).size.height *
                                         .75,
                                     child: ListView.builder(
-                                      itemCount: selectedModule.allQuestionList.length,
+                                      itemCount:
+                                          selectedModule.allQuestionList.length,
                                       shrinkWrap: true,
                                       primary: false,
                                       itemBuilder: (context, index) {
@@ -836,7 +812,8 @@ class _Manual extends State<Manual> {
                                                           Radius.circular(3.0),
                                                         ),
                                                       ),
-                                                      value: _con.selectedQuestionList
+                                                      value: _con
+                                                          .selectedQuestionList
                                                           .contains(ques.qusId),
                                                       onChanged: (val) {
                                                         setState(() {
@@ -854,60 +831,19 @@ class _Manual extends State<Manual> {
                                                               5) {}
                                                           if (kDebugMode) {
                                                             print(_con
-                                                              .selectedQuestionList
-                                                              .length);
+                                                                .selectedQuestionList
+                                                                .length);
                                                           }
                                                           if (kDebugMode) {
                                                             print(widget
-                                                              .routeArgument
-                                                              ?.other);
+                                                                .routeArgument
+                                                                ?.other);
                                                           }
                                                         });
                                                       },
                                                     ),
                                                   ),
                                                 ),
-                                                // Padding(
-                                                //   padding: const EdgeInsets.only(
-                                                //     top: 18.0,
-                                                //     right: 20,
-                                                //   ),
-                                                //   child: Row(
-                                                //     children: [
-                                                //       Container(
-                                                //         decoration: BoxDecoration(
-                                                //             color: const Color(0xffD9D9D9),
-                                                //             borderRadius:
-                                                //                 BorderRadius.circular(
-                                                //                     8)),
-                                                //         width: 100,
-                                                //         height: 30,
-                                                //         child: const Center(
-                                                //             child: Text(
-                                                //           "Edit",
-                                                //           style:
-                                                //               TextStyle(fontSize: 12),
-                                                //         )),
-                                                //       ),
-                                                //       const SizedBox(
-                                                //         width: 10,
-                                                //       ),
-                                                //       Container(
-                                                //         decoration: BoxDecoration(
-                                                //             color: const Color(0xffD9D9D9),
-                                                //             borderRadius:
-                                                //                 BorderRadius.circular(
-                                                //                     8)),
-                                                //         child: const Center(
-                                                //             child: Text("Replace",
-                                                //                 style: TextStyle(
-                                                //                     fontSize: 12))),
-                                                //         width: 100,
-                                                //         height: 30,
-                                                //       ),
-                                                //     ],
-                                                //   ),
-                                                // )
                                               ],
                                             ),
                                           ),
@@ -917,9 +853,10 @@ class _Manual extends State<Manual> {
                                   ),
                                 ),
                                 Visibility(
-                                  visible: _con.selectedQuestionList.length == count1
-                                      ? true
-                                      : false,
+                                  visible:
+                                      _con.selectedQuestionList.length == count1
+                                          ? true
+                                          : false,
                                   child: Positioned(
                                       bottom: 0,
                                       child: AnimatedContainer(
@@ -945,7 +882,8 @@ class _Manual extends State<Manual> {
                                               InkWell(
                                                 onTap: () {
                                                   setState(() {
-                                                    _con.selectedQuestionList.clear();
+                                                    _con.selectedQuestionList
+                                                        .clear();
                                                   });
                                                 },
                                                 child: AnimatedContainer(
@@ -998,259 +936,7 @@ class _Manual extends State<Manual> {
                 ],
               ),
             ),
-            // SingleChildScrollView(
-            //   child: Container(
-            //     margin: EdgeInsets.only(
-            //         right: MediaQuery.of(context).size.width * .01),
-            //     color: const Color(0xffD9D9D9),
-            //     width: MediaQuery.of(context).size.width,
-            //     child: Column(
-            //       children: [
-            //         Container(
-            //           margin: const EdgeInsets.only(
-            //             top: 20,
-            //           ),
-            //           width: MediaQuery.of(context).size.width * .95,
-            //           height: MediaQuery.of(context).size.height * .25,
-            //           decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(10),
-            //               color: Colors.white),
-            //           child: Column(
-            //             children: [
-            //               Padding(
-            //                 padding: EdgeInsets.only(
-            //                     right: MediaQuery.of(context).size.width * .01,
-            //                     top: 20),
-            //                 child: Row(
-            //                   mainAxisAlignment: MainAxisAlignment.end,
-            //                   children: [
-            //                     Container(
-            //                       decoration: BoxDecoration(
-            //                           color: const Color(0xffD9D9D9),
-            //                           borderRadius: BorderRadius.circular(5)),
-            //                       width: 40,
-            //                       height: 40,
-            //                       child: const Icon(Icons.edit),
-            //                     ),
-            //                   ],
-            //                 ),
-            //               ),
-            //               const Text(
-            //                 "ABC ARTS & SCIENCE COLLEGE ERNAKULAM",
-            //                 style: TextStyle(
-            //                     fontSize: 30, fontWeight: FontWeight.bold),
-            //               ),
-            //               SizedBox(
-            //                 height: MediaQuery.of(context).size.height * .015,
-            //               ),
-            //               const Text(
-            //                 "V th Semester BCA. Degree(Internal)",
-            //                 style: TextStyle(
-            //                   fontSize: 22,
-            //                 ),
-            //               ),
-            //               SizedBox(
-            //                 height: MediaQuery.of(context).size.height * .015,
-            //               ),
-            //               Padding(
-            //                 padding: EdgeInsets.only(
-            //                     left: MediaQuery.of(context).size.width * .04,
-            //                     right: MediaQuery.of(context).size.width * .04),
-            //                 child: Row(
-            //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //                   children: [
-            //                     const Expanded(
-            //                         child: Text("Time: 2 Hours",
-            //                             style: TextStyle(
-            //                               fontSize: 22,
-            //                             ))),
-            //                     const Expanded(
-            //                         child: Center(
-            //                             child: Text(
-            //                                 "1A11BCA: INFORMATICS FOR COMPUTER",
-            //                                 style: TextStyle(
-            //                                   fontSize: 22,
-            //                                 )))),
-            //                     Expanded(
-            //                         child: Row(
-            //                           mainAxisAlignment: MainAxisAlignment.end,
-            //                           children: [
-            //                             const Text("Mark:40",
-            //                                 style: TextStyle(
-            //                                   fontSize: 22,
-            //                                 )),
-            //                           ],
-            //                         ))
-            //                   ],
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //         Container(
-            //           margin: const EdgeInsets.only(
-            //             top: 20,
-            //           ),
-            //           width: MediaQuery.of(context).size.width * .95,
-            //           height: MediaQuery.of(context).size.height * .22,
-            //           decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(10),
-            //               color: Colors.white),
-            //           child: Padding(
-            //             padding: EdgeInsets.only(
-            //               left: MediaQuery.of(context).size.width * .01,
-            //               right: MediaQuery.of(context).size.width * .01,
-            //               top: MediaQuery.of(context).size.height * .02,
-            //             ),
-            //             child: Column(
-            //               children: [
-            //                 Row(
-            //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //                   children: [
-            //                     Container(
-            //                       width: 250,
-            //                     ),
-            //                     const Text(
-            //                       "SECTION - A",
-            //                       style: TextStyle(fontSize: 24),
-            //                     ),
-            //                     Padding(
-            //                       padding: const EdgeInsets.only(
-            //                           left: 0.0, right: 0, top: 0),
-            //                       child: Row(
-            //                         children: [
-            //                           Container(
-            //                             width: 120,
-            //                             height: 35,
-            //                             decoration: BoxDecoration(
-            //                                 borderRadius:
-            //                                 BorderRadius.circular(8),
-            //                                 border: Border.all(
-            //                                     color:
-            //                                     const Color(0xffAEAEAE))),
-            //                             child: Center(
-            //                               child: Text(
-            //                                 "Refresh",
-            //                                 style: TextStyle(
-            //                                     color: Colors.grey.shade700,
-            //                                     fontSize: 18),
-            //                               ),
-            //                             ),
-            //                           ),
-            //                           const SizedBox(
-            //                             width: 20,
-            //                           ),
-            //                           Container(
-            //                             width: 120,
-            //                             height: 35,
-            //                             decoration: BoxDecoration(
-            //                                 borderRadius:
-            //                                 BorderRadius.circular(8),
-            //                                 border: Border.all(
-            //                                     color:
-            //                                     const Color(0xffAEAEAE))),
-            //                             child: Center(
-            //                               child: Text(
-            //                                 "Shuffle",
-            //                                 style: TextStyle(
-            //                                     color: Colors.grey.shade700,
-            //                                     fontSize: 18),
-            //                               ),
-            //                             ),
-            //                           )
-            //                         ],
-            //                       ),
-            //                     )
-            //                   ],
-            //                 ),
-            //                 SizedBox(
-            //                   height: MediaQuery.of(context).size.height * .06,
-            //                 ),
-            //                 Container(
-            //                   width: MediaQuery.of(context).size.width * .4,
-            //                   height: 70,
-            //                   decoration: BoxDecoration(
-            //                       borderRadius: BorderRadius.circular(10),
-            //                       border: Border.all(
-            //                           color: const Color(0xffAEAEAE))),
-            //                   child: Center(
-            //                     child: TextFormField(
-            //                       textAlign: TextAlign.center,
-            //                       style: const TextStyle(
-            //                         color: Color(0xff5668A1),
-            //                         fontSize: 22,
-            //                       ),
-            //                       decoration: InputDecoration(
-            //                         hintText:
-            //                         "Answer the Four question. Each questions carries 1 mark",
-            //                         hintStyle:
-            //                         const TextStyle(color: Colors.black),
-            //
-            //                         // contentPadding: const EdgeInsets.symmetric(
-            //                         //     vertical: 0.0, horizontal: 10.0),
-            //
-            //                         //fillColor: Colors.white,
-            //                         focusedBorder: OutlineInputBorder(
-            //                           borderRadius: BorderRadius.circular(5.0),
-            //                           borderSide: const BorderSide(
-            //                             color: Colors.white,
-            //                           ),
-            //                         ),
-            //                         enabledBorder: OutlineInputBorder(
-            //                           borderRadius: BorderRadius.circular(5.0),
-            //                           borderSide: const BorderSide(
-            //                             color: Colors.white,
-            //                             width: 0.0,
-            //                           ),
-            //                         ),
-            //                       ),
-            //                     ),
-            //                   ),
-            //                 )
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         Container(
-            //           margin: const EdgeInsets.only(
-            //             top: 20,
-            //           ),
-            //           width: MediaQuery.of(context).size.width * .95,
-            //           decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(10),
-            //               color: Colors.white),
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                 width: 100,
-            //                 color: Colors.green,
-            //                 child: Center(child: Text("1")),
-            //               ),
-            //               Text("Hardwere refers to..."),
-            //               Row(children: [
-            //                 Container(width:100,height: 35,color: Colors.grey, child: Center(child: Text("Edit")),),
-            //                 Container(width:100,height: 35,color: Colors.grey,child: Center(child: Text("Replace")),)
-            //               ],)
-            //             ],
-            //           ),
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // )
           ],
         ));
   }
-
-// questionSelect(index) {
-//   if (_con.allQuestionList.elementAt(index).isChecked == true) {
-//     setState(() {
-//       _con.allQuestionList.elementAt(index).isChecked == false;
-//     });
-//   } else {
-//     setState(() {
-//       _con.allQuestionList.elementAt(index).isChecked == true;
-//     });
-//   }
-// }
 }

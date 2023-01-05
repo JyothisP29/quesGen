@@ -15,9 +15,10 @@ class Edit extends StatefulWidget {
   @override
   _Manual createState() => _Manual();
 }
-
+int? _character;
 class _Manual extends State<Edit> {
   int count = 0;
+
   String? answer;
   PageController pageController = PageController();
   final List<String> _editList = ["Objective", "True/False", "Others"];
@@ -48,15 +49,6 @@ class _Manual extends State<Edit> {
   }
 
   late Modules selectedModule;
-
-  //PageController pageController = PageController();
-  bool easySelected = false;
-  bool mediumSelected = false;
-  bool hardSelected = false;
-  bool isChecked = false;
-  bool visible = false;
-
-  // int currentModule = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +130,6 @@ class _Manual extends State<Edit> {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        // print(index);
                                         setState(() {
                                           selectedstatus = index;
                                           pageController.animateToPage(
@@ -147,9 +138,6 @@ class _Manual extends State<Edit> {
                                                   microseconds: 200),
                                               curve: Curves.bounceInOut);
                                         });
-
-                                        // print(
-                                        //     "selectedstatus" + selectedstatus.toString());
                                       },
                                       child: Container(
                                         width: 100,
@@ -178,29 +166,6 @@ class _Manual extends State<Edit> {
                               );
                             },
                           ),
-
-                          // const SizedBox(
-                          //   width: 10,
-                          // ),
-                          // Container(
-                          //   width: 100,
-                          //   height: 40,
-                          //   decoration: BoxDecoration(
-                          //       color: const Color(0xffD9D9D9),
-                          //       borderRadius: BorderRadius.circular(6)),
-                          //   child: const Center(child: Text("True/False")),
-                          // ),
-                          // const SizedBox(
-                          //   width: 10,
-                          // ),
-                          // Container(
-                          //   width: 100,
-                          //   height: 40,
-                          //   decoration: BoxDecoration(
-                          //       color: const Color(0xffD9D9D9),
-                          //       borderRadius: BorderRadius.circular(6)),
-                          //   child: const Center(child: Text("Others")),
-                          // ),
                         ],
                       ),
                     ),
@@ -279,12 +244,8 @@ class _Manual extends State<Edit> {
                                                   color: Colors.white,
                                                 ),
                                                 child: TextField(
-                                                  // inputFormatters: [
-                                                  //   LengthLimitingTextInputFormatter(2),
-                                                  // ],
                                                   maxLines: 30,
                                                   textAlign: TextAlign.start,
-                                                  //  maxLength: 2,
                                                   decoration: InputDecoration(
                                                     contentPadding:
                                                         const EdgeInsets.all(
@@ -292,7 +253,6 @@ class _Manual extends State<Edit> {
                                                     hintText:
                                                         "Write your question...",
 
-                                                    //   counter: Text(""),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                             borderRadius:
@@ -338,83 +298,6 @@ class _Manual extends State<Edit> {
                                             ],
                                           ),
                                         ),
-                                        // const SizedBox(
-                                        //   height: 30,
-                                        // ),
-                                        // SizedBox(
-                                        //   width:
-                                        //   MediaQuery.of(context).size.width *
-                                        //       .93,
-                                        //   height: ,
-                                        //   child: Row(
-                                        //     children: [
-                                        //       Container(
-                                        //         color: Colors.green,
-                                        //         child: const Center(
-                                        //             child: Text("ans")),
-                                        //       ),
-                                        //       Container(
-                                        //         width: MediaQuery.of(context)
-                                        //                 .size
-                                        //                 .width *
-                                        //             .918,
-                                        //         color: Colors.white,
-                                        //         child: TextField(
-                                        //           // inputFormatters: [
-                                        //           //   LengthLimitingTextInputFormatter(2),
-                                        //           // ],
-                                        //
-                                        //           textAlign: TextAlign.start,
-                                        //           //  maxLength: 2,
-                                        //           decoration: InputDecoration(
-                                        //             contentPadding:
-                                        //             const EdgeInsets.all(0),
-                                        //             hintText:
-                                        //             "Write your answers...",
-                                        //
-                                        //             //   counter: Text(""),
-                                        //             focusedBorder:
-                                        //             OutlineInputBorder(
-                                        //                 borderRadius:
-                                        //                 BorderRadius
-                                        //                     .circular(15.0),
-                                        //                 borderSide:
-                                        //                 const BorderSide(
-                                        //                     color: Colors
-                                        //                         .white,
-                                        //                     width: 0)),
-                                        //             disabledBorder:
-                                        //             OutlineInputBorder(
-                                        //                 borderRadius:
-                                        //                 BorderRadius
-                                        //                     .circular(15.0),
-                                        //                 borderSide:
-                                        //                 const BorderSide(
-                                        //                     color: Colors
-                                        //                         .white,
-                                        //                     width: 0)),
-                                        //             enabledBorder:
-                                        //             OutlineInputBorder(
-                                        //                 borderRadius:
-                                        //                 BorderRadius
-                                        //                     .circular(15.0),
-                                        //                 borderSide:
-                                        //                 const BorderSide(
-                                        //                     color: Colors
-                                        //                         .white,
-                                        //                     width: 0)),
-                                        //             hintStyle: const TextStyle(
-                                        //               fontSize: 24,
-                                        //               color: Color(0xffB1BBC6),
-                                        //             ),
-                                        //             // fillColor:  Colors.white,
-                                        //             filled: true,
-                                        //           ),
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ),
-                                        // ),
                                         const SizedBox(
                                           height: 30,
                                         ),
@@ -538,15 +421,33 @@ class _Manual extends State<Edit> {
                                                                       children: [
                                                                         Padding(
                                                                           padding:
-                                                                              const EdgeInsets.only(top: 20.0),
+                                                                               EdgeInsets.only(top: 18.0),
                                                                           child:
-                                                                              Text(
-                                                                            index.toString(),
-                                                                            style: const TextStyle(
-                                                                                fontSize: 22,
-                                                                                fontWeight: FontWeight.bold,
-                                                                                color: Colors.white),
+                                                                          Radio(
+                                                                            activeColor: Colors.white,
+                                                                           hoverColor: Colors.white70,
+                                                                            fillColor:
+                                                                            MaterialStateColor.resolveWith((states) => Colors.white),
+                                                                            value: index,
+                                                                            groupValue: _character,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              setState(
+                                                                                      () {
+                                                                                        _character = value;
+                                                                                  });
+                                                                            },
                                                                           ),
+
+
+
+                                                                          //     Text(
+                                                                          //   index.toString(),
+                                                                          //   style: const TextStyle(
+                                                                          //       fontSize: 22,
+                                                                          //       fontWeight: FontWeight.bold,
+                                                                          //       color: Colors.white),
+                                                                          // ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -707,14 +608,9 @@ class _Manual extends State<Edit> {
                                                                             22),
                                                                 controller:
                                                                     optionController,
-                                                                // inputFormatters: [
-                                                                //   LengthLimitingTextInputFormatter(2),
-                                                                // ],
-
                                                                 textAlign:
                                                                     TextAlign
                                                                         .start,
-                                                                //  maxLength: 2,
                                                                 decoration:
                                                                     InputDecoration(
                                                                   contentPadding:
@@ -723,7 +619,6 @@ class _Manual extends State<Edit> {
                                                                   hintText:
                                                                       "Write your option...",
 
-                                                                  //   counter: Text(""),
                                                                   focusedBorder: OutlineInputBorder(
                                                                       borderRadius:
                                                                           BorderRadius.circular(
@@ -893,12 +788,8 @@ class _Manual extends State<Edit> {
                                                   color: Colors.white,
                                                 ),
                                                 child: TextField(
-                                                  // inputFormatters: [
-                                                  //   LengthLimitingTextInputFormatter(2),
-                                                  // ],
                                                   maxLines: 30,
                                                   textAlign: TextAlign.start,
-                                                  //  maxLength: 2,
                                                   decoration: InputDecoration(
                                                     contentPadding:
                                                         const EdgeInsets.all(
@@ -906,7 +797,6 @@ class _Manual extends State<Edit> {
                                                     hintText:
                                                         "Write your answers...",
 
-                                                    //   counter: Text(""),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                             borderRadius:
@@ -1059,12 +949,8 @@ class _Manual extends State<Edit> {
                                                   color: Colors.white,
                                                 ),
                                                 child: TextField(
-                                                  // inputFormatters: [
-                                                  //   LengthLimitingTextInputFormatter(2),
-                                                  // ],
                                                   maxLines: 30,
                                                   textAlign: TextAlign.start,
-                                                  //  maxLength: 2,
                                                   decoration: InputDecoration(
                                                     contentPadding:
                                                         const EdgeInsets.all(
@@ -1072,7 +958,6 @@ class _Manual extends State<Edit> {
                                                     hintText:
                                                         "Write your question...",
 
-                                                    //   counter: Text(""),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                             borderRadius:
@@ -1295,24 +1180,6 @@ class _Manual extends State<Edit> {
                                                                   },
                                                                 ),
                                                               ),
-                                                              // Icon(Icons.radio),
-                                                              // Text(
-                                                              //   "True",
-                                                              //   style: TextStyle(
-                                                              //       color: Colors
-                                                              //           .black,
-                                                              //       fontSize:
-                                                              //           22),
-                                                              // ),
-                                                              // Icon(Icons.radio),
-                                                              // Text(
-                                                              //   "False",
-                                                              //   style: TextStyle(
-                                                              //       color: Colors
-                                                              //           .black,
-                                                              //       fontSize:
-                                                              //           22),
-                                                              // )
                                                             ],
                                                           )),
                                                     ],
@@ -1378,12 +1245,8 @@ class _Manual extends State<Edit> {
                                                   color: Colors.white,
                                                 ),
                                                 child: TextField(
-                                                  // inputFormatters: [
-                                                  //   LengthLimitingTextInputFormatter(2),
-                                                  // ],
                                                   maxLines: 30,
                                                   textAlign: TextAlign.start,
-                                                  //  maxLength: 2,
                                                   decoration: InputDecoration(
                                                     contentPadding:
                                                         const EdgeInsets.all(
@@ -1544,12 +1407,8 @@ class _Manual extends State<Edit> {
                                                   color: Colors.white,
                                                 ),
                                                 child: TextField(
-                                                  // inputFormatters: [
-                                                  //   LengthLimitingTextInputFormatter(2),
-                                                  // ],
                                                   maxLines: 30,
                                                   textAlign: TextAlign.start,
-                                                  //  maxLength: 2,
                                                   decoration: InputDecoration(
                                                     contentPadding:
                                                         const EdgeInsets.all(
@@ -1659,12 +1518,8 @@ class _Manual extends State<Edit> {
                                                   color: Colors.white,
                                                 ),
                                                 child: TextField(
-                                                  // inputFormatters: [
-                                                  //   LengthLimitingTextInputFormatter(2),
-                                                  // ],
                                                   maxLines: 30,
                                                   textAlign: TextAlign.start,
-                                                  //  maxLength: 2,
                                                   decoration: InputDecoration(
                                                     contentPadding:
                                                         const EdgeInsets.all(
@@ -1775,17 +1630,5 @@ class _Manual extends State<Edit> {
             ),
           ],
         ));
-  }
-
-  questionSelect(index) {
-    if (_con.allQuestionList.elementAt(index).isChecked == true) {
-      setState(() {
-        _con.allQuestionList.elementAt(index).isChecked == false;
-      });
-    } else {
-      setState(() {
-        _con.allQuestionList.elementAt(index).isChecked == true;
-      });
-    }
   }
 }

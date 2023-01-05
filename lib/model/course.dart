@@ -11,22 +11,3 @@ class Course {
 
   Course(this.id, this.name, this.university, this.color, this.borderColor);
 }
-
-
-
-
-
-// class Questions{
-//   int qusId;
-//   String? question;
-//   bool isChecked;
-//   int diffLevel;
-//   Questions(
-//       this.qusId,
-//       this.question,
-//       this.isChecked,
-//       this.diffLevel
-//       );
-//
-//
-// }
