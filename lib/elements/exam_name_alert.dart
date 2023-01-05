@@ -96,26 +96,19 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                         right: MediaQuery.of(context).size.width * .04,
                         bottom: MediaQuery.of(context).size.height * .02),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: const [
-                            Text(
-                              "Let's begin with entering your question paper details",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 30),
-                            ),
-                          ],
+                        Text(
+                          "Let's begin with entering your question paper details",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .01,
                         ),
-                        Row(
-                          children: const [
-                            Text(
-                              "This data will be shown on your question paper header",
-                              style: TextStyle(fontSize: 22, color: Colors.grey),
-                            ),
-                          ],
+                        Text(
+                          "This data will be shown on your question paper header",textAlign: TextAlign.start,
+                          style: TextStyle(fontSize: 22, color: Colors.grey),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .06,

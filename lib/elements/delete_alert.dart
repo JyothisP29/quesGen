@@ -29,7 +29,7 @@ class _DeleteAlert extends State<DeleteAlert> {
           child: Container(
             // padding: EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .4,
-            height: MediaQuery.of(context).size.height * .23,
+            // height: MediaQuery.of(context).size.height * .23,
             //  height:  MediaQuery.of(context).size.height*.6,
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -64,15 +64,12 @@ class _DeleteAlert extends State<DeleteAlert> {
                       right: MediaQuery.of(context).size.width * .04,
                       bottom: MediaQuery.of(context).size.height * .01),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: const [
-                          Text(
-                            "Do you want to delete this question paper?",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ),
-                        ],
+                      const Text(
+                        "Do you want to delete this question paper?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * .03,
@@ -109,7 +106,7 @@ class _DeleteAlert extends State<DeleteAlert> {
                                     )),
                               ),
                             ),
-                            SizedBox(width: 30,),
+                            const SizedBox(width: 30,),
                             InkWell(
                               // onTap: () {
                               //   Navigator.pop(context, true);

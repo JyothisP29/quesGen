@@ -144,25 +144,17 @@ class _ManualAlert extends State<ManualAlert> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          children: const [
-                            Text(
-                              "Select the question types for your test paper",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 30),
-                            ),
-                          ],
+                        Text(
+                          "Select the question types for your test paper",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .0135,
                         ),
-                        Row(
-                          children: const [
-                            Text(
-                              "You can add the questions yourself from the Clezz question library in the next section.",
-                              style: TextStyle(fontSize: 22, color: Colors.grey),
-                            ),
-                          ],
+                        Text(
+                          "You can add the questions yourself from the Clezz question library in the next section.",
+                          style: TextStyle(fontSize: 22, color: Colors.grey),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .05,

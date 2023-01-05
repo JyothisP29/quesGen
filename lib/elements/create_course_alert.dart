@@ -95,14 +95,10 @@ class _CreateCourse extends State<CreateCourse> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          children: const [
-                            Text(
-                              "Select a course to create your question paper",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 30),
-                            ),
-                          ],
+                        Text(
+                          "Select a course to create your question paper",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .01,

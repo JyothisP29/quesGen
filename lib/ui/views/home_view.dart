@@ -360,12 +360,14 @@ class _HomeViewState extends StateMVC<HomeView>
                                                                   .center,
                                                           children: [
                                                             Text(
+
                                                               _con.courseList
                                                                       .elementAt(
                                                                           index)
                                                                       .name ??
-                                                                  "",
+                                                                  "",textAlign: TextAlign.center,
                                                               style: const TextStyle(
+
                                                                   fontSize: 24,
                                                                   fontWeight:
                                                                       FontWeight
@@ -379,7 +381,7 @@ class _HomeViewState extends StateMVC<HomeView>
                                                                       .elementAt(
                                                                           index)
                                                                       .university ??
-                                                                  "",
+                                                                  "",textAlign: TextAlign.center,
                                                               style: const TextStyle(
                                                                   fontWeight:
                                                                       FontWeight

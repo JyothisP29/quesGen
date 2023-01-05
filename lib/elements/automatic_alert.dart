@@ -232,25 +232,17 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          children: const [
-                            Text(
-                              "Help Clezz to understand the question types for your question paper",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 30),
-                            ),
-                          ],
+                        Text(
+                          "Help Clezz to understand the question types for your question paper",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .0135,
                         ),
-                        Row(
-                          children: const [
-                            Text(
-                              "You can define question types with complexity, mark and count to attend against each\nsection and Clezz will generate your test paper accordingly.",
-                              style: TextStyle(fontSize: 22, color: Colors.grey),
-                            ),
-                          ],
+                        Text(
+                          "You can define question types with complexity, mark and count to attend against each section and Clezz will generate your test paper accordingly.",
+                          style: TextStyle(fontSize: 22, color: Colors.grey),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .05,
@@ -344,8 +336,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -404,8 +396,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -465,8 +457,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -525,8 +517,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -545,8 +537,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -604,8 +596,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -660,8 +652,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -694,8 +686,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -752,8 +744,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -813,8 +805,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -873,8 +865,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -893,8 +885,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -952,8 +944,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1008,8 +1000,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1049,8 +1041,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1109,8 +1101,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1170,8 +1162,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1230,8 +1222,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1250,8 +1242,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1309,8 +1301,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1365,8 +1357,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1399,8 +1391,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1457,8 +1449,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1515,8 +1507,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1573,8 +1565,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),
@@ -1593,8 +1585,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1649,8 +1641,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 75,
-                                  height: 45,
+                                  width: MediaQuery.of(context).size.width*.04,
+                                  height:  MediaQuery.of(context).size.height*.046,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
@@ -1703,8 +1695,8 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 45,
+                                    width: MediaQuery.of(context).size.width*.04,
+                                    height:  MediaQuery.of(context).size.height*.046,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xffF1F1F1),

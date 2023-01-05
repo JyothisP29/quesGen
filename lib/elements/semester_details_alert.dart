@@ -97,33 +97,17 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          children: const [
-                            Text(
-                              "Select semester, subject & modules for your question paper",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 30),
-                            ),
-                          ],
+                        Text(
+                          "Select semester, subject & modules for your question paper",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .01,
                         ),
-                        Row(
-                          children: const [
-                            Text(
-                              "Select the modules and subject here and you can even let Clezz to generate questions",
-                              style: TextStyle(fontSize: 22, color: Colors.grey),
-                            ),
-
-                            // Text(
-                            //   "Select the modules and subject here and you can even let Clezz to generate questions automatically\nby selecting Automatic mode while continuing.",
-                            //   style: TextStyle(
-                            //       fontWeight: FontWeight.bold,
-                            //       fontSize: 20,
-                            //       color: Colors.grey),
-                            // ),
-                          ],
+                        Text(
+                          "Select the modules and subject here and you can even let Clezz to generate questions automatically by selecting",
+                          style: TextStyle(fontSize: 22, color: Colors.grey),
                         ),
                         const SizedBox(
                           height: 5,
@@ -145,8 +129,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert>  {
                           // The number of font pixels for each logical pixel
                           textScaleFactor: 1,
                           text: const TextSpan(
-                            text: 'automatically by selecting',
-                            style: TextStyle(fontSize: 22, color: Colors.grey),
+
                             children: <TextSpan>[
                               TextSpan(
                                   text: ' Automatic ',
