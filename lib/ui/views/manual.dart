@@ -188,415 +188,413 @@ class _Manual extends State<Manual> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .83,
-                        child: Container(
-                          color: Colors.black,
-                          width: MediaQuery.of(context).size.width * .2,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left:
-                                        MediaQuery.of(context).size.width * .03,
-                                    right: MediaQuery.of(context).size.width *
-                                        .01),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              .06,
-                                    ),
-                                    const Text(
-                                      "Difficulty Levels",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              .02,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Transform.scale(
-                                          scale: 1.2,
-                                          child: Checkbox(
-                                            side: const BorderSide(
-                                                color: Colors.white),
-                                            activeColor: Colors.black,
-                                            checkColor: Colors.white,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(3.0),
-                                              ),
+                      Container(
+                        color: Colors.black,
+                        width: MediaQuery.of(context).size.width * .2,
+                       height: MediaQuery.of(context).size.height * .83,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .03,
+                                  right: MediaQuery.of(context).size.width *
+                                      .01),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                            .06,
+                                  ),
+                                  const Text(
+                                    "Difficulty Levels",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                            .02,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 1.2,
+                                        child: Checkbox(
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                          activeColor: Colors.black,
+                                          checkColor: Colors.white,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(3.0),
                                             ),
-                                            value: easySelected,
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                easySelected = value!;
-                                              });
-                                            },
                                           ),
+                                          value: easySelected,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              easySelected = value!;
+                                            });
+                                          },
                                         ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const Text(
-                                          "Easy",
-                                          style: TextStyle(color: Colors.green),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              .01,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Transform.scale(
-                                          scale: 1.2,
-                                          child: Checkbox(
-                                            side: const BorderSide(
-                                                color: Colors.white),
-                                            activeColor: Colors.black,
-                                            checkColor: Colors.white,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(3.0),
-                                              ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Text(
+                                        "Easy",
+                                        style: TextStyle(color: Colors.green),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                            .01,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 1.2,
+                                        child: Checkbox(
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                          activeColor: Colors.black,
+                                          checkColor: Colors.white,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(3.0),
                                             ),
-                                            value: mediumSelected,
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                mediumSelected = value!;
-                                              });
-                                            },
                                           ),
+                                          value: mediumSelected,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              mediumSelected = value!;
+                                            });
+                                          },
                                         ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const Text(
-                                          "Medium",
-                                          style:
-                                              TextStyle(color: Colors.orange),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              .01,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Transform.scale(
-                                          scale: 1.2,
-                                          child: Checkbox(
-                                            side: const BorderSide(
-                                                color: Colors.white),
-                                            activeColor: Colors.black,
-                                            checkColor: Colors.white,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(3.0),
-                                              ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Text(
+                                        "Medium",
+                                        style:
+                                            TextStyle(color: Colors.orange),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                            .01,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 1.2,
+                                        child: Checkbox(
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                          activeColor: Colors.black,
+                                          checkColor: Colors.white,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(3.0),
                                             ),
-                                            value: hardSelected,
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                hardSelected = value!;
-                                              });
-                                            },
                                           ),
+                                          value: hardSelected,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              hardSelected = value!;
+                                            });
+                                          },
                                         ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const Text(
-                                          "Hard",
-                                          style: TextStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              .02,
-                                    ),
-                                  ],
-                                ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Text(
+                                        "Hard",
+                                        style: TextStyle(color: Colors.red),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                            .02,
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .08,
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .08,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .03,
+                                  right: MediaQuery.of(context).size.width *
+                                      .01),
+                              child: const Text(
+                                "Question Types",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left:
-                                        MediaQuery.of(context).size.width * .03,
-                                    right: MediaQuery.of(context).size.width *
-                                        .01),
-                                child: const Text(
-                                  "Question Types",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .02,
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left:
-                                        MediaQuery.of(context).size.width * .03,
-                                    right: MediaQuery.of(context).size.width *
-                                        .03),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Transform.scale(
-                                          scale: 1.2,
-                                          child: Checkbox(
-                                            side: const BorderSide(
-                                                color: Colors.white),
-                                            activeColor: Colors.black,
-                                            checkColor: Colors.white,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(3.0),
-                                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .02,
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .03,
+                                  right: MediaQuery.of(context).size.width *
+                                      .03),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 1.2,
+                                        child: Checkbox(
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                          activeColor: Colors.black,
+                                          checkColor: Colors.white,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(3.0),
                                             ),
-                                            value: isChecked,
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                isChecked = value!;
-                                              });
-                                            },
                                           ),
+                                          value: isChecked,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              isChecked = value!;
+                                            });
+                                          },
                                         ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const Text(
-                                          "Ojectives Questions",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                    const Text(
-                                      "100",
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  ],
-                                ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Text(
+                                        "Ojectives Questions",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  const Text(
+                                    "100",
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left:
-                                        MediaQuery.of(context).size.width * .03,
-                                    right: MediaQuery.of(context).size.width *
-                                        .03),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Transform.scale(
-                                          scale: 1.2,
-                                          child: Checkbox(
-                                            side: const BorderSide(
-                                                color: Colors.white),
-                                            activeColor: Colors.black,
-                                            checkColor: Colors.white,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(3.0),
-                                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .03,
+                                  right: MediaQuery.of(context).size.width *
+                                      .03),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 1.2,
+                                        child: Checkbox(
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                          activeColor: Colors.black,
+                                          checkColor: Colors.white,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(3.0),
                                             ),
-                                            value: isChecked,
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                isChecked = value!;
-                                              });
-                                            },
                                           ),
+                                          value: isChecked,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              isChecked = value!;
+                                            });
+                                          },
                                         ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const Text(
-                                          "True or false Questions",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                    const Text(
-                                      "90",
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  ],
-                                ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Text(
+                                        "True or false Questions",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  const Text(
+                                    "90",
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left:
-                                        MediaQuery.of(context).size.width * .03,
-                                    right: MediaQuery.of(context).size.width *
-                                        .03),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Transform.scale(
-                                          scale: 1.2,
-                                          child: Checkbox(
-                                            side: const BorderSide(
-                                                color: Colors.white),
-                                            activeColor: Colors.black,
-                                            checkColor: Colors.white,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(3.0),
-                                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .03,
+                                  right: MediaQuery.of(context).size.width *
+                                      .03),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 1.2,
+                                        child: Checkbox(
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                          activeColor: Colors.black,
+                                          checkColor: Colors.white,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(3.0),
                                             ),
-                                            value: isChecked,
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                isChecked = value!;
-                                              });
-                                            },
                                           ),
+                                          value: isChecked,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              isChecked = value!;
+                                            });
+                                          },
                                         ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const Text(
-                                          "Fill in the blanks Questions",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                    const Text(
-                                      "50",
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  ],
-                                ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Text(
+                                        "Fill in the blanks Questions",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  const Text(
+                                    "50",
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left:
-                                        MediaQuery.of(context).size.width * .03,
-                                    right: MediaQuery.of(context).size.width *
-                                        .03),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Transform.scale(
-                                          scale: 1.2,
-                                          child: Checkbox(
-                                            side: const BorderSide(
-                                                color: Colors.white),
-                                            activeColor: Colors.black,
-                                            checkColor: Colors.white,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(3.0),
-                                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .03,
+                                  right: MediaQuery.of(context).size.width *
+                                      .03),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 1.2,
+                                        child: Checkbox(
+                                          side: const BorderSide(
+                                              color: Colors.white),
+                                          activeColor: Colors.black,
+                                          checkColor: Colors.white,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(3.0),
                                             ),
-                                            value: isChecked,
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                isChecked = value!;
-                                              });
-                                            },
                                           ),
+                                          value: isChecked,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              isChecked = value!;
+                                            });
+                                          },
                                         ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const Text(
-                                          "One word Questions",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                    const Text(
-                                      "35",
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  ],
-                                ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Text(
+                                        "One word Questions",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  const Text(
+                                    "35",
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .01,
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * .01,
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                          ],
                         ),
                       ),
                       Expanded(
@@ -643,8 +641,8 @@ class _Manual extends State<Manual> {
                                                       decoration: BoxDecoration(
                                                           color: isSelected
                                                               ? Colors.black
-                                                              : const Color(
-                                                                  0xffD9D9D9),
+                                                              : (isHovering?Colors.grey:const Color(
+                                                              0xffD9D9D9)),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(8)),

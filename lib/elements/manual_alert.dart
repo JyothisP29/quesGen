@@ -112,1156 +112,1086 @@ class _ManualAlert extends State<ManualAlert> {
                 BoxShadow(blurRadius: 5, offset: Offset(0, 1)),
               ],
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * .04,
-                    right: MediaQuery.of(context).size.width * .02,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * .04,
+                      right: MediaQuery.of(context).size.width * .02,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 35,
+                            ))
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Icon(
-                            Icons.close,
-                            size: 35,
-                          ))
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * .04,
-                      right: MediaQuery.of(context).size.width * .04,
-                      bottom: MediaQuery.of(context).size.height * .02),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        children: const [
-                          Text(
-                            "Select the question types for your test paper",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 30),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .0135,
-                      ),
-                      Row(
-                        children: const [
-                          Text(
-                            "You can add the questions yourself from the Clezz question library in the next section.",
-                            style: TextStyle(fontSize: 22, color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .05,
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(flex: 2, child: Container()),
-                          Expanded(
-                            child: Container(
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * .04,
+                        right: MediaQuery.of(context).size.width * .04,
+                        bottom: MediaQuery.of(context).size.height * .02),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          children: const [
+                            Text(
+                              "Select the question types for your test paper",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 30),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .0135,
+                        ),
+                        Row(
+                          children: const [
+                            Text(
+                              "You can add the questions yourself from the Clezz question library in the next section.",
+                              style: TextStyle(fontSize: 22, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .05,
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(flex: 2, child: Container()),
+                            Expanded(
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: const Text(
+                                  "QUESTIONS",
+                                  style: TextStyle(
+                                      fontSize: 10, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                                child: Container(
                               alignment: Alignment.center,
                               child: const Text(
-                                "QUESTIONS",
+                                "MARKS/QUESTION",
                                 style: TextStyle(
                                     fontSize: 10, fontWeight: FontWeight.bold),
                               ),
-                            ),
-                          ),
-                          Expanded(
-                              child: Container(
-                            alignment: Alignment.center,
-                            child: const Text(
-                              "MARKS/QUESTION",
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                          Expanded(
-                              child: Container(
-                            alignment: Alignment.center,
-                            child: const Text(
-                              "ATTEND",
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                          Expanded(
-                              child: Container(
-                            alignment: Alignment.center,
-                            child: const Text(
-                              "MARKS/SECTION",
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * .0135,
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Expanded(
-                              flex: 2,
-                              child: Text(
-                                "One word & Objective",
+                            )),
+                            Expanded(
+                                child: Container(
+                              alignment: Alignment.center,
+                              child: const Text(
+                                "ATTEND",
                                 style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: section1Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
+                                    fontSize: 10, fontWeight: FontWeight.bold),
                               ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: mpq1ManualController,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: manualAttend1Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: const Color(0xffF1F1F1),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: TextField(
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(2),
-                                  ],
-                                  textAlign: TextAlign.center,
-                                  //  maxLength: 2,
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(0),
-                                    hintText: "0",
-
-                                    //   counter: Text(""),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    disabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    hintStyle: const TextStyle(
-                                      color: Color(0xffB1BBC6),
-                                    ),
-                                    fillColor: const Color(0xffF1F1F1),
-                                    filled: true,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * .0135,
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Expanded(
-                              flex: 2,
-                              child: Text(
-                                "Short answer",
+                            )),
+                            Expanded(
+                                child: Container(
+                              alignment: Alignment.center,
+                              child: const Text(
+                                "MARKS/SECTION",
                                 style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: section2Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
+                                    fontSize: 10, fontWeight: FontWeight.bold),
                               ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: mpq2ManualController,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: manualAttend2Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: const Color(0xffF1F1F1),
-                                    border: Border.all(
-                                        color: const Color(0XFFDBDBDB))),
-                                child: TextField(
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(2),
-                                  ],
-                                  textAlign: TextAlign.center,
-                                  //  maxLength: 2,
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(0),
-                                    hintText: "0",
-
-                                    //   counter: Text(""),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFDBDBDB),
-                                            width: 1)),
-                                    disabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFDBDBDB),
-                                            width: 1)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFDBDBDB),
-                                            width: 1)),
-                                    hintStyle: const TextStyle(
-                                      color: Color(0xffB1BBC6),
-                                    ),
-                                    fillColor: const Color(0xffF1F1F1),
-                                    filled: true,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * .0135,
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Expanded(
-                              flex: 2,
-                              child: Text(
-                                "Long answer",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: section3Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: mpq3ManualController,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: manualAttend2Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: const Color(0xffF1F1F1),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: TextField(
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(2),
-                                  ],
-                                  textAlign: TextAlign.center,
-                                  //  maxLength: 2,
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(0),
-                                    hintText: "0",
-
-                                    //   counter: Text(""),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    disabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    hintStyle: const TextStyle(
-                                      color: Color(0xffB1BBC6),
-                                    ),
-                                    fillColor: const Color(0xffF1F1F1),
-                                    filled: true,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * .0135,
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Expanded(
-                              flex: 2,
-                              child: Text(
-                                "Problems & essays",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: section4Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: mpq4ManualController,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: SizedBox(
-                                  // margin: const EdgeInsets.only(right: 30, left: 0),
-
-                                  child: TextField(
-                                    controller: manualAttend4Controller,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(2),
-                                    ],
-                                    textAlign: TextAlign.center,
-                                    //  maxLength: 2,
-                                    decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0),
-                                      hintText: "0",
-
-                                      //   counter: Text(""),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      disabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0XFFC9C9C9),
-                                              width: 1)),
-                                      hintStyle: const TextStyle(
-                                        color: Color(0xffB1BBC6),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                          Expanded(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: const Color(0xffF1F1F1),
-                                    border: Border.all(
-                                        color: const Color(0XFFC9C9C9))),
-                                child: TextField(
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(2),
-                                  ],
-                                  textAlign: TextAlign.center,
-                                  //  maxLength: 2,
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(0),
-                                    hintText: "0",
-
-                                    //   counter: Text(""),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    disabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                            color: Color(0XFFC9C9C9),
-                                            width: 1)),
-                                    hintStyle: const TextStyle(
-                                      color: Color(0xffB1BBC6),
-                                    ),
-                                    fillColor: const Color(0xffF1F1F1),
-                                    filled: true,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * .0135,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Container(),
-                          ),
-                          Expanded(
-                            flex: 3,
-                            child: RichText(
-                              // Controls visual overflow
-                              overflow: TextOverflow.clip,
-
-                              // Controls how the text should be aligned horizontally
-
-                              // Control the text direction
-
-                              // Whether the text should break at soft line breaks
-                              softWrap: true,
-
-                              // Maximum number of lines for the text to span
-
-                              // The number of font pixels for each logical pixel
-                              textScaleFactor: 1,
-                              text: const TextSpan(
-                                text: "You've selected",
-                                style:
-                                    TextStyle(fontSize: 16, color: Colors.grey),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                      text: ' 45 ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                          color: Colors.black)),
-                                  TextSpan(
-                                      text:
-                                          'questions and total marks can be scored as',
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.grey)),
-                                  TextSpan(
-                                      text: ' 100',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                          color: Colors.black)),
-                                ],
-                              ),
-                            ),
-                            // Text(
-                            //     "You've selected 45 questions and total marks can be scored as 100")
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * .02,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
+                            )),
+                          ],
                         ),
-                        height: 70,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width * .0135,
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
                           children: [
-                            InkWell(
-                              onTap: () {
-                                Navigator.pop(context, true);
-                                showDialog(
-                                    context: context,
-                                    builder: (ctx) => SemesterDetailsAlert(
-                                          controller: _con,
-                                        ));
-                              },
-                              child: Container(
-                                width: 110,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white),
-                                child: const Center(
-                                    child: Text(
-                                  "Back",
+                            const Expanded(
+                                flex: 2,
+                                child: Text(
+                                  "One word & Objective",
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 16),
+                                    fontSize: 18,
+                                  ),
                                 )),
-                              ),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      controller: section1Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      onChanged: (e) {
+                                        setState(() {});
+                                      },
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: mpq1ManualController,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: manualAttend1Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                    width: 75,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color(0xffF1F1F1),
+                                        border: Border.all(
+                                            color: const Color(0xffC9C9C9))),
+                                    child: Center(
+                                        child: Text(
+                                          mPS1().toString(),
+                                          style: const TextStyle(
+                                              fontSize: 18, color: Color(0xffB1BBC6)),
+                                        ))),
+                              ],
+                            )),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width * .0135,
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const Expanded(
+                                flex: 2,
+                                child: Text(
+                                  "Short answer",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {});
+                                      },
+                                      controller: section2Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: mpq2ManualController,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: manualAttend2Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                    width: 75,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color(0xffF1F1F1),
+                                        border: Border.all(
+                                            color: const Color(0xffC9C9C9))),
+                                    child: Center(
+                                        child: Text(
+                                          mPS2().toString(),
+                                          style: const TextStyle(
+                                              fontSize: 18, color: Color(0xffB1BBC6)),
+                                        ))),
+                              ],
+                            )),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width * .0135,
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const Expanded(
+                                flex: 2,
+                                child: Text(
+                                  "Long answer",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      controller: section3Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      onChanged: (e) {
+                                        setState(() {});
+                                      },
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: mpq3ManualController,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: manualAttend3Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                    width: 75,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color(0xffF1F1F1),
+                                        border: Border.all(
+                                            color: const Color(0xffC9C9C9))),
+                                    child: Center(
+                                        child: Text(
+                                          mPS3().toString(),
+                                          style: const TextStyle(
+                                              fontSize: 18, color: Color(0xffB1BBC6)),
+                                        ))),
+                              ],
+                            )),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width * .0135,
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const Expanded(
+                                flex: 2,
+                                child: Text(
+                                  "Problems & essays",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      controller: section4Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      onChanged: (e) {
+                                        setState(() {});
+                                      },
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: mpq4ManualController,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: const Color(0XFFC9C9C9))),
+                                  child: SizedBox(
+                                    // margin: const EdgeInsets.only(right: 30, left: 0),
+
+                                    child: TextField(
+                                      onChanged: (e) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      controller: manualAttend4Controller,
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      textAlign: TextAlign.center,
+                                      //  maxLength: 2,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(0),
+                                        hintText: "0",
+
+                                        //   counter: Text(""),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            borderSide: const BorderSide(
+                                                color: Color(0XFFC9C9C9),
+                                                width: 1)),
+                                        hintStyle: const TextStyle(
+                                          color: Color(0xffB1BBC6),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                    width: 75,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color(0xffF1F1F1),
+                                        border: Border.all(
+                                            color: const Color(0xffC9C9C9))),
+                                    child: Center(
+                                        child: Text(
+                                          mPS4().toString(),
+                                          style: const TextStyle(
+                                              fontSize: 18, color: Color(0xffB1BBC6)),
+                                        ))),
+                              ],
+                            )),
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width * .0135,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Container(),
                             ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.pop(context, true);
-                                _con.quesPaper.manualSections =
-                                    generateQuestions();
-                                Navigator.pushNamed(context, "/manual",
-                                    arguments: RouteArgument(
-                                      param: generateQuestions(),
-                                      control: _con,
-                                      other: Count1(),
-                                    ));
-                              },
-                              child: Container(
-                                width: 150,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.black),
-                                child: const Center(
-                                    child: Text(
-                                  "Generate",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                )),
+                            Expanded(
+                              flex: 3,
+                              child: RichText(
+                                // Controls visual overflow
+                                overflow: TextOverflow.clip,
+
+                                // Controls how the text should be aligned horizontally
+
+                                // Control the text direction
+
+                                // Whether the text should break at soft line breaks
+                                softWrap: true,
+
+                                // Maximum number of lines for the text to span
+
+                                // The number of font pixels for each logical pixel
+                                textScaleFactor: 1,
+                                text:  TextSpan(
+                                  text: "You've selected ",
+                                  style:
+                                      TextStyle(fontSize: 16, color: Colors.grey),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        text:  totalQues().toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                            color: Colors.black)),
+                                    TextSpan(
+                                        text:
+                                            ' questions and total marks can be scored as ',
+                                        style: TextStyle(
+                                            fontSize: 16, color: Colors.grey)),
+                                    TextSpan(
+                                        text: totalMPS().toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                            color: Colors.black)),
+                                  ],
+                                ),
                               ),
+                              // Text(
+                              //     "You've selected 45 questions and total marks can be scored as 100")
                             )
                           ],
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width * .02,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
+                          height: 70,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context, true);
+                                  showDialog(
+                                      context: context,
+                                      builder: (ctx) => SemesterDetailsAlert(
+                                            controller: _con,
+                                          ));
+                                },
+                                child: Container(
+                                  width: 110,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
+                                  child: const Center(
+                                      child: Text(
+                                    "Back",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 16),
+                                  )),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context, true);
+                                  _con.quesPaper.manualSections =
+                                      generateQuestions();
+                                  Navigator.pushNamed(context, "/manual",
+                                      arguments: RouteArgument(
+                                        param: generateQuestions(),
+                                        control: _con,
+                                        other: Count1(),
+                                      ));
+                                },
+                                child: Container(
+                                  width: 150,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.black),
+                                  child: const Center(
+                                      child: Text(
+                                    "Generate",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  )),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -1344,5 +1274,70 @@ class _ManualAlert extends State<ManualAlert> {
       count1 = count1 + int.parse(section1Controller.text);
     });
     return count1;
+  }
+  int mPS1() {
+    int mps1 = 0;
+    int trial = 0;
+    if (manualAttend1Controller.text.isNotEmpty) {
+      trial = 1 * int.parse(manualAttend1Controller.text);
+    }
+    if (mpq1ManualController.text.isNotEmpty) {
+      mps1 = trial * int.parse(mpq1ManualController.text);
+    }
+    return mps1;
+  }
+  int mPS2() {
+    int mps1 = 0;
+    int trial = 0;
+    if (manualAttend2Controller.text.isNotEmpty) {
+      trial = 1 * int.parse(manualAttend2Controller.text);
+    }
+    if (mpq2ManualController.text.isNotEmpty) {
+      mps1 = trial * int.parse(mpq2ManualController.text);
+    }
+    return mps1;
+  }
+  int mPS3() {
+    int mps1 = 0;
+    int trial = 0;
+    if (manualAttend3Controller.text.isNotEmpty) {
+      trial = 1 * int.parse(manualAttend3Controller.text);
+    }
+    if (mpq3ManualController.text.isNotEmpty) {
+      mps1 = trial * int.parse(mpq3ManualController.text);
+    }
+    return mps1;
+  }
+  int mPS4() {
+    int mps1 = 0;
+    int trial = 0;
+    if (manualAttend4Controller.text.isNotEmpty) {
+      trial = 1 * int.parse(manualAttend4Controller.text);
+    }
+    if (mpq4ManualController.text.isNotEmpty) {
+      mps1 = trial * int.parse(mpq4ManualController.text);
+    }
+    return mps1;
+  }
+  int totalQues() {
+    int a = 0;
+    if (section1Controller.text.isNotEmpty) {
+      a = a + int.parse(section1Controller.text);
+    }
+    if (section2Controller.text.isNotEmpty) {
+      a = a + int.parse(section2Controller.text);
+    }
+    if (section3Controller.text.isNotEmpty) {
+      a = a + int.parse(section3Controller.text);
+    }   if (section4Controller.text.isNotEmpty) {
+      a = a + int.parse(section4Controller.text);
+    }
+
+    return a;
+  }
+  int totalMPS(){
+    int totalmark=0;
+    totalmark=mPS1()+mPS2()+mPS3()+mPS4();
+    return totalmark;
   }
 }

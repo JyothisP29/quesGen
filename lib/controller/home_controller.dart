@@ -62,9 +62,9 @@ class HomeController extends ControllerMVC {
 
   void getQuestionPaperList() {
     questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],0));
-    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],1));
-    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],2));
-    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],3));
+    questionPaperList.add(QuestionPaper(1, "physics paper", "", 0, "" ,[],1));
+    questionPaperList.add(QuestionPaper(1, "english paper", "", 0, "" ,[],2));
+    questionPaperList.add(QuestionPaper(1, "hindi paper", "", 0, "" ,[],3));
   }
 
   void getModuleList() {

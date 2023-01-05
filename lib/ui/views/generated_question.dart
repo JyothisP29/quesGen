@@ -161,7 +161,7 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                         top: 20,
                       ),
                       width: MediaQuery.of(context).size.width * .95,
-                      height: MediaQuery.of(context).size.height * .25,
+                      // height: MediaQuery.of(context).size.height * .25,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
@@ -216,7 +216,9 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                           Padding(
                             padding: EdgeInsets.only(
                                 left: MediaQuery.of(context).size.width * .04,
-                                right: MediaQuery.of(context).size.width * .04),
+                                right: MediaQuery.of(context).size.width * .04,
+                            bottom: MediaQuery.of(context).size.height * .02
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -281,8 +283,8 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                   top: 20,
                                 ),
                                 width: MediaQuery.of(context).size.width * .95,
-                                height:
-                                    MediaQuery.of(context).size.height * .22,
+                                // height:
+                                //     MediaQuery.of(context).size.height * .22,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.white),
@@ -293,6 +295,8 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                     right:
                                         MediaQuery.of(context).size.width * .01,
                                     top: MediaQuery.of(context).size.height *
+                                        .02,
+                                    bottom: MediaQuery.of(context).size.height *
                                         .02,
                                   ),
                                   child: Column(
@@ -433,10 +437,9 @@ class _GeneratedQuestions extends State<GeneratedQuestions> {
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 .95,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                .5,
+
                                         child: ListView.builder(
+                                          shrinkWrap: true,
                                           itemCount: ques.questions.length,
                                           itemBuilder: (context, index) {
                                             Question question =
