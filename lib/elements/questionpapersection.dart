@@ -101,11 +101,13 @@ class _QuestionPaperSectionState extends State<QuestionPaperSection>
                                         ),
                                         InkWell(
                                           onTap: () {
+
                                             showDialog(
+
                                                 context: context,
                                                 builder: (ctx) =>
-                                                    const DeleteAlert(
-                                                        // controller: _con,
+                                                     DeleteAlert(
+                                                        controller: _con,
                                                         ));
                                           },
                                           child: const Icon(Icons.delete,

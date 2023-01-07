@@ -1,15 +1,31 @@
+import 'package:enumresponsive/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 
+import '../model/question_paper.dart';
+
 class DeleteAlert extends StatefulWidget {
+  final HomeController controller;
   const DeleteAlert({
     Key? key,
+     required this.controller,
   }) : super(key: key);
 
   @override
   _DeleteAlert createState() => _DeleteAlert();
 }
 
+int index = 0;
+late HomeController _con;
+
 class _DeleteAlert extends State<DeleteAlert> {
+
+  @override
+  void initState() {
+    super.initState();
+  
+    _con = widget.controller;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -78,6 +94,13 @@ class _DeleteAlert extends State<DeleteAlert> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             InkWell(
+                              onTap: () {
+                                setState(() {
+                                  _con.questionPaperList.removeAt(index);
+                                  Navigator.of(context).pop();
+                                  print("object");
+                                });
+                              },
                               child: Container(
                                 width: 150,
                                 height: 45,
@@ -96,6 +119,9 @@ class _DeleteAlert extends State<DeleteAlert> {
                               width: 30,
                             ),
                             InkWell(
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
                               child: Container(
                                 width: 150,
                                 height: 45,
