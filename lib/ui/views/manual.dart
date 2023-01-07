@@ -824,15 +824,15 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                                                         ),
                                                       ),
                                                       value: _con
-                                                          .questionListManual
+                                                          .selectedQuestionList
                                                           .contains(ques.qusId),
                                                       onChanged: (val) {
                                                         setState(() {
                                                           if (val!) {
-                                                            _con.questionListManual
+                                                            _con.selectedQuestionList
                                                                 .add(
                                                                     ques.qusId);
-                                                            _con.questionListManual
+                                                            _con.selectedQuestionList
                                                                         .length ==
                                                                     count1
                                                                 ? animatedController
@@ -840,10 +840,10 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                                                                 : animatedController
                                                                     .reverse();
                                                           } else if (!val) {
-                                                            _con.questionListManual
+                                                            _con.selectedQuestionList
                                                                 .remove(
                                                                     ques.qusId);
-                                                            _con.questionListManual
+                                                            _con.selectedQuestionList
                                                                         .length ==
                                                                     count1
                                                                 ? animatedController
