@@ -12,10 +12,9 @@ class QuestionPaper {
   String? subject;
 
   List<QuestionGenerationModel>? sections;
-  List<ManualQuestionGenerationModel>? manualSections;
+  List<ManualQuestionGenerationModel> manualSections;
 
   int? qsPaperstatus;
-
 
   QuestionPaper(
     this.quesPaperid,
@@ -23,14 +22,8 @@ class QuestionPaper {
     this.questionCode,
     this.timeDuration,
     this.hourOrMinute,
-
     this.sections,
-
+    this.manualSections,
     this.qsPaperstatus,
-
   );
-
-
 }
-
-

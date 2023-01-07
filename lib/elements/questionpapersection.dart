@@ -56,7 +56,7 @@ class _QuestionPaperSectionState extends State<QuestionPaperSection>
                       : Border.all(color: Colors.black),
                   color: widget.paper.qsPaperstatus == 0
                       ? const Color(0xffF4F5F9)
-                      : Colors.lime,
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(10)),
               child: HoverWidget(builder: (isHovering) {
                 isHovering

@@ -17,13 +17,21 @@ class Manual extends StatefulWidget {
   _Manual createState() => _Manual();
 }
 
-class _Manual extends State<Manual> {
+class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
   int count1 = 0;
+  int currentSection = 1;
+  int? sectionCount = 0;
+  late AnimationController animatedController;
+  late Animation animation;
 
   @override
   void initState() {
+    animatedController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500));
+    animation = Tween<double>(begin: 0, end: 70).animate(animatedController);
     _con = widget.routeArgument?.control;
     count1 = widget.routeArgument?.other;
+    sectionCount = widget.routeArgument?.sectionCount;
     if (widget.routeArgument?.param != null) {
       _con.questionList.addAll(widget.routeArgument!.param);
     }
@@ -105,16 +113,16 @@ class _Manual extends State<Manual> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ProgressStepper(
-                              width: 500,
+                              width: double.minPositive,
                               height: 45,
                               color: const Color(0xffD9D9D9),
                               progressColor: Colors.black,
-                              stepCount: 3,
+                              stepCount: sectionCount!,
                               builder: (index) {
-                                double widthOfStep = 500 / 3;
-                                if (index == 1) {
-                                  return ProgressStepWithArrow(
-                                    width: widthOfStep,
+                                print(widget.routeArgument?.other);
+                                if (index == currentSection) {
+                                  return ProgressStepWithChevron(
+                                    width: 150,
                                     defaultColor: const Color(0xffD9D9D9),
                                     progressColor: Colors.black,
                                     wasCompleted: true,
@@ -126,7 +134,7 @@ class _Manual extends State<Manual> {
                                   );
                                 }
                                 return ProgressStepWithChevron(
-                                  width: widthOfStep,
+                                  width: 150,
                                   defaultColor: const Color(0xffD9D9D9),
                                   progressColor: Colors.black,
                                   wasCompleted: false,
@@ -637,7 +645,10 @@ class _Manual extends State<Manual> {
                                                                   : Colors
                                                                       .black,
                                                               child: Text(
-                                                                '888',
+                                                                (selectedModule
+                                                                        .allQuestionList
+                                                                        .length)
+                                                                    .toString(),
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         12,
@@ -655,7 +666,7 @@ class _Manual extends State<Manual> {
                                                               width: 10,
                                                             ),
                                                             Text(
-                                                              _con.moduleList
+                                                              _con.selectedList
                                                                       .elementAt(
                                                                           index)
                                                                       .modName ??
@@ -813,32 +824,46 @@ class _Manual extends State<Manual> {
                                                         ),
                                                       ),
                                                       value: _con
-                                                          .selectedQuestionList
+                                                          .questionListManual
                                                           .contains(ques.qusId),
                                                       onChanged: (val) {
                                                         setState(() {
                                                           if (val!) {
-                                                            _con.selectedQuestionList
+                                                            _con.questionListManual
                                                                 .add(
                                                                     ques.qusId);
+                                                            _con.questionListManual
+                                                                        .length ==
+                                                                    count1
+                                                                ? animatedController
+                                                                    .forward()
+                                                                : animatedController
+                                                                    .reverse();
                                                           } else if (!val) {
-                                                            _con.selectedQuestionList
+                                                            _con.questionListManual
                                                                 .remove(
                                                                     ques.qusId);
+                                                            _con.questionListManual
+                                                                        .length ==
+                                                                    count1
+                                                                ? animatedController
+                                                                    .forward()
+                                                                : animatedController
+                                                                    .reverse();
                                                           }
-                                                          if (_con.selectedQuestionList
-                                                                  .length ==
-                                                              5) {}
-                                                          if (kDebugMode) {
-                                                            print(_con
-                                                                .selectedQuestionList
-                                                                .length);
-                                                          }
-                                                          if (kDebugMode) {
-                                                            print(widget
-                                                                .routeArgument
-                                                                ?.other);
-                                                          }
+                                                          // if (_con.selectedQuestionList
+                                                          //         .length ==
+                                                          //     5) {}
+                                                          // if (kDebugMode) {
+                                                          //   print(_con
+                                                          //       .selectedQuestionList
+                                                          //       .length);
+                                                          // }
+                                                          // if (kDebugMode) {
+                                                          //   print(widget
+                                                          //       .routeArgument
+                                                          //       ?.other);
+                                                          // }
                                                         });
                                                       },
                                                     ),
@@ -852,80 +877,108 @@ class _Manual extends State<Manual> {
                                     ),
                                   ),
                                 ),
-                                Visibility(
-                                  visible:
-                                      _con.selectedQuestionList.length == count1
-                                          ? true
-                                          : false,
-                                  child: Positioned(
-                                      bottom: 0,
-                                      child: AnimatedContainer(
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xff4D4D4D),
-                                        ),
-                                        curve: Curves.linear,
-                                        duration: const Duration(seconds: 1),
-                                        width:
-                                            MediaQuery.of(context).size.width *
+                                Positioned(
+                                    bottom: 0,
+                                    child: AnimatedBuilder(
+                                        animation: animation,
+                                        builder: (context, wi) {
+                                          return Container(
+                                            decoration: const BoxDecoration(
+                                              color: Color(0xff4D4D4D),
+                                            ),
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 .8,
-                                        height: 70,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              right: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  .03),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              InkWell(
-                                                onTap: () {
-                                                  setState(() {
-                                                    _con.selectedQuestionList
-                                                        .clear();
-                                                  });
-                                                },
-                                                child: AnimatedContainer(
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        color: const Color(
-                                                            0xffD1D1D1)),
-                                                    height: 45,
-                                                    width: 135,
-                                                    duration: const Duration(
-                                                        microseconds: 1000),
-                                                    child: const Center(
-                                                        child: Text(
-                                                      "Clear All",
-                                                      style: TextStyle(
-                                                          fontSize: 22),
-                                                    ))),
+                                            height: animation.value,
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      .03),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        _con.selectedQuestionList
+                                                            .clear();
+                                                        print(_con
+                                                            .selectedQuestionList
+                                                            .length);
+                                                        animatedController
+                                                            .reverse();
+                                                      });
+                                                    },
+                                                    child: AnimatedContainer(
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            color: const Color(
+                                                                0xffD1D1D1)),
+                                                        height: 45,
+                                                        width: 135,
+                                                        duration:
+                                                            const Duration(
+                                                                microseconds:
+                                                                    1000),
+                                                        child: const Center(
+                                                            child: Text(
+                                                          "Clear All",
+                                                          style: TextStyle(
+                                                              fontSize: 22),
+                                                        ))),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+
+                                                      setState(() {
+                                                        currentSection++;
+                                                        if (currentSection ==
+                                                            (sectionCount! +
+                                                                1)) {
+                                                          Navigator.pushNamed(
+                                                              context,
+                                                              "/generatedQuestion",
+                                                              arguments:
+                                                                  RouteArgument(
+                                                                control: _con,
+                                                              ));
+                                                        }
+                                                        _con.selectedQuestionList
+                                                            .clear();
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            color:
+                                                                Colors.white),
+                                                        height: 45,
+                                                        width: 135,
+                                                        child: const Center(
+                                                            child: Text(
+                                                          "Next",
+                                                          style: TextStyle(
+                                                              fontSize: 22),
+                                                        ))),
+                                                  ),
+                                                ],
                                               ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Container(
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: Colors.white),
-                                                  height: 45,
-                                                  width: 135,
-                                                  child: const Center(
-                                                      child: Text(
-                                                    "Next",
-                                                    style:
-                                                        TextStyle(fontSize: 22),
-                                                  ))),
-                                            ],
-                                          ),
-                                        ),
-                                      )),
-                                )
+                                            ),
+                                          );
+                                        }))
                               ],
                             )
                           ],

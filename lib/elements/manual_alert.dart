@@ -1126,6 +1126,7 @@ class _ManualAlert extends State<ManualAlert> {
                                         param: generateQuestions(),
                                         control: _con,
                                         other: Count1(),
+                                        sectionCount: totalSection(),
                                       ));
                                 },
                                 child: Container(
@@ -1298,6 +1299,25 @@ class _ManualAlert extends State<ManualAlert> {
     }
 
     return a;
+  }
+  int totalSection() {
+    // int a = 1;
+    int trial = 0;
+    if (section1Controller.text.isNotEmpty) {
+      trial = trial +1;
+      print(trial);
+    }
+    if (section2Controller.text.isNotEmpty) {
+      trial = trial +1;
+    }
+    if (section3Controller.text.isNotEmpty) {
+      trial = trial +1;
+    }
+    if (section4Controller.text.isNotEmpty) {
+      trial = trial +1;
+    }
+
+    return trial;
   }
 
   int totalMPS() {

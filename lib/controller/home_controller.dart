@@ -16,7 +16,7 @@ class HomeController extends ControllerMVC {
   List questionList = [];
 
   // List<Question> questionList = <Question>[];
-  List<Question> questionListManual = <Question>[];
+  List questionListManual = [];
   List<Modules> moduleList = <Modules>[];
   List<Question> allQuestionList = [];
 
@@ -38,7 +38,7 @@ class HomeController extends ControllerMVC {
     return courseCount;
   }
 
-  QuestionPaper quesPaper = QuestionPaper(0, "", "", 0,"" ,[], 0);
+  QuestionPaper quesPaper = QuestionPaper(0, "", "", 0,"" ,[],[], 0,);
 
   void getCourseList() {
     // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
@@ -61,10 +61,10 @@ class HomeController extends ControllerMVC {
   }
 
   void getQuestionPaperList() {
-    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],0));
-    questionPaperList.add(QuestionPaper(1, "physics paper", "", 0, "" ,[],1));
-    questionPaperList.add(QuestionPaper(1, "english paper", "", 0, "" ,[],2));
-    questionPaperList.add(QuestionPaper(1, "hindi paper", "", 0, "" ,[],3));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],[],0));
+    questionPaperList.add(QuestionPaper(1, "physics paper", "", 0, "" ,[],[],1));
+    questionPaperList.add(QuestionPaper(1, "english paper", "", 0, "" ,[],[],2));
+    questionPaperList.add(QuestionPaper(1, "hindi paper", "", 0, "" ,[],[],3));
   }
 
   void getModuleList() {

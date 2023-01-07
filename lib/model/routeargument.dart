@@ -8,6 +8,7 @@ class RouteArgument {
   dynamic timeSlots;
   int? attend;
   int? mpq;
+  int?sectionCount;
 
   RouteArgument({
     this.id,
@@ -18,7 +19,8 @@ class RouteArgument {
     this.delivery,
     this.timeSlots,
     this.attend,
-    this.mpq
+    this.mpq,
+    this.sectionCount
   });
 
   @override
