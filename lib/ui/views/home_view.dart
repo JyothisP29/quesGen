@@ -85,7 +85,7 @@ class _HomeViewState extends StateMVC<HomeView>
               const Padding(
                 padding: EdgeInsets.only(left: 30.0),
                 child: Text(
-                  "Clezz",
+                  "Clsdsadasdsaezz",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
