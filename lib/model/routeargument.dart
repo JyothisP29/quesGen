@@ -1,3 +1,5 @@
+import 'package:enumresponsive/model/questions.dart';
+
 class RouteArgument {
   String? id;
   String? heroTag;
@@ -9,6 +11,7 @@ class RouteArgument {
   int? attend;
   int? mpq;
   int?sectionCount;
+  Question? que;
 
   RouteArgument({
     this.id,
@@ -20,11 +23,11 @@ class RouteArgument {
     this.timeSlots,
     this.attend,
     this.mpq,
-    this.sectionCount
+    this.sectionCount,this.que,
   });
 
   @override
   String toString() {
-    return '{id: $id, heroTag:${heroTag.toString()},param:$param,control:$control,other:$other,delivery:$delivery,timeSlots:$timeSlots,attend:$attend,mpq:$mpq}';
+    return '{id: $id, heroTag:${heroTag.toString()},param:$param,control:$control,other:$other,delivery:$delivery,timeSlots:$timeSlots,attend:$attend,mpq:$mpq,que:$que}';
   }
 }

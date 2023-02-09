@@ -103,7 +103,6 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .01,
                         ),
-
                         RichText(
                           // Controls visual overflow
                           overflow: TextOverflow.clip,
@@ -122,13 +121,13 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                           textScaleFactor: 1,
                           text: const TextSpan(
                             children: <TextSpan>[
-
                               TextSpan(
-                                  text: 'Select the modules and subject here and you can even let Clezz to generate questions automatically by selecting',
+                                  text:
+                                      'Select the modules and subject here and you can even let Clezz to generate questions automatically by selecting',
                                   style: TextStyle(
                                       fontSize: 22, color: Colors.grey)),
                               TextSpan(
-                                    text: ' Automatic ',
+                                  text: ' Automatic ',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 22,
@@ -207,7 +206,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                             overflow: TextOverflow.ellipsis,
                                             items,
                                             style:
-                                                const TextStyle(fontSize: 12),
+                                                const TextStyle(fontSize: 16),
                                           ),
                                         ),
                                       );
@@ -300,7 +299,7 @@ class _SemesterDetailsAlert extends State<SemesterDetailsAlert> {
                                             overflow: TextOverflow.ellipsis,
                                             items,
                                             style:
-                                                const TextStyle(fontSize: 12),
+                                                const TextStyle(fontSize: 16),
                                           ),
                                         ),
                                       );

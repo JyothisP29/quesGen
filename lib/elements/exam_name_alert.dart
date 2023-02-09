@@ -1,5 +1,6 @@
 import 'package:enumresponsive/elements/semester_details_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../controller/home_controller.dart';
 
@@ -287,6 +288,9 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                                             Radius.circular(10)),
                                       ),
                                       child: TextFormField(
+                                        inputFormatters: <TextInputFormatter>[
+                                          FilteringTextInputFormatter.digitsOnly
+                                        ],
                                         controller: timeController,
                                         onChanged: (e) {
                                           setState(() {
@@ -428,6 +432,8 @@ class _ExamNameAlert extends State<ExamNameAlert> {
                             children: [
                               InkWell(
                                 onTap: () {
+                                  // print("object");
+                                  // print(_con. questionPaperList.length);
                                   Navigator.pop(context, true);
                                   showDialog(
                                       context: context,

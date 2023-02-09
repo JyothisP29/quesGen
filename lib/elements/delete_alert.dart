@@ -5,9 +5,12 @@ import '../model/question_paper.dart';
 
 class DeleteAlert extends StatefulWidget {
   final HomeController controller;
+  final QuestionPaper paper;
+
   const DeleteAlert({
     Key? key,
-     required this.controller,
+    required this.controller,
+    required this.paper,
   }) : super(key: key);
 
   @override
@@ -18,11 +21,10 @@ int index = 0;
 late HomeController _con;
 
 class _DeleteAlert extends State<DeleteAlert> {
-
   @override
   void initState() {
     super.initState();
-  
+
     _con = widget.controller;
   }
 
@@ -96,7 +98,7 @@ class _DeleteAlert extends State<DeleteAlert> {
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                  _con.questionPaperList.removeAt(index);
+                                  _con.removeQuestionPaper(widget.paper);
                                   Navigator.of(context).pop();
                                   print("object");
                                 });

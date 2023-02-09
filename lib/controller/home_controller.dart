@@ -1,3 +1,4 @@
+import 'package:enumresponsive/model/generated_question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
@@ -14,6 +15,7 @@ class HomeController extends ControllerMVC {
 
   List<QuestionPaper> questionPaperList = <QuestionPaper>[];
   List questionList = [];
+  List<QuestionGenerationModel> manualList = <QuestionGenerationModel>[];
 
   // List<Question> questionList = <Question>[];
   List questionListManual = [];
@@ -21,12 +23,17 @@ class HomeController extends ControllerMVC {
   List<Question> allQuestionList = [];
 
   List selectedList = [];
-  List selectedQuestionList=[];
+  List<int> selectedQuestionList = [];
 
   GlobalKey<ScaffoldState>? scaffoldKey;
 
   HomeController() {
     scaffoldKey = GlobalKey<ScaffoldState>();
+  }
+
+  void removeQuestionPaper(QuestionPaper paper) {
+    questionPaperList.remove(paper);
+    setState(() {});
   }
 
   int courseCount = 0;
@@ -38,33 +45,39 @@ class HomeController extends ControllerMVC {
     return courseCount;
   }
 
-  QuestionPaper quesPaper = QuestionPaper(0, "", "", 0,"" ,[],[], 0,);
+  void addQuestionPaper(QuestionPaper paper) {
+    questionPaperList.add(paper);
+    setState(() {});
+  }
+
+  QuestionPaper quesPaper = QuestionPaper(
+    0,
+    "",
+    "",
+    0,
+    "",
+    [],
+    0,
+  );
 
   void getCourseList() {
-    // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
-    //     const Color(0xffB9FBC7), Colors.green));
-    // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
-    //     const Color(0xffB9FBC7), Colors.green));
-    // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
-    //     const Color(0xffB9FBC7), Colors.green));
-    // courseList.add(Course(1, "B.Sc. CS", "Kannur University",
-    //     const Color(0xffB9FBC7), Colors.green));
 
-    courseList.add(Course(1, "B.Sc. CS", "Kannur University",
+
+    courseList.add(Course(1,"Graduation", "Kannur University", "B.Sc. CS",
         const Color(0xffB9FBC7), Colors.green));
-    courseList.add(Course(2, "B.C.A", "Calicut University",
+    courseList.add(Course(2,"Graduation","Calicut University",  "B.C.A",
         const Color(0xffFBF4B9), Colors.yellow));
-    courseList.add(Course(3, "B.Com", "Mahathma Gandhi University",
+    courseList.add(Course(3,"Graduation", "Mahathma Gandhi University",  "B.Com",
         const Color(0xffFBB9B9), Colors.redAccent));
-    courseList.add(Course(4, "B.Sc. PHYSICS", "Kochin University",
+    courseList.add(Course(4, "Graduation", "Kochin University","B.Sc. PHYSICS",
         const Color(0xffE8C54A), Colors.orange));
   }
 
   void getQuestionPaperList() {
-    questionPaperList.add(QuestionPaper(1, "", "", 0, "" ,[],[],0));
-    questionPaperList.add(QuestionPaper(1, "physics paper", "", 0, "" ,[],[],1));
-    questionPaperList.add(QuestionPaper(1, "english paper", "", 0, "" ,[],[],2));
-    questionPaperList.add(QuestionPaper(1, "hindi paper", "", 0, "" ,[],[],3));
+    questionPaperList.add(QuestionPaper(1, "", "", 0, "", [], 0));
+    questionPaperList.add(QuestionPaper(1, "physics paper", "", 0, "", [], 1));
+    questionPaperList.add(QuestionPaper(1, "english paper", "", 0, "", [], 2));
+    questionPaperList.add(QuestionPaper(1, "hindi paper", "", 0, "", [], 3));
   }
 
   void getModuleList() {
@@ -78,9 +91,9 @@ class HomeController extends ControllerMVC {
   }
 
   void getQuestionsList() {
-    allQuestionList.add(Question(1, "question1", Constants.easyQuestions, false,
+    allQuestionList.add(Question(1, "what is your name?", Constants.easyQuestions, false,
         Constants.oneWord, Constants.easyColor));
-    allQuestionList.add(Question(2, "question2", Constants.mediumQuestion,
+    allQuestionList.add(Question(2, "what is your hobby?", Constants.mediumQuestion,
         false, Constants.oneWord, Constants.mediumColor));
     allQuestionList.add(Question(3, "question3", Constants.hardQuestions, false,
         Constants.oneWord, Constants.hardColor));
@@ -120,40 +133,7 @@ class HomeController extends ControllerMVC {
       Constants.shortAnswer,
       Constants.hardColor,
     ));
-    allQuestionList.add(Question(1, "question1", Constants.easyQuestions, false,
-        Constants.oneWord, Constants.easyColor));
-    allQuestionList.add(Question(2, "question2", Constants.mediumQuestion,
-        false, Constants.oneWord, Constants.mediumColor));
-    allQuestionList.add(Question(3, "question3", Constants.hardQuestions, false,
-        Constants.oneWord, Constants.hardColor));
-    allQuestionList.add(Question(4, "question4", Constants.easyQuestions, false,
-        Constants.shortAnswer, Constants.easyColor));
-    allQuestionList.add(Question(5, "question5", Constants.mediumQuestion,
-        false, Constants.shortAnswer, Constants.mediumColor));
-    allQuestionList.add(Question(6, "question6", Constants.hardQuestions, false,
-        Constants.shortAnswer, Constants.hardColor));
-    allQuestionList.add(Question(7, "question7", Constants.easyQuestions, false,
-        Constants.longAnswer, Constants.easyColor));
-    allQuestionList.add(Question(8, "question8", Constants.mediumQuestion,
-        false, Constants.longAnswer, Constants.mediumColor));
-    allQuestionList.add(Question(9, "question9", Constants.hardQuestions, false,
-        Constants.longAnswer, Constants.hardColor));
-    allQuestionList.add(Question(10, "question10", Constants.easyQuestions,
-        false, Constants.essayAnswer, Constants.easyColor));
-    allQuestionList.add(Question(11, "question11", Constants.mediumQuestion,
-        false, Constants.essayAnswer, Constants.mediumColor));
-    allQuestionList.add(Question(12, "question12", Constants.hardQuestions,
-        false, Constants.essayAnswer, Constants.hardColor));
-    allQuestionList.add(Question(13, "question13", Constants.easyQuestions,
-        false, Constants.oneWord, Constants.easyColor));
-    allQuestionList.add(Question(14, "question14", Constants.mediumQuestion,
-        false, Constants.oneWord, Constants.mediumColor));
-    allQuestionList.add(Question(15, "question 15", Constants.hardQuestions,
-        false, Constants.oneWord, Constants.hardColor));
-    allQuestionList.add(Question(16, "question 164", Constants.easyQuestions,
-        false, Constants.shortAnswer, Constants.easyColor));
-    allQuestionList.add(Question(17, "question 17 5", Constants.mediumQuestion,
-        false, Constants.shortAnswer, Constants.mediumColor));
+
     allQuestionList.add(Question(
       18,
       "question 18",

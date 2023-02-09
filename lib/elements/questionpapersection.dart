@@ -28,7 +28,7 @@ class _QuestionPaperSectionState extends State<QuestionPaperSection>
   void initState() {
     super.initState();
     animatedController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500));
+        vsync: this, duration: const Duration(milliseconds: 300));
     animation = Tween<double>(begin: 0, end: 50).animate(animatedController);
     _con = widget.controller;
   }
@@ -101,14 +101,12 @@ class _QuestionPaperSectionState extends State<QuestionPaperSection>
                                         ),
                                         InkWell(
                                           onTap: () {
-
                                             showDialog(
-
                                                 context: context,
-                                                builder: (ctx) =>
-                                                     DeleteAlert(
-                                                        controller: _con,
-                                                        ));
+                                                builder: (ctx) => DeleteAlert(
+                                                      controller: _con,
+                                                      paper: widget.paper,
+                                                    ));
                                           },
                                           child: const Icon(Icons.delete,
                                               color: Colors.white),

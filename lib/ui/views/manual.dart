@@ -1,6 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:enumresponsive/elements/hover_widget.dart';
 import 'package:enumresponsive/model/modules.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_stepper/progress_stepper.dart';
 
@@ -18,11 +18,16 @@ class Manual extends StatefulWidget {
 }
 
 class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
-  int count1 = 0;
-  int currentSection = 1;
+  // int count1 = 0;
+  int index = 0;
+  int sectionStepper = 0;
+  int currentSection = 0;
   int? sectionCount = 0;
   late AnimationController animatedController;
   late Animation animation;
+
+  int totaMark = 0;
+  List<String> sectionList = ["A", "B", "C", "D"];
 
   @override
   void initState() {
@@ -30,10 +35,13 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
         vsync: this, duration: const Duration(milliseconds: 500));
     animation = Tween<double>(begin: 0, end: 70).animate(animatedController);
     _con = widget.routeArgument?.control;
-    count1 = widget.routeArgument?.other;
+    int totalMark = widget.routeArgument?.other;
+    print(widget.routeArgument?.other);
+    // count1 = widget.routeArgument?.other;
     sectionCount = widget.routeArgument?.sectionCount;
     if (widget.routeArgument?.param != null) {
       _con.questionList.addAll(widget.routeArgument!.param);
+      _con.manualList.addAll(widget.routeArgument!.param);
     }
 
     _con.getModuleList();
@@ -105,7 +113,7 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                 children: [
                   Container(
                       color: Colors.white,
-                      width: MediaQuery.of(context).size.width,
+                      // width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * .1,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 50.0, right: 20),
@@ -113,37 +121,39 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ProgressStepper(
-                              width: double.minPositive,
+                              width: _con.manualList.length * 150,
                               height: 45,
                               color: const Color(0xffD9D9D9),
                               progressColor: Colors.black,
-                              stepCount: sectionCount!,
+                              stepCount: _con.manualList.length,
                               builder: (index) {
                                 print(widget.routeArgument?.other);
-                                if (index == currentSection) {
-                                  return ProgressStepWithChevron(
-                                    width: 150,
-                                    defaultColor: const Color(0xffD9D9D9),
-                                    progressColor: Colors.black,
-                                    wasCompleted: true,
-                                    child: const Center(
-                                        child: Text(
-                                      "Section A",
-                                      style: TextStyle(color: Colors.white),
-                                    )),
-                                  );
-                                }
-                                return ProgressStepWithChevron(
-                                  width: 150,
-                                  defaultColor: const Color(0xffD9D9D9),
-                                  progressColor: Colors.black,
-                                  wasCompleted: false,
-                                  child: const Center(
-                                      child: Text(
-                                    "Section B",
-                                    style: TextStyle(color: Colors.grey),
-                                  )),
-                                );
+                                print("current index $index");
+                                return index - 1 == sectionStepper
+                                    ? ProgressStepWithChevron(
+                                        width: 150,
+                                        defaultColor: const Color(0xffD9D9D9),
+                                        progressColor: Colors.black,
+                                        wasCompleted: true,
+                                        child: Center(
+                                            child: Text(
+                                          "Section ${sectionList.elementAt(index - 1)}",
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        )),
+                                      )
+                                    : ProgressStepWithChevron(
+                                        width: 150,
+                                        defaultColor: const Color(0xffD9D9D9),
+                                        progressColor: Colors.black,
+                                        wasCompleted: false,
+                                        child: Center(
+                                            child: Text(
+                                          "Section ${sectionList.elementAt(index - 1)}",
+                                          style: const TextStyle(
+                                              color: Colors.grey),
+                                        )),
+                                      );
                               },
                             ),
                             InkWell(
@@ -169,7 +179,10 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                                     ),
                                   ),
                                   Text(
-                                    count1.toString(),
+                                    _con.manualList
+                                        .elementAt(currentSection)
+                                        .total
+                                        .toString(),
                                     style: const TextStyle(
                                       fontSize: 28,
                                       fontWeight: FontWeight.bold,
@@ -830,11 +843,14 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                                                         setState(() {
                                                           if (val!) {
                                                             _con.selectedQuestionList
-                                                                .add(
-                                                                    ques.qusId);
+                                                                .add(ques
+                                                                    .qusId!);
                                                             _con.selectedQuestionList
                                                                         .length ==
-                                                                    count1
+                                                                    _con.manualList
+                                                                        .elementAt(
+                                                                            currentSection)
+                                                                        .total
                                                                 ? animatedController
                                                                     .forward()
                                                                 : animatedController
@@ -845,7 +861,10 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                                                                     ques.qusId);
                                                             _con.selectedQuestionList
                                                                         .length ==
-                                                                    count1
+                                                                    _con.manualList
+                                                                        .elementAt(
+                                                                            currentSection)
+                                                                        .total
                                                                 ? animatedController
                                                                     .forward()
                                                                 : animatedController
@@ -939,22 +958,16 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
                                                   ),
                                                   InkWell(
                                                     onTap: () {
-
                                                       setState(() {
-                                                        currentSection++;
-                                                        if (currentSection ==
-                                                            (sectionCount! +
-                                                                1)) {
-                                                          Navigator.pushNamed(
-                                                              context,
-                                                              "/generatedQuestion",
-                                                              arguments:
-                                                                  RouteArgument(
-                                                                control: _con,
-                                                              ));
+                                                        if (_con.manualList
+                                                                    .length -
+                                                                1 >
+                                                            currentSection) {
+                                                          currentSection++;
+                                                          sectionStepper++;
+                                                        } else {
+                                                          processManualSelectedQuestions();
                                                         }
-                                                        _con.selectedQuestionList
-                                                            .clear();
                                                       });
                                                     },
                                                     child: Container(
@@ -991,5 +1004,40 @@ class _Manual extends State<Manual> with SingleTickerProviderStateMixin {
             ),
           ],
         ));
+  }
+
+  int totMark() {
+    totaMark = widget.routeArgument?.other;
+    return totaMark;
+  }
+
+  processManualSelectedQuestions() {
+    List<Question> listNeeded = <Question>[];
+    selectedModule.allQuestionList.forEach((element) {
+      if (_con.selectedQuestionList.contains(element.qusId)) {
+        print(element.question);
+        listNeeded.add(element);
+      }
+    });
+    var groupedQuestions = groupBy(listNeeded, (e) => e.questionType);
+
+    groupedQuestions.forEach((key, value) {
+      print("key$key");
+      var m =
+          _con.manualList.firstWhereOrNull((element) => element.typeId == key);
+
+      if (m != null) {
+        print("questionLength${m.typeId}");
+        int index = _con.manualList.indexOf(m);
+        m.questions.addAll(value);
+        _con.manualList[index] = m;
+      }
+    });
+    _con.quesPaper.sections = _con.manualList;
+    print("length${_con.manualList.length}");
+    _con.selectedQuestionList.clear();
+    Navigator.pushNamed(context, "/generatedQuestion",
+        arguments: RouteArgument(
+            control: _con, param: _con.manualList, other: totMark()));
   }
 }

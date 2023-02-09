@@ -12,7 +12,7 @@ class QuestionPaper {
   String? subject;
 
   List<QuestionGenerationModel>? sections;
-  List<ManualQuestionGenerationModel> manualSections;
+  // List<ManualQuestionGenerationModel> manualSections;
 
   int? qsPaperstatus;
 
@@ -23,7 +23,7 @@ class QuestionPaper {
     this.timeDuration,
     this.hourOrMinute,
     this.sections,
-    this.manualSections,
+//    this.manualSections,
     this.qsPaperstatus,
   );
 }

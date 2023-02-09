@@ -28,20 +28,20 @@ class _CreateCourse extends State<CreateCourse> {
   String? dropdownvalue1;
 
   var items = [
-    'View',
-    'Edit',
+    'Graduation',
+    'Post Graduation',
   ];
   String? dropdownvalue2;
 
   var items2 = [
-    'View',
-    'Edit',
+    'Calicut University',
+    'Kannur University',
   ];
   String? dropdownvalue3;
 
   var items3 = [
-    'View',
-    'Edit',
+    'B.Sc CS',
+    'B.Com CA',
   ];
 
   @override
@@ -182,7 +182,7 @@ class _CreateCourse extends State<CreateCourse> {
                                             overflow: TextOverflow.ellipsis,
                                             items,
                                             style:
-                                                const TextStyle(fontSize: 12),
+                                                const TextStyle(fontSize: 16),
                                           ),
                                         ),
                                       );
@@ -274,7 +274,7 @@ class _CreateCourse extends State<CreateCourse> {
                                             overflow: TextOverflow.ellipsis,
                                             items,
                                             style:
-                                                const TextStyle(fontSize: 12),
+                                                const TextStyle(fontSize: 16),
                                           ),
                                         ),
                                       );
@@ -366,7 +366,7 @@ class _CreateCourse extends State<CreateCourse> {
                                             overflow: TextOverflow.ellipsis,
                                             items,
                                             style:
-                                                const TextStyle(fontSize: 12),
+                                                const TextStyle(fontSize: 16),
                                           ),
                                         ),
                                       );
@@ -410,6 +410,7 @@ class _CreateCourse extends State<CreateCourse> {
                                         1,
                                         dropdownvalue1,
                                         dropdownvalue2,
+                                        dropdownvalue3,
                                         const Color(0xffB9FBC7),
                                         Colors.green));
                                   });

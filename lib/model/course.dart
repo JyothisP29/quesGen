@@ -4,10 +4,12 @@ import 'dart:ui';
 
 class Course {
   int id;
-  String? name;
+  String? type;
+
   String? university;
+  String? name;
   Color color;
   Color borderColor;
 
-  Course(this.id, this.name, this.university, this.color, this.borderColor);
+  Course(this.id, this.type,this.university,this.name,  this.color, this.borderColor);
 }

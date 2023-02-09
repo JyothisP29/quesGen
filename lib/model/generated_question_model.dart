@@ -2,6 +2,7 @@ import 'package:enumresponsive/model/questions.dart';
 
 class QuestionGenerationModel {
   final String? name;
+  final int? typeId;
   final int? easy;
   final int? medium;
   final int? hard;
@@ -9,10 +10,11 @@ class QuestionGenerationModel {
   final int? attend;
   final int? mpq;
 
-  final List<Question> questions;
+   List<Question> questions=[];
 
   QuestionGenerationModel(
       { this.name,
+        this.typeId,
          this.easy,
          this.medium,
          this.hard,

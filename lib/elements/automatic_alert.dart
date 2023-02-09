@@ -1809,10 +1809,9 @@ class _AutomaticAlert extends State<AutomaticAlert> {
                                   Navigator.pushNamed(
                                       context, "/generatedQuestion",
                                       arguments: RouteArgument(
-                                        param: generateQuestions(),
-                                        control: _con,
-                                        other: mPS()
-                                      ));
+                                          param: generateQuestions(),
+                                          control: _con,
+                                          other: mPS()));
                                 },
                                 child: Container(
                                   width: 150,
@@ -1878,6 +1877,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
 
       QuestionGenerationModel quesOneWordAnswer = QuestionGenerationModel(
           name: 'One Word Questions',
+          typeId: Constants.oneWord,
           easy: int.tryParse(myControllerEasy1.text),
           medium: int.tryParse(myControllerMedium1.text),
           hard: int.tryParse(myControllerHard1.text),
@@ -1919,6 +1919,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
           .toList());
       QuestionGenerationModel quesShortAnswer = QuestionGenerationModel(
           name: 'Short Answer Questions',
+          typeId: Constants.shortAnswer,
           easy: int.tryParse(myControllerEasy2.text),
           medium: int.tryParse(myControllerMedium2.text),
           hard: int.tryParse(myControllerHard2.text),
@@ -1959,6 +1960,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
           .toList());
       QuestionGenerationModel quesLongAnswer = QuestionGenerationModel(
           name: 'Long Answer Questions',
+          typeId: Constants.longAnswer,
           easy: int.tryParse(myControllerEasy3.text),
           medium: int.tryParse(myControllerMedium3.text),
           hard: int.tryParse(myControllerHard3.text),
@@ -1999,6 +2001,7 @@ class _AutomaticAlert extends State<AutomaticAlert> {
           .toList());
       QuestionGenerationModel quesEssayAnswer = QuestionGenerationModel(
           name: 'Essay Questions',
+          typeId: Constants.essayAnswer,
           easy: int.tryParse(myControllerEasy4.text),
           medium: int.tryParse(myControllerMedium4.text),
           hard: int.tryParse(myControllerHard4.text),
@@ -2319,5 +2322,4 @@ class _AutomaticAlert extends State<AutomaticAlert> {
     }
     return mps4;
   }
-
 }
